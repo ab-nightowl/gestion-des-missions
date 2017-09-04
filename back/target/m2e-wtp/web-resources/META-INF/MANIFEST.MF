@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: back
+Implementation-Version: 0.0.1
+Built-By: ETY1
+Implementation-Vendor-Id: dev
+Build-Jdk: 1.8.0_131
+Implementation-URL: http://projects.spring.io/spring-boot/parent/back/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
