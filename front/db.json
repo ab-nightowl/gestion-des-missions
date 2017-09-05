@@ -39,6 +39,17 @@
             "plafondFrais": 132,
             "depassementFrais": true,
             "actif": false
+        },
+        {
+            "id": 2,
+            "libelle": "Formation",
+            "facture": true,
+            "versementPrime": true,
+            "tauxPrime": 3.5,
+            "tjm": 798,
+            "plafondFrais": 100,
+            "depassementFrais": false,
+            "actif": true
         }
     ],
     "naturesFrais": [
