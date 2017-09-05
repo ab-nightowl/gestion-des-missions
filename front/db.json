@@ -1,3 +1,128 @@
 {
-  "data": []
+    "missions": [
+        {
+            "id": 1,
+            "dateDebut": "12/12/2012",
+            "dateFin": "24/12/2015",
+            "natureInit": 1,
+            "naturesMissionId": 2,
+            "villeDepartId": 1,
+            "villeArriveeId": 5,
+            "transportId": 1,
+            "prime": 0,
+            "utilisateurId": 1,
+            "statut": "Initial",
+            "frais": [
+                {
+                    "id": 1,
+                    "date": "31/10/2015",
+                    "natureFraisId": 1,
+                    "montant": 75
+                },
+                {
+                    "id": 2,
+                    "date": "29/10/2015",
+                    "natureFraisId": 2,
+                    "montant": 15
+                }
+            ]
+        }
+    ],
+    "naturesMission": [
+        {
+            "id": 1,
+            "libelle": "Conseil",
+            "facture": true,
+            "versementPrime": true,
+            "tauxPrime": 3.5,
+            "tjm": 654,
+            "plafondFrais": 132,
+            "depassementFrais": true,
+            "actif": false
+        }
+    ],
+    "naturesFrais": [
+        {
+            "id": 1,
+            "libelle": "Hôtel"
+        },
+        {
+            "id": 2,
+            "libelle": "Restaurant"
+        },
+        {
+            "id": 3,
+            "libelle": "Petit-déjeuner"
+        }
+    ],
+    "villes": [
+        {
+            "id": 1,
+            "libelle": "Marseille"
+        },
+        {
+            "id": 2,
+            "libelle": "Nantes"
+        },
+        {
+            "id": 3,
+            "libelle": "Angers"
+        },
+        {
+            "id": 4,
+            "libelle": "Bordeaux"
+        },
+        {
+            "id": 5,
+            "libelle": "Bourg-en-bresse"
+        }
+    ],
+    "transport": [
+        {
+            "id": 1,
+            "libelle": "Vélo"
+        },
+        {
+            "id": 2,
+            "libelle": "Voiture"
+        },
+        {
+            "id": 3,
+            "libelle": "Train"
+        },
+        {
+            "id": 4,
+            "libelle": "Avion"
+        },
+        {
+            "id": 5,
+            "libelle": "Bâteau"
+        },
+        {
+            "id": 6,
+            "libelle": "Taxi"
+        }
+    ],
+    "statut": [
+        {
+            "id": 1,
+            "libelle": "Initial"
+        },
+        {
+            "id": 2,
+            "libelle": "En attente de validation"
+        },
+        {
+            "id": 3,
+            "libelle": "Validé"
+        },
+        {
+            "id": 4,
+            "libelle": "En cours"
+        },
+        {
+            "id": 5,
+            "libelle": "Terminé"
+        }
+    ]
 }
