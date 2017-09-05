@@ -4,7 +4,7 @@
             "id": 1,
             "dateDebut": "12/12/2012",
             "dateFin": "24/12/2015",
-            "natureInit": 1,
+            "naturesMissionInitId": 1,
             "naturesMissionId": 2,
             "villeDepartId": 1,
             "villeArriveeId": 5,

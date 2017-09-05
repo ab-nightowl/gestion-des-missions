@@ -16,6 +16,7 @@ public class Mission {
 	private ZonedDateTime dateDebut;
 	private ZonedDateTime dateFin;
 	private Integer natureMissionId;
+	private Integer naturesMissionInitId;
 	private Integer villeDepartId;
 	private Integer villeArriveeId;
 	private Integer transportId;
@@ -57,6 +58,14 @@ public class Mission {
 	
 	public void setNatureMissionId(Integer natureMissionId) {
 		this.natureMissionId = natureMissionId;
+	}
+	
+	public Integer getNaturesMissionInitId() {
+		return naturesMissionInitId;
+	}
+	
+	public void setNaturesMissionInitId(Integer naturesMissionInitId) {
+		this.naturesMissionInitId = naturesMissionInitId;
 	}
 	
 	public Integer getVilleDepartId() {
