@@ -1,5 +1,5 @@
 
-  <form class="form-horizontal">
+  <form name="form-creer-mission" class="form-horizontal" novalidate>
     <fieldset>
 
     <!-- Form Name -->
@@ -9,7 +9,11 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="input-date-debut">Date de début</label>
       <div class="col-md-4">
-        <input type="date" ng-model="$ctrl.dateDebut" id="input-date-debut" name="" value="">
+        <input type="date" ng-model="$ctrl.dateDebut" id="input-date-debut" name="dateDebut" required>
+      </div>
+      <div role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="form-creer-mission.dateDebut.$error.required">Date de début de mission requise</p>
+        <p ng-show="form-creer-mission.dateDebut.$error.date">Date non valide</p>
       </div>
     </div>
 
@@ -17,7 +21,11 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="input-date-fin">Date de fin</label>
       <div class="col-md-4">
-        <input type="date" ng-model="$ctrl.dateFin" id="input-date-fin" name="" value="">
+        <input type="date" ng-model="$ctrl.dateFin" id="input-date-fin" name="dateFin" required>
+      </div>
+      <div role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="form-creer-mission.dateFin.$error.required">Date de fin de mission requise</p>
+        <p ng-show="form-creer-mission.dateFin.$error.date">Date non valide</p>
       </div>
     </div>
 
@@ -25,8 +33,11 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="select-nature">Nature</label>
       <div class="col-md-4">
-        <select ng-model="$ctrl.nature" ng-options="nature.libelle for nature in $ctrl.natures track by nature.id" name="nature" id="select-nature" class="form-control">
+        <select ng-model="$ctrl.nature" ng-options="nature.libelle for nature in $ctrl.natures track by nature.id" name="nature" id="select-nature" class="form-control" required>
         </select>
+      </div>
+      <div role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="form-creer-mission.nature.$error.required">Nature de mission requise</p>
       </div>
     </div>
 
@@ -34,7 +45,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="select-ville-depart">Ville de départ</label>
       <div class="col-md-4">
-        <select ng-model="$ctrl.villeDepart" ng-options="villeDepart.libelle for villeDepart in $ctrl.villes track by villeDepart.id" name="ville-depart" id="select-ville-depart" class="form-control">
+        <select ng-model="$ctrl.villeDepart" ng-options="villeDepart.libelle for villeDepart in $ctrl.villes track by villeDepart.id" name="ville-depart" id="select-ville-depart" class="form-control" required>
         </select>
       </div>
     </div>
@@ -43,7 +54,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="select-ville-arrivee">Ville d'arrivée</label>
       <div class="col-md-4">
-        <select ng-model="$ctrl.villeArrivee" ng-options="villeArrivee.libelle for villeArrivee in $ctrl.villes track by villeArrivee.id" name="ville-arrivee" id="select-ville-arrivee" class="form-control">
+        <select ng-model="$ctrl.villeArrivee" ng-options="villeArrivee.libelle for villeArrivee in $ctrl.villes track by villeArrivee.id" name="ville-arrivee" id="select-ville-arrivee" class="form-control" required>
         </select>
       </div>
     </div>
@@ -52,7 +63,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="select-transport">Transport</label>
       <div class="col-md-4">
-        <select ng-model="$ctrl.transport" ng-options="transport.libelle for transport in $ctrl.transports track by transport.id" name="transport" id="select-transport" class="form-control">
+        <select ng-model="$ctrl.transport" ng-options="transport.libelle for transport in $ctrl.transports track by transport.id" name="transport" id="select-transport" class="form-control" required>
         </select>
       </div>
     </div>

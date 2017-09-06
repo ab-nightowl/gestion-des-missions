@@ -67,7 +67,7 @@ export default class MissionService {
       "transportId": transportId,
       "prime": 0,
       "utilisateurId": 1,
-      "statut": "Initial",
+      "statut": "DEMANDE_INITIALE",
       "frais": []
     }
 
