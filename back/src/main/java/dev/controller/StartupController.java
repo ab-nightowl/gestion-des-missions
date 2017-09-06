@@ -14,7 +14,7 @@ public class StartupController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(StartupController.class);
 	@Autowired
 	InitialiserDonneesService initDonnees;
-
+	
 	@EventListener(ContextRefreshedEvent.class)
 	public void contextRefreshedEvent() {
 		LOGGER.info("Initialisation des données");

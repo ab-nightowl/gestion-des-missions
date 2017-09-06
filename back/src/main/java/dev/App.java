@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @SpringBootApplication
 @CrossOrigin
 public class App {
-
+	
 	/**
 	 * Démarrage de l'application Web.
 	 *
@@ -24,13 +24,15 @@ public class App {
 	public static void main(String[] args) {
 		SpringApplication.run(App.class);
 	}
-
+	
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurerAdapter() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST")
+				registry.addMapping("/**")
+						.allowedOrigins("*")
+						.allowedMethods("GET", "POST")
 						.allowedHeaders("Content-Type");
 			}
 		};

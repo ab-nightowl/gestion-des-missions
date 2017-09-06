@@ -1,139 +1,261 @@
 {
-    "missions": [
-        {
-            "id": 1,
-            "dateDebut": "12/12/2012",
-            "dateFin": "24/12/2015",
-            "naturesMissionInitId": 1,
-            "naturesMissionId": 2,
-            "villeDepartId": 1,
-            "villeArriveeId": 5,
-            "transportId": 1,
-            "prime": 0,
-            "utilisateurId": 1,
-            "statut": "Initial",
-            "frais": [
-                {
-                    "id": 1,
-                    "date": "31/10/2015",
-                    "natureFraisId": 1,
-                    "montant": 75
-                },
-                {
-                    "id": 2,
-                    "date": "29/10/2015",
-                    "natureFraisId": 2,
-                    "montant": 15
-                }
-            ]
-        }
-    ],
-    "naturesMission": [
-        {
-            "id": 1,
-            "libelle": "Conseil",
-            "facture": true,
-            "versementPrime": true,
-            "tauxPrime": 3.5,
-            "tjm": 654,
-            "plafondFrais": 132,
-            "depassementFrais": true,
-            "actif": false
-        },
-        {
-            "id": 2,
-            "libelle": "Formation",
-            "facture": true,
-            "versementPrime": true,
-            "tauxPrime": 3.5,
-            "tjm": 798,
-            "plafondFrais": 100,
-            "depassementFrais": false,
-            "actif": true
-        }
-    ],
-    "naturesFrais": [
-        {
-            "id": 1,
-            "libelle": "Hôtel"
-        },
-        {
-            "id": 2,
-            "libelle": "Restaurant"
-        },
-        {
-            "id": 3,
-            "libelle": "Petit-déjeuner"
-        }
-    ],
-    "villes": [
-        {
-            "id": 1,
-            "libelle": "Marseille"
-        },
-        {
-            "id": 2,
-            "libelle": "Nantes"
-        },
-        {
-            "id": 3,
-            "libelle": "Angers"
-        },
-        {
-            "id": 4,
-            "libelle": "Bordeaux"
-        },
-        {
-            "id": 5,
-            "libelle": "Bourg-en-bresse"
-        }
-    ],
-    "transports": [
-        {
-            "id": 1,
-            "libelle": "Vélo"
-        },
-        {
-            "id": 2,
-            "libelle": "Voiture"
-        },
-        {
-            "id": 3,
-            "libelle": "Train"
-        },
-        {
-            "id": 4,
-            "libelle": "Avion"
-        },
-        {
-            "id": 5,
-            "libelle": "Bâteau"
-        },
-        {
-            "id": 6,
-            "libelle": "Taxi"
-        }
-    ],
-    "statuts": [
-        {
-            "id": 1,
-            "libelle": "Initial"
-        },
-        {
-            "id": 2,
-            "libelle": "En attente de validation"
-        },
-        {
-            "id": 3,
-            "libelle": "Validé"
-        },
-        {
-            "id": 4,
-            "libelle": "En cours"
-        },
-        {
-            "id": 5,
-            "libelle": "Terminé"
-        }
-    ]
+	"utilisateurs": [
+		{
+			"matricule": "bd540e65",
+			"role": "ROLE_ADMINISTRATEUR"
+		},
+		{
+			"matricule": "75e8048c",
+			"role": "ROLE_ADMINISTRATEUR"
+		},
+		{
+			"matricule": "8b2d3ac7",
+			"role": "ROLE_MANAGER"
+		},
+		{
+			"matricule": "a8fc21fc",
+			"role": "ROLE_MANAGER"
+		},
+		{
+			"matricule": "e300fb12",
+			"role": "ROLE_MANAGER"
+		},
+		{
+			"matricule": "7befca85",
+			"role": "ROLE_MANAGER"
+		},
+		{
+			"matricule": "6c8be60e",
+			"role": "ROLE_MANAGER"
+		},
+		{
+			"matricule": "56eb7d01",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "0d36bbdd",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "f26eac86",
+			"role": "ROLE_MANAGER"
+		},
+		{
+			"matricule": "89dde79f",
+			"role": "ROLE_MANAGER"
+		},
+		{
+			"matricule": "8dd0b708",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "e353c695",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "478389f2",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "740ef3fd",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "26a79080",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "099124f1",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "6b7325b5",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "ede47266",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "3dfba579",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "749cb358",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "29bed9a2",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "37db541d",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "184c03f5",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "4aef1639",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "ed44692f",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "a35a5a9f",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "ba9ac63f",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "a658c524",
+			"role": "ROLE_EMPLOYE"
+		},
+		{
+			"matricule": "7f157294",
+			"role": "ROLE_EMPLOYE"
+		}
+	],
+	"missions": [
+		{
+			"id": 1,
+			"dateDebut": "12/12/2012",
+			"dateFin": "24/12/2015",
+			"naturesMissionInitId": 1,
+			"naturesMissionId": 2,
+			"villeDepartId": 1,
+			"villeArriveeId": 5,
+			"transportId": 1,
+			"prime": 0,
+			"utilisateurId": 1,
+			"statut": "Initial",
+			"frais": [
+				{
+					"id": 1,
+					"date": "31/10/2015",
+					"natureFraisId": 1,
+					"montant": 75
+				},
+				{
+					"id": 2,
+					"date": "29/10/2015",
+					"natureFraisId": 2,
+					"montant": 15
+				}
+			]
+		}
+	],
+	"naturesMission": [
+		{
+			"id": 1,
+			"libelle": "Conseil",
+			"facture": true,
+			"versementPrime": true,
+			"tauxPrime": 3.5,
+			"tjm": 654,
+			"plafondFrais": 132,
+			"depassementFrais": true,
+			"actif": false
+		},
+		{
+			"id": 2,
+			"libelle": "Formation",
+			"facture": true,
+			"versementPrime": true,
+			"tauxPrime": 3.5,
+			"tjm": 798,
+			"plafondFrais": 100,
+			"depassementFrais": false,
+			"actif": true
+		}
+	],
+	"naturesFrais": [
+		{
+			"id": 1,
+			"libelle": "Hôtel"
+		},
+		{
+			"id": 2,
+			"libelle": "Restaurant"
+		},
+		{
+			"id": 3,
+			"libelle": "Petit-déjeuner"
+		}
+	],
+	"villes": [
+		{
+			"id": 1,
+			"libelle": "Marseille"
+		},
+		{
+			"id": 2,
+			"libelle": "Nantes"
+		},
+		{
+			"id": 3,
+			"libelle": "Angers"
+		},
+		{
+			"id": 4,
+			"libelle": "Bordeaux"
+		},
+		{
+			"id": 5,
+			"libelle": "Bourg-en-bresse"
+		}
+	],
+	"transports": [
+		{
+			"id": 1,
+			"libelle": "Vélo"
+		},
+		{
+			"id": 2,
+			"libelle": "Voiture"
+		},
+		{
+			"id": 3,
+			"libelle": "Train"
+		},
+		{
+			"id": 4,
+			"libelle": "Avion"
+		},
+		{
+			"id": 5,
+			"libelle": "Bâteau"
+		},
+		{
+			"id": 6,
+			"libelle": "Taxi"
+		}
+	],
+	"statuts": [
+		{
+			"id": 1,
+			"libelle": "Initial"
+		},
+		{
+			"id": 2,
+			"libelle": "En attente de validation"
+		},
+		{
+			"id": 3,
+			"libelle": "Validé"
+		},
+		{
+			"id": 4,
+			"libelle": "En cours"
+		},
+		{
+			"id": 5,
+			"libelle": "Terminé"
+		}
+	]
 }

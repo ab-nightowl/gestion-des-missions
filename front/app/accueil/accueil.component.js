@@ -2,7 +2,8 @@ import './accueil.component.css';
 import template from './accueil.component.html';
 
 class controller {
-    constructor () {
+    constructor (loginService) {
+        this.loginService = loginService
         this.titre = 'Accueil';
     }
 }
