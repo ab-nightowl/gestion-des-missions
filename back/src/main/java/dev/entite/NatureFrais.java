@@ -6,17 +6,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class NaturesFrais {
+public class NatureFrais {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String libelle;
 	
-	public NaturesFrais() {
-		
+	public NatureFrais() {
+		super();
 	}
 	
+	public NatureFrais(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
+
 	public Integer getId() {
 		return id;
 	}

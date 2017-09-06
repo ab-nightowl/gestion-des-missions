@@ -210,7 +210,7 @@
 			"libelle": "Bourg-en-bresse"
 		}
 	],
-	"transport": [
+	"transports": [
 		{
 			"id": 1,
 			"libelle": "Vélo"
@@ -236,7 +236,7 @@
 			"libelle": "Taxi"
 		}
 	],
-	"statut": [
+	"statuts": [
 		{
 			"id": 1,
 			"libelle": "Initial"

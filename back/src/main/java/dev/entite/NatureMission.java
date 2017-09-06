@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class NaturesMission {
+public class NatureMission {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class NaturesMission {
 	private boolean depassementFrais;
 	private boolean actif;
 	
-	public NaturesMission() {
+	public NatureMission() {
 		
 	}
 	
