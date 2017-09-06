@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class NaturesMission {
+public class NatureMission {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +20,23 @@ public class NaturesMission {
 	private boolean depassementFrais;
 	private boolean actif;
 	
-	public NaturesMission() {
+	public NatureMission() {
 		
 	}
 	
+	public NatureMission(String libelle, boolean facture, boolean versementPrime, double tauxPrime, double tjm,
+			double plafondFrais, boolean depassementFrais, boolean actif) {
+		super();
+		this.libelle = libelle;
+		this.facture = facture;
+		this.versementPrime = versementPrime;
+		this.tauxPrime = tauxPrime;
+		this.tjm = tjm;
+		this.plafondFrais = plafondFrais;
+		this.depassementFrais = depassementFrais;
+		this.actif = actif;
+	}
+
 	public Integer getId() {
 		return id;
 	}

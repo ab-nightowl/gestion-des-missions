@@ -17,6 +17,10 @@ public class Transport {
 		
 	}
 	
+	public Transport(String libelle) {
+		this.libelle = libelle;
+	}
+
 	public Integer getId() {
 		return id;
 	}

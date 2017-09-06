@@ -1,11 +1,14 @@
 package dev.entite;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Mission {
@@ -13,21 +16,46 @@ public class Mission {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private ZonedDateTime dateDebut;
-	private ZonedDateTime dateFin;
-	private Integer natureMissionId;
-	private Integer naturesMissionInitId;
-	private Integer villeDepartId;
-	private Integer villeArriveeId;
-	private Integer transportId;
+	private LocalDate dateDebut;
+	private LocalDate dateFin;
+	@ManyToOne
+	@JoinColumn(name="nature_mission_init_id")
+	private NatureMission natureMissionInit;
+	@ManyToOne
+	@JoinColumn(name="nature_mission_id")
+	private NatureMission natureMission;
+	@ManyToOne
+	@JoinColumn(name="ville_depart_id")
+	private Ville villeDepart;
+	@ManyToOne
+	@JoinColumn(name="ville_arrivee_id")
+	private Ville villeArrivee;
+	@ManyToOne
+	@JoinColumn(name="transport_id")
+	private Transport transport;
 	private double prime;
-	private Integer utilisateurId;
-	private Integer statutId;
+	@ManyToOne
+	@JoinColumn(name="statut_id")
+	private Statut statut;
+	
 	
 	public Mission() {
 		
 	}
-	
+
+	public Mission(LocalDate dateDebut, LocalDate dateFin, NatureMission natureMissionInit, 
+			Ville villeDepart, Ville villeArrivee, Transport transport, double prime,
+			Statut statut) {
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.natureMissionInit = natureMissionInit;
+		this.villeDepart = villeDepart;
+		this.villeArrivee = villeArrivee;
+		this.transport = transport;
+		this.prime = prime;
+		this.statut = statut;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -35,84 +63,76 @@ public class Mission {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	public ZonedDateTime getDateDebut() {
+
+	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
-	
-	public void setDateDebut(ZonedDateTime dateDebut) {
+
+	public void setDateDebut(LocalDate dateDebut) {
 		this.dateDebut = dateDebut;
 	}
-	
-	public ZonedDateTime getDateFin() {
+
+	public LocalDate getDateFin() {
 		return dateFin;
 	}
-	
-	public void setDateFin(ZonedDateTime dateFin) {
+
+	public void setDateFin(LocalDate dateFin) {
 		this.dateFin = dateFin;
 	}
-	
-	public Integer getNatureMissionId() {
-		return natureMissionId;
+
+	public NatureMission getNatureMission() {
+		return natureMission;
 	}
-	
-	public void setNatureMissionId(Integer natureMissionId) {
-		this.natureMissionId = natureMissionId;
+
+	public void setNatureMission(NatureMission natureMission) {
+		this.natureMission = natureMission;
 	}
-	
-	public Integer getNaturesMissionInitId() {
-		return naturesMissionInitId;
+
+	public NatureMission getNatureMissionInit() {
+		return natureMissionInit;
 	}
-	
-	public void setNaturesMissionInitId(Integer naturesMissionInitId) {
-		this.naturesMissionInitId = naturesMissionInitId;
+
+	public void setNatureMissionInit(NatureMission natureMissionInit) {
+		this.natureMissionInit = natureMissionInit;
 	}
-	
-	public Integer getVilleDepartId() {
-		return villeDepartId;
+
+	public Ville getVilleDepart() {
+		return villeDepart;
 	}
-	
-	public void setVilleDepartId(Integer villeDepartId) {
-		this.villeDepartId = villeDepartId;
+
+	public void setVilleDepart(Ville villeDepart) {
+		this.villeDepart = villeDepart;
 	}
-	
-	public Integer getVilleArriveeId() {
-		return villeArriveeId;
+
+	public Ville getVilleArrivee() {
+		return villeArrivee;
 	}
-	
-	public void setVilleArriveeId(Integer villeArriveeId) {
-		this.villeArriveeId = villeArriveeId;
+
+	public void setVilleArrivee(Ville villeArrivee) {
+		this.villeArrivee = villeArrivee;
 	}
-	
-	public Integer getTransportId() {
-		return transportId;
+
+	public Transport getTransport() {
+		return transport;
 	}
-	
-	public void setTransportId(Integer transportId) {
-		this.transportId = transportId;
+
+	public void setTransport(Transport transport) {
+		this.transport = transport;
 	}
-	
+
 	public double getPrime() {
 		return prime;
 	}
-	
+
 	public void setPrime(double prime) {
 		this.prime = prime;
 	}
-	
-	public Integer getUtilisateurId() {
-		return utilisateurId;
+
+	public Statut getStatut() {
+		return statut;
 	}
-	
-	public void setUtilisateurId(Integer utilisateurId) {
-		this.utilisateurId = utilisateurId;
-	}
-	
-	public Integer getStatutId() {
-		return statutId;
-	}
-	
-	public void setStatutId(Integer statutId) {
-		this.statutId = statutId;
+
+	public void setStatut(Statut statut) {
+		this.statut = statut;
 	}
 }

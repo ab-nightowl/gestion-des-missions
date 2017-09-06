@@ -1,10 +1,11 @@
 export default class MissionService {
-  constructor($http) {
+  constructor($http, apiUrls) {
     this.$http = $http
+    this.apiUrls = apiUrls
   }
 
   getAllMissions() {
-    return this.$http.get('http://localhost:3000/missions')
+    return this.$http.get(this.apiUrls.missions)
       .then((resp) => {
         return resp.data
       }, (resp) => {
@@ -17,7 +18,7 @@ export default class MissionService {
   }
 
   getAllNatures() {
-    return this.$http.get('http://localhost:3000/naturesMission')
+    return this.$http.get(this.apiUrls.naturesMissions)
       .then((resp) => {
         return resp.data
       }, (resp) => {
@@ -30,7 +31,7 @@ export default class MissionService {
   }
 
   getAllVilles() {
-    return this.$http.get('http://localhost:3000/villes')
+    return this.$http.get(this.apiUrls.villes)
       .then((resp) => {
         return resp.data
       }, (resp) => {
@@ -43,7 +44,7 @@ export default class MissionService {
   }
 
   getAllTransports() {
-    return this.$http.get('http://localhost:3000/transports')
+    return this.$http.get(this.apiUrls.transports)
       .then((resp) => {
         return resp.data
       }, (resp) => {
@@ -72,7 +73,7 @@ export default class MissionService {
 
     let tabMissions = []
 
-    return this.$http.post('http://localhost:3000/missions/', mission)
+    return this.$http.post(this.apiUrls.missions, mission)
       .then((resp) => {return "La demande de mission a bien été envoyée"},
             (resp) => {return "Erreur : la demande de mission n'a pas pu être envoyée"}
       )
