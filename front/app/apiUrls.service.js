@@ -1,12 +1,12 @@
 const apiUrls = {
-    base: 'http://localhost:8080',
-    utilisateurs: 'http://localhost:8080/utilisateurs',
-    mission : 'http://localhost:3000/listMission'
-    naturesMission: 'http://localhost:8080/naturesmission',
-    naturesFrais : 'http://localhost:8080/listNaturesFrais',
-    villes: 'http://localhost:8080/villes',
-    transports: 'http://localhost:8080/transports',
-    statuts: 'http://localhost:8080/statuts'
+    base: `${API_URL}`,
+    utilisateurs: `${API_URL}/utilisateurs`,
+    mission : `http://localhost:3000/listMission`,
+    naturesMission: `${API_URL}/naturesmission`,
+    naturesFrais : `${API_URL}/listNaturesFrais`,
+    villes: `${API_URL}/villes`,
+    transports: `${API_URL}/transports`,
+    statuts: `${API_URL}/statuts`
 }
 
 export default apiUrls
