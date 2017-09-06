@@ -1,0 +1,42 @@
+<div id="connexion-page" class="text-center col-xs-12">
+    <div class="container connexionFormContainer">
+        <img src="" alt="LOGO">
+        <h1>GDM</h1>
+        <h2>Gestion des Missions</h2>
+        <div ng-show="$ctrl.$location.hash() && !connexionForm.email.$dirty && !connexionForm.password.$dirty" class="col-xs-12 alert alert-danger">
+            Adresse email ou mot de passe invalide !
+        </div>
+        <form name="connexionForm" class="col-xs-12 col-sm-9 col-sm-offset-1 form-horizontal" novalidate>
+            <div class="row">
+                <label class="col-sm-4 control-label" for="email">
+                Email :
+            </label>
+                <div class="col-sm-8">
+                    <input type="email" name="email" id="email" ng-model="$ctrl.email" placeholder="Votre adresse mail" class="form-control input-sm"
+                        required/>
+                    <div ng-show="connexionForm.email.$dirty && connexionForm.email.$invalid">
+                        <span ng-show="connexionForm.email.$error.required">Required Email</span>
+                        <span ng-show="connexionForm.email.$error.email">Invalid email.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-4 control-label" for="password">
+                Mot de passe :
+            </label>
+                <div class="col-sm-8">
+                    <input type="password" id="password" name="password" ng-model="$ctrl.password" placeholder="Votre mot de passe" class="form-control input-sm"
+                        required/>
+                    <div ng-show="connexionForm.password.$dirty && connexionForm.password.$invalid">
+                        <span ng-show="connexionForm.password.$error.required">Required Password</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-right col-xs-12">
+                    <button class="btn btn-success" type="submit" ng-click="$ctrl.connect($ctrl.email, $ctrl.password)">Se connecter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -4,7 +4,7 @@ export function route ($routeProvider, $locationProvider) {
 
     $routeProvider
     .when('/', {
-        template: '<accueil></accueil>'
+        template: sessionStorage.getItem('session') ? '<accueil></accueil>' : '<login-component></login-component>'
     })
     .otherwise({
         redirectTo: '/'
