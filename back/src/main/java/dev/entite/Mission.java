@@ -17,7 +17,6 @@ public class Mission {
 	private LocalDate dateFin;
 	private Integer naturesMissionInitId;
 	private Integer natureMissionId;
-	private Integer naturesMissionInitId;
 	private Integer villeDepartId;
 	private Integer villeArriveeId;
 	private Integer transportId;
