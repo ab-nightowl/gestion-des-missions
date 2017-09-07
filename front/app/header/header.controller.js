@@ -10,6 +10,10 @@ export default class headerCtrl{
     isUserConnected(){
         return this.loginService.isConnected()
     }
+
+    isCurrentPath(path) {
+        return this.$location.path() === path
+    }
 }
 
 headerCtrl.$inject = ['loginService', '$location']
