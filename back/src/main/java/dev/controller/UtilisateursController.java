@@ -62,4 +62,10 @@ public class UtilisateursController {
 		
 		return "{ \"role\": \"" + role + "\"}";
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "manager/{matricule}")
+	public Utilisateur getMangerByUtilisateurMatricule(@PathVariable(value = "matricule") String matricule) {
+		return serviceUtilisateur.getManagerByUtilisateurMatricule(matricule)
+				.orElse(null);
+	}
 }
