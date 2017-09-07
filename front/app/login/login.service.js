@@ -64,7 +64,6 @@ export default class loginService {
 	connect(user) {
 		sessionStorage.setItem('session', true)
 		sessionStorage.setItem('userEmail', user.email)
-		sessionStorage.setItem('userPassword', user.password)
 		sessionStorage.setItem('userNom', user.nom)
 		sessionStorage.setItem('userPrenom', user.prenom)
 		this.setUserRole(user.email)
