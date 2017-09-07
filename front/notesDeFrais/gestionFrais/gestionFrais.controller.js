@@ -4,6 +4,9 @@ export default class gestionFraisCtrl {
         this.sumFraisMission()
         this.findMission()
         this.mission = []
+        this.dateNow = new Date();
+        this.order = "dateDebut";
+        this.triInverse = false;
     }
 
     findMission() {
@@ -13,10 +16,15 @@ export default class gestionFraisCtrl {
                     this.sumfrais.forEach(sf => {
                         if (sf.missionId === m.id) {
                             m.frais = sf.sumMontant
-                            this.mission.push(m)
-                            console.log(this.mission)
+                        }
+                        else {
+                            if (m.frais == null || m.frais == 0) {
+                                m.frais = 0
+                            }
                         }
                     }, this);
+
+                    this.mission.push(m)
                 }, this);
             })
     }
@@ -26,6 +34,11 @@ export default class gestionFraisCtrl {
             .then(frais => {
                 this.sumfrais = frais
             })
+    }
+
+    updateOrderEtTri(order) {
+        this.order = order;
+        this.triInverse = !this.triInverse;
     }
 
 }

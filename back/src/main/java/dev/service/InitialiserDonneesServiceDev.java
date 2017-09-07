@@ -12,17 +12,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
+import dev.entite.Administrateur;
 import dev.entite.Frais;
 import dev.entite.Mission;
-import dev.entite.NatureMission;
-import dev.entite.Statut;
-import dev.entite.Statut.STATUTS;
-import dev.entite.Transport;
-import dev.entite.Ville;
-import dev.entite.Administrateur;
 import dev.entite.NatureFrais;
 import dev.entite.NatureMission;
 import dev.entite.Statut;
+import dev.entite.Statut.STATUTS;
 import dev.entite.Transport;
 import dev.entite.Ville;
 
@@ -108,8 +104,8 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		em.persist(mission3);
 
 		Mission mission4 = new Mission();
-		mission4.setDateDebut(LocalDate.of(2017, 9, 15));
-		mission4.setDateFin(LocalDate.of(2017, 12, 15));
+		mission4.setDateDebut(LocalDate.of(2017, 9, 1));
+		mission4.setDateFin(LocalDate.of(2017, 9, 6));
 		mission4.setNatureMissionInit(natureFormation);
 		mission4.setVilleDepart(angers);
 		mission4.setVilleArrivee(nantes);

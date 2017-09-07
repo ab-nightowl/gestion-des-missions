@@ -3,8 +3,32 @@
     <table class="table ">
         <thead>
             <tr>
-                <th style="text-align: center;">Date de début</th>
-                <th style="text-align: center;">Date de fin</th>
+                <th style="text-align: center;">
+                    <a href="#" ng-click="$ctrl.updateOrderEtTri('dateDebut')">
+                        Date de début
+                        <span ng-if="$ctrl.order == 'dateDebut'">
+                            <span ng-show="$ctrl.triInverse">
+                                <span class="caret"></span>
+                            </span>
+                            <span ng-show="!$ctrl.triInverse">
+                                <span class="dropup"><span class="caret"></span></span>
+                            </span>
+                        </span>
+                    </a>
+                </th>
+                <th style="text-align: center;">
+                    <a href="#" ng-click="$ctrl.updateOrderEtTri('dateFin')">
+                        Date de fin
+                        <span ng-if="$ctrl.order == 'dateFin'">
+                            <span ng-show="$ctrl.triInverse">
+                                <span class="caret"></span>
+                            </span>
+                            <span ng-show="!$ctrl.triInverse">
+                                <span class="dropup"><span class="caret"></span></span>
+                            </span>
+                        </span>
+                    </a>
+                </th>
                 <th style="text-align: center;">Nature</th>
                 <th style="text-align: center;">Départ</th>
                 <th style="text-align: center;">Arrivée</th>
@@ -14,8 +38,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in $ctrl.mission">
-
+            <tr ng-repeat="item in $ctrl.mission | orderBy:$ctrl.order:$ctrl.triInverse">
                 <td style="text-align: center;">{{item.dateDebut}}</td>
                 <td style="text-align: center;">{{item.dateFin}}</td>
                 <td style="text-align: center;">{{item.natureMissionInit.libelle}}</td>
@@ -24,10 +47,10 @@
                 <td style="text-align: center;">{{item.transport.libelle}}</td>
                 <td style="text-align: center;">{{item.frais}}€</td>
                 <td style="text-align: center;">
-                    <a href="/gestion-des-missions/detail" class="btn btn-default">
+                    <a href="/gestion-des-missions/detail" class="btn btn-default" ng-show="item.dateFin <= ($ctrl.dateNow | date:'yyyy-MM-dd')">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
-                    <a class="btn btn-default" disabled>
+                    <a class="btn btn-default" disabled ng-show="item.dateFin <= ($ctrl.dateNow | date:'yyyy-MM-dd')">
                         <span class="glyphicon glyphicon-save-file"></span>
                     </a>
                 </td>
