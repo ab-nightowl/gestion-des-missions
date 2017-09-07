@@ -137,9 +137,7 @@ public class Mission {
 	
 	public void setStatut(Statut statut) {
 		this.statut = statut;
-	}<<<<<<<HEAD
-	
-	=======
+	}
 	
 	public String getUtilisateurMatricule() {
 		return utilisateurMatricule;
@@ -148,6 +146,4 @@ public class Mission {
 	public void setUtilisateurMatricule(String utilisateurMatricule) {
 		this.utilisateurMatricule = utilisateurMatricule;
 	}
-	
-	>>>>>>>73 a28dd843b6210d09597694bdc6f3a4014a0c64
 }
