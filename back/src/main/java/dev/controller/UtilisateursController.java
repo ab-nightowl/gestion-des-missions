@@ -47,8 +47,8 @@ public class UtilisateursController {
 				.findAny();
 		
 		String role = userFound.get()
-				.getSubalternes().length > 0 ? UtilisateurRole.ROLE_MANAGER.toString()
-						: UtilisateurRole.ROLE_EMPLOYE.toString();
+				.getSubalternes()
+				.isEmpty() ? UtilisateurRole.ROLE_EMPLOYE.toString() : UtilisateurRole.ROLE_MANAGER.toString();
 		
 		if (userFound.isPresent()) {
 			Administrateur userRoleFound = repoUtilisateurs.findOneByMatricule(userFound.get()
