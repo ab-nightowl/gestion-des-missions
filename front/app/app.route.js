@@ -19,9 +19,9 @@ export function route($routeProvider, $locationProvider) {
                 template: '<gdm-ajout></gdm-ajout>'
             })
         // Ajouter les autres routes ici
-          .when('/missions/creer', {
-              template: '<gdm-creer-mission></gdm-creer-mission>'
-          })
+            .when('/missions/creer', {
+                template: '<gdm-creer-mission></gdm-creer-mission>'
+            })
 
     }
 }
