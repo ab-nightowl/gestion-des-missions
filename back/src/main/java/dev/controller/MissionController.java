@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.entite.Mission;
 import dev.repository.MissionRepository;
+import dev.repository.StatutRepository;
 
 @RestController
 @RequestMapping("/missions")
@@ -17,6 +18,8 @@ public class MissionController {
 	
 	@Autowired
 	private MissionRepository missionRepo;
+	@Autowired
+	private StatutRepository statutRepo;
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
 	private List<Mission> listerMissions() {
@@ -25,8 +28,9 @@ public class MissionController {
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/lister")
 	private void creerMission(@RequestBody Mission mission) {
-		System.out.println("aaa");
-//		missionRepo.save(mission);
+		mission.setStatut(statutRepo.findOne(1));
+		
+		missionRepo.save(mission);
 	}
 	
 }

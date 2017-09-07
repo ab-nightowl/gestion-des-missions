@@ -9,11 +9,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Statut {
-	
+
 	public enum STATUTS {
 		DEMANDE_INITIALE, DEMANDE_EN_ATTENTE_VALIDATION, DEMANDE_VALIDEE, DEMANDE_REJETEE
 	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -23,7 +23,7 @@ public class Statut {
 	public Statut() {
 		super();
 	}
-	
+
 	public Statut(STATUTS statut) {
 		this.statut = statut;
 	}
@@ -31,7 +31,7 @@ public class Statut {
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}

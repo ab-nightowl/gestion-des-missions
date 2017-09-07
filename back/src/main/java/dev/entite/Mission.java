@@ -1,7 +1,6 @@
 package dev.entite;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,8 +42,7 @@ public class Mission {
 	}
 
 	public Mission(LocalDate dateDebut, LocalDate dateFin, NatureMission natureMissionInit,
-			Ville villeDepart, Ville villeArrivee, Transport transport, double prime,
-			Statut statut) {
+			Ville villeDepart, Ville villeArrivee, Transport transport, double prime) {
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.natureMissionInit = natureMissionInit;
@@ -52,7 +50,6 @@ public class Mission {
 		this.villeArrivee = villeArrivee;
 		this.transport = transport;
 		this.prime = prime;
-		this.statut = statut;
 	}
 
 	public Integer getId() {

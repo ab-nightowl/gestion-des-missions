@@ -26,7 +26,7 @@ public class UtilisateursController {
 	@Autowired
 	UtilisateurService serviceUtilisateur;
 	
-	@RequestMapping(method = RequestMethod.GET, path = "")
+	@RequestMapping(method = RequestMethod.GET, path = "/lister")
 	public List<Utilisateur> getListUsers() {
 		return serviceUtilisateur.getListeUtilisateurs();
 	}

@@ -20,6 +20,10 @@ public class NatureMission {
 	private boolean depassementFrais;
 	private boolean actif;
 	
+	public NatureMission() {
+		super();
+	}
+
 	public NatureMission(String libelle, boolean facture, boolean versementPrime, double tauxPrime, double tjm,
 			double plafondFrais, boolean depassementFrais, boolean actif) {
 		super();
@@ -31,10 +35,6 @@ public class NatureMission {
 		this.plafondFrais = plafondFrais;
 		this.depassementFrais = depassementFrais;
 		this.actif = actif;
-	}
-
-	public NatureMission() {
-		super();
 	}
 
 	public Integer getId() {

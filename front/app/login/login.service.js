@@ -18,9 +18,12 @@ export default class loginService {
 	checkUser(email, password) {
 		let chryptedPassword = password ? this.sha1(password) : ""
 
-		return this.$http.get(this.apiUrls.utilisateurs)
+		return this.$http.get(`${this.apiUrls.utilisateurs}/lister`)
 			.then(users => {
 				return users.data
+			},
+			error => {
+				console.log("loginService: checkUser(): error:", error);
 			})
 			.then(users => {
 				return users.find(
@@ -31,10 +34,15 @@ export default class loginService {
 
 	getConnectedUserInfo() {
 		return {
+			"email": this.getUserEmail(),
 			"nom": this.getUserNom(),
 			"prenom": this.getUserPrenom(),
 			"role": this.getUserRole()
 		}
+	}
+
+	getUserEmail() {
+		return sessionStorage.getItem('userEmail')
 	}
 
 	getUserRole() {
@@ -58,7 +66,10 @@ export default class loginService {
 			}
 		}).then(resp => {
 			sessionStorage.setItem('userRole', resp.data.role)
-		})
+		},
+			error => {
+				console.log("loginService: setUserRole() error:", error);
+			})
 	}
 
 	connect(user) {
@@ -66,6 +77,7 @@ export default class loginService {
 		sessionStorage.setItem('userEmail', user.email)
 		sessionStorage.setItem('userNom', user.nom)
 		sessionStorage.setItem('userPrenom', user.prenom)
+		sessionStorage.setItem('userId', user.id)
 		this.setUserRole(user.email)
 		this.$location.path('/')
 		this.$window.location.reload();
