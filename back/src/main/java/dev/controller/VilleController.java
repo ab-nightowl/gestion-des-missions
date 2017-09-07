@@ -1,4 +1,4 @@
-package dev.web.controller;
+package dev.controller;
 
 import java.util.List;
 
@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.entite.NatureMission;
-import dev.repository.NatureMissionRepository;
+import dev.entite.Ville;
+import dev.repository.VilleRepository;
 
 @RestController
-@RequestMapping("/naturesMissions")
-public class NatureMissionController {
+@RequestMapping("/villes")
+public class VilleController {
 	
 	@Autowired
-	private NatureMissionRepository natureMissionRepo;
+	private VilleRepository villeRepo;
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
-	private List<NatureMission> listerNaturesMissions() {
-		return natureMissionRepo.findAll();
+	private List<Ville> listerVilles() {
+		return villeRepo.findAll();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/lister")
-	private void creerNatureMission(@RequestBody NatureMission natureMission) {
-		natureMissionRepo.save(natureMission);
+	private void creerVille(@RequestBody Ville ville) {
+		villeRepo.save(ville);
 	}
 	
 }

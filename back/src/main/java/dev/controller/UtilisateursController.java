@@ -26,7 +26,7 @@ public class UtilisateursController {
 	@Autowired
 	UtilisateurService serviceUtilisateur;
 	
-	@RequestMapping(method = RequestMethod.GET, path = "")
+	@RequestMapping(method = RequestMethod.GET, path = "/lister")
 	public List<Utilisateur> getListUsers() {
 		return serviceUtilisateur.getListeUtilisateurs();
 	}
@@ -37,7 +37,7 @@ public class UtilisateursController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "role")
-	public String getUserByMatricule(@RequestParam("userEmail") String email) {
+	public String getRoleByUserEmail(@RequestParam("userEmail") String email) {
 		
 		Optional<Utilisateur> userFound = getListUsers().stream()
 				.filter(user -> {
@@ -61,5 +61,11 @@ public class UtilisateursController {
 		}
 		
 		return "{ \"role\": \"" + role + "\"}";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "manager/{matricule}")
+	public Utilisateur getMangerByUtilisateurMatricule(@PathVariable(value = "matricule") String matricule) {
+		return serviceUtilisateur.getManagerByUtilisateurMatricule(matricule)
+				.orElse(null);
 	}
 }

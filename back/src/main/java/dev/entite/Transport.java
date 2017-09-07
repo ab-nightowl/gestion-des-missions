@@ -14,7 +14,7 @@ public class Transport {
 	private String libelle;
 	
 	public Transport() {
-		
+		super();
 	}
 	
 	public Transport(String libelle) {

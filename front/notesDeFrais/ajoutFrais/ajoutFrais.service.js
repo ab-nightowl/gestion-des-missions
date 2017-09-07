@@ -23,9 +23,6 @@ export default class ajoutFraisService {
             alert('Cest bon !');
         });
 
-        // console.log(this.apiUrls.naturesFrais + "?date=" + date + "&nature=" + nature + "&montant=" + montant)
-        // console.log(this.frais)
-
     }
 
 }

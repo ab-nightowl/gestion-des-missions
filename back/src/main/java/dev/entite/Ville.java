@@ -14,7 +14,7 @@ public class Ville {
 	private String libelle;
 	
 	public Ville() {
-		
+		super();
 	}
 	
 	public Ville(String libelle) {

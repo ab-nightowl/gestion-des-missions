@@ -1,8 +1,6 @@
-package dev.web.controller;
+package dev.controller;
 
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,24 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.entite.Transport;
-import dev.repository.TransportRepository;
+import dev.entite.NatureMission;
+import dev.repository.NatureMissionRepository;
 
 @RestController
-@RequestMapping("/transports")
-public class TransportController {
+@RequestMapping("/naturesMissions")
+public class NatureMissionController {
 	
 	@Autowired
-	private TransportRepository transportRepo;
+	private NatureMissionRepository natureMissionRepo;
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
-	private List<Transport> listerTransports() {
-		return transportRepo.findAll();
+	private List<NatureMission> listerNaturesMissions() {
+		return natureMissionRepo.findAll();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/lister")
-	private void creerTransport(HttpServletRequest req, @RequestBody Transport transport) {
-		transportRepo.save(transport);
+	private void creerNatureMission(@RequestBody NatureMission natureMission) {
+		natureMissionRepo.save(natureMission);
 	}
 	
 }
