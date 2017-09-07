@@ -98,12 +98,8 @@ export default class MissionController {
 			})
   }
 
-  selectNature(natureId) {
-    this.natures.find(nature => nature.id == natureId)
-  }
-
   creerMission() {
-    this.MissionService.postMission(this.dateDebut, this.dateFin, this.nature.id, this.villeDepart.id, this.villeArrivee.id, this.transport.id)
+    this.MissionService.postMission(this.dateDebut, this.dateFin, this.nature, this.villeDepart, this.villeArrivee, this.transport)
   }
 
   today() {

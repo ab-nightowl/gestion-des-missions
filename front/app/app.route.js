@@ -9,6 +9,8 @@ export function route($routeProvider, $locationProvider) {
         .when('/', {
             template: userIsConnected ? '<accueil></accueil>' : '<login-component></login-component>'
         })
+        .when('/missions/creer', {
+            template: '<gdm-creer-mission></gdm-creer-mission>'
         .when('/ajout', {
             template: '<gdm-ajout></gdm-ajout>'
         })
