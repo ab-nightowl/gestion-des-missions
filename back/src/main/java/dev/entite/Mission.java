@@ -38,7 +38,6 @@ public class Mission {
 	@JoinColumn(name="statut_id")
 	private Statut statut;
 	
-	
 	public Mission() {
 		
 	}

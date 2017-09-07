@@ -4,14 +4,14 @@
       "id": 1,
       "dateDebut": "12/12/2012",
       "dateFin": "24/12/2015",
-      "naturesMissionInitId": 1,
-      "naturesMissionId": 2,
+      "natureMissionInitId": 1,
+      "natureMissionId": 2,
       "villeDepartId": 1,
       "villeArriveeId": 5,
       "transportId": 1,
       "prime": 0,
       "utilisateurId": 1,
-      "statut": "Initial",
+      "statut": "Initiale",
       "frais": [
         {
           "id": 1,

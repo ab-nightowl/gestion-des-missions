@@ -25,7 +25,8 @@ public class MissionController {
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/lister")
 	private void creerMission(@RequestBody Mission mission) {
-		missionRepo.save(mission);
+		System.out.println("aaa");
+//		missionRepo.save(mission);
 	}
 	
 }

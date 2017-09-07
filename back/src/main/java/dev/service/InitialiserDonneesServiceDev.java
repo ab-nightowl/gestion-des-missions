@@ -86,8 +86,8 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		em.persist(mission2);
 		
 		Mission mission3 = new Mission();
-		mission3.setDateDebut(LocalDate.now());
-		mission3.setDateFin(LocalDate.of(2017, 10, 1));
+		mission3.setDateDebut(LocalDate.of(2017, 10, 1));
+		mission3.setDateFin(LocalDate.of(2017, 10, 31));
 		mission3.setNatureMissionInit(natureFormation);
 		mission3.setVilleDepart(bordeaux);
 		mission3.setVilleArrivee(nantes);
