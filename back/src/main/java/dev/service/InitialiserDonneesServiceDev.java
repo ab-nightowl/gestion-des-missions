@@ -18,7 +18,6 @@ import dev.entite.Mission;
 import dev.entite.NatureFrais;
 import dev.entite.NatureMission;
 import dev.entite.Statut;
-import dev.entite.Statut.STATUTS;
 import dev.entite.Transport;
 import dev.entite.Ville;
 
