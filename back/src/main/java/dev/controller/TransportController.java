@@ -29,5 +29,4 @@ public class TransportController {
 	private void creerTransport(HttpServletRequest req, @RequestBody Transport transport) {
 		transportRepo.save(transport);
 	}
-	
 }

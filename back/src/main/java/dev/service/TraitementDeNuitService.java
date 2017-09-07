@@ -15,12 +15,15 @@ public class TraitementDeNuitService {
 	@Autowired
 	MissionRepository repoMission;
 	
-	@Scheduled(cron = "0 0 0 * * *")
+	// @Scheduled(cron = "0 0 0 * * *")
+	@Scheduled(cron = "*/5 * * * * *")
 	public void traitement() {
 		log.info("Traitement de nuit: début");
 		// repoMission.findAll()
 		// .stream()
-		// .forEach(m -> m.getStatutId());
+		// .filter(mission -> {
+		// return true;
+		// });
 		log.info("Traitement de nuit: fin");
 	}
 }
