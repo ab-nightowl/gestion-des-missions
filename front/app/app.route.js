@@ -11,7 +11,7 @@ export function route($routeProvider, $locationProvider) {
         })
         .otherwise({
             redirectTo: '/'
-        });
+        })
 
     if (userIsConnected) {
         $routeProvider
@@ -21,10 +21,9 @@ export function route($routeProvider, $locationProvider) {
             .when('/gestion', {
                 template: '<gdm-gestion-frais></gdm-gestion-frais>'
             })
-            // Ajouter les autres routes ici
             .when('/missions/creer', {
                 template: '<gdm-creer-mission></gdm-creer-mission>'
             })
-
+            // Ajouter les autres routes ici
     }
 }
