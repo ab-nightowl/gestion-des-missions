@@ -83,6 +83,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission1.setTransport(avion);
 		mission1.setPrime(100);
 		mission1.setStatut(initiale);
+		mission1.setUtilisateurMatricule("bd540e65");
 		em.persist(mission1);
 
 		Mission mission2 = new Mission();
@@ -94,6 +95,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission2.setTransport(voiture);
 		mission2.setPrime(300);
 		mission2.setStatut(enAttente);
+		mission2.setUtilisateurMatricule("56eb7d01");
 		em.persist(mission2);
 
 		Mission mission3 = new Mission();
@@ -105,6 +107,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission3.setTransport(train);
 		mission3.setPrime(200);
 		mission3.setStatut(validee);
+		mission3.setUtilisateurMatricule("0d36bbdd");
 		em.persist(mission3);
 
 		Mission mission4 = new Mission();
@@ -116,6 +119,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission4.setTransport(covoit);
 		mission4.setPrime(1000);
 		mission4.setStatut(rejetee);
+		mission4.setUtilisateurMatricule("8dd0b708");
 		em.persist(mission4);
 
 		Stream.of("bd540e65", "75e8048c")
