@@ -14,9 +14,14 @@ public class Ville {
 	private String libelle;
 	
 	public Ville() {
-		
+		super();
 	}
 	
+	public Ville(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
+
 	public Integer getId() {
 		return id;
 	}

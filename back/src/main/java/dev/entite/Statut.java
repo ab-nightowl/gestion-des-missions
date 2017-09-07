@@ -13,8 +13,13 @@ public class Statut {
 	private Integer id;
 	private String libelle;
 	
+	public Statut(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
+
 	public Statut() {
-		
+		super();
 	}
 	
 	public Integer getId() {

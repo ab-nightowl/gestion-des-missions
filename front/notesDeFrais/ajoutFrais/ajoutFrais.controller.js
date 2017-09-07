@@ -2,7 +2,6 @@ export default class ajoutFraisCtrl {
     constructor(ajoutFraisService) {
         this.ajoutFraisService = ajoutFraisService
         this.findNaturesFrais()
-        this.var = "blabla coucou"
 
         this.today();
         this.inlineOptions = {
@@ -75,10 +74,6 @@ export default class ajoutFraisCtrl {
     }
 
     saveFrais() {
-        
-        console.log(this.date)
-        console.log(this.nature)
-        console.log(this.montant)
         this.ajoutFraisService.saveNew(this.date, this.nature, this.montant)
     }
 
