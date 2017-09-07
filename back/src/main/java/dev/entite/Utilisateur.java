@@ -1,5 +1,7 @@
 package dev.entite;
 
+import java.util.List;
+
 public class Utilisateur {
 	private String matricule;
 	private String nom;
@@ -10,7 +12,7 @@ public class Utilisateur {
 	private String adresse;
 	private String password;
 	private String photo;
-	private String[] subalternes;
+	private List<String> subalternes;
 	private String departement;
 	
 	public String getMatricule() {
@@ -85,11 +87,11 @@ public class Utilisateur {
 		this.photo = photo;
 	}
 	
-	public String[] getSubalternes() {
+	public List<String> getSubalternes() {
 		return subalternes;
 	}
 	
-	public void setSubalternes(String[] subalternes) {
+	public void setSubalternes(List<String> subalternes) {
 		this.subalternes = subalternes;
 	}
 	
