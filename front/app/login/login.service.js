@@ -37,7 +37,8 @@ export default class loginService {
 			"email": this.getUserEmail(),
 			"nom": this.getUserNom(),
 			"prenom": this.getUserPrenom(),
-			"role": this.getUserRole()
+			"role": this.getUserRole(),
+			"matricule": this.getUserMatricule()
 		}
 	}
 
@@ -55,6 +56,10 @@ export default class loginService {
 
 	getUserPrenom() {
 		return sessionStorage.getItem('userPrenom')
+	}
+
+	getUserMatricule() {
+		return sessionStorage.getItem('userMatricule')
 	}
 
 	setUserRole(email) {
