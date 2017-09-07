@@ -21,6 +21,9 @@ export default class loginService {
 		return this.$http.get(`${this.apiUrls.utilisateurs}/lister`)
 			.then(users => {
 				return users.data
+			},
+			error => {
+				console.log("loginService: checkUser(): error:", error);
 			})
 			.then(users => {
 				return users.find(
@@ -37,7 +40,7 @@ export default class loginService {
 			"role": this.getUserRole()
 		}
 	}
-	
+
 	getUserEmail() {
 		return sessionStorage.getItem('userEmail')
 	}
@@ -63,7 +66,10 @@ export default class loginService {
 			}
 		}).then(resp => {
 			sessionStorage.setItem('userRole', resp.data.role)
-		})
+		},
+			error => {
+				console.log("loginService: setUserRole() error:", error);
+			})
 	}
 
 	connect(user) {
