@@ -21,6 +21,9 @@ export function route($routeProvider, $locationProvider) {
             .when('/gestion', {
                 template: '<gdm-gestion-frais></gdm-gestion-frais>'
             })
+            .when('/detail', {
+                template: '<gdm-detail-gestion-frais></gdm-detail-gestion-frais>'
+            })
             .when('/missions/creer', {
                 template: '<gdm-creer-mission></gdm-creer-mission>'
             })
