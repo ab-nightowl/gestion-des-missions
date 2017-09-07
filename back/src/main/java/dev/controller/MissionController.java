@@ -27,7 +27,6 @@ public class MissionController {
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/lister/{id}")
 	private List<Mission> listerMissionsByUtilisateurId(@PathVariable("id") String matricule) {
-		System.out.println(matricule);
 		return missionRepo.findByUtilisateurMatricule(matricule);
 	}
 

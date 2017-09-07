@@ -56,15 +56,17 @@ export default class MissionService {
       })
   }
 
-  postMission(dateDebut, dateFin, nature, villeDepartId, villeArriveeId, transportId) {
+  postMission(dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut, utilisateurMatricule) {
     let mission = {
       "dateDebut": dateDebut,
       "dateFin": dateFin,
       "natureMissionInit": nature,
-      "villeDepart": villeDepartId,
-      "villeArrivee": villeArriveeId,
-      "transport": transportId,
-      "prime": 0
+      "villeDepart": villeDepart,
+      "villeArrivee": villeArrivee,
+      "transport": transport,
+      "prime": 0,
+      "statut": statut,
+      "utilisateurMatricule": utilisateurMatricule
     }
 
     let tabMissions = []
