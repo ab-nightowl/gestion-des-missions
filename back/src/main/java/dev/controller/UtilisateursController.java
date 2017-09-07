@@ -37,7 +37,7 @@ public class UtilisateursController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "role")
-	public String getUserByMatricule(@RequestParam("userEmail") String email) {
+	public String getRoleByUserEmail(@RequestParam("userEmail") String email) {
 		
 		Optional<Utilisateur> userFound = getListUsers().stream()
 				.filter(user -> {
