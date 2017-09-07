@@ -37,7 +37,8 @@ export default class loginService {
 			"email": this.getUserEmail(),
 			"nom": this.getUserNom(),
 			"prenom": this.getUserPrenom(),
-			"role": this.getUserRole()
+			"role": this.getUserRole(),
+			"matricule": this.getUserMatricule()
 		}
 	}
 
@@ -55,6 +56,10 @@ export default class loginService {
 
 	getUserPrenom() {
 		return sessionStorage.getItem('userPrenom')
+	}
+
+	getUserMatricule() {
+		return sessionStorage.getItem('userMatricule')
 	}
 
 	setUserRole(email) {
@@ -77,7 +82,7 @@ export default class loginService {
 		sessionStorage.setItem('userEmail', user.email)
 		sessionStorage.setItem('userNom', user.nom)
 		sessionStorage.setItem('userPrenom', user.prenom)
-		sessionStorage.setItem('userId', user.id)
+		sessionStorage.setItem('userMatricule', user.matricule)
 		this.setUserRole(user.email)
 		this.$location.path('/')
 		this.$window.location.reload();

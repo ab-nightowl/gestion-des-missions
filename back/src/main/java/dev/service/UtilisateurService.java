@@ -2,6 +2,7 @@ package dev.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -65,5 +66,16 @@ public class UtilisateurService {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public Optional<Utilisateur> getManagerByUtilisateurMatricule(String matricule) {
+		return this.getListeUtilisateurs()
+				.stream()
+				.filter(utilisateur -> {
+					return !utilisateur.getSubalternes()
+							.stream()
+							.anyMatch(subMatricule -> subMatricule == matricule);
+				})
+				.findAny();
 	}
 }
