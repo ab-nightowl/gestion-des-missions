@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default" role="navigation" ng-if="$ctrl.isUserConnected()">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">GDM</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
+        <ul class="nav navbar-nav">
+            <li ng-class="{ active: $ctrl.isCurrentPath('/')}"><a href="{{ $ctrl.publicPath }}">Accueil</a></li>
+            <li ng-class="{ active: $ctrl.isCurrentPath('/missions/gestion')}"><a href="{{ $ctrl.publicPath }}missions/gestion">Gestion des missions</a></li>
+            <li ng-class="{ active: $ctrl.isCurrentPath('/missions/planning')}"><a href="{{ $ctrl.publicPath }}missions/planning">Planning des missions</a></li>
+            <li ng-class="{ active: $ctrl.isCurrentPath('/primes')}"><a href="{{ $ctrl.publicPath }}primes">Primes</a></li>
+            <li ng-class="{ active: $ctrl.isCurrentPath('/notesdefrais/saisie')}"><a href="{{ $ctrl.publicPath }}notesdefrais/saisie">Saisie note des frais</a></li>
+            <li ng-class="{ active: $ctrl.isCurrentPath('/missions/natures')}" ng-if="$ctrl.user.role === 'ROLE_ADMINISTRATEUR'"><a href="{{ $ctrl.publicPath }}missions/natures">Natures de mission</a></li>
+            <li ng-class="{ active: $ctrl.isCurrentPath('/missions/validation')}" ng-if="$ctrl.user.role === 'ROLE_MANAGER'"><a href="{{ $ctrl.publicPath }}missions/validation">Validation des missions</a></li>
+        </ul>
+        <div class="navbar-form navbar-right text-center">
+            <div ng-cloak>
+                {{ $ctrl.user.prenom }} {{ $ctrl.user.nom }}
+            </div>
+            <button class="btn btn-warning" ng-click="$ctrl.loginService.disconnect()">Se déconnecter</button>
+        </div>
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
