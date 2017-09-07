@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.entite.Administrateur;
 import dev.entite.Utilisateur;
-import dev.entite.Utilisateur.ROLES;
-import dev.entite.UtilisateurGitHub;
-import dev.repository.UtilisateursRepository;
+import dev.entite.UtilisateurRole;
+import dev.repository.AdministrateursRepository;
 import dev.service.UtilisateurService;
 
 @RestController
@@ -21,25 +21,25 @@ import dev.service.UtilisateurService;
 public class UtilisateursController {
 	
 	@Autowired
-	UtilisateursRepository repoUtilisateurs;
+	AdministrateursRepository repoUtilisateurs;
 	
 	@Autowired
 	UtilisateurService serviceUtilisateur;
 	
 	@RequestMapping(method = RequestMethod.GET, path = "")
-	public List<UtilisateurGitHub> getListUsers() {
+	public List<Utilisateur> getListUsers() {
 		return serviceUtilisateur.getListeUtilisateurs();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/{id}")
-	public Utilisateur getUserById(@PathVariable(value = "id") Integer id) {
+	public Administrateur getUserById(@PathVariable(value = "id") Integer id) {
 		return repoUtilisateurs.findOne(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "role")
 	public String getUserByMatricule(@RequestParam("userEmail") String email) {
 		
-		Optional<UtilisateurGitHub> userFound = getListUsers().stream()
+		Optional<Utilisateur> userFound = getListUsers().stream()
 				.filter(user -> {
 					return user.getEmail()
 							.equals(email);
@@ -47,17 +47,16 @@ public class UtilisateursController {
 				.findAny();
 		
 		String role = userFound.get()
-				.getSubalternes().length > 0 ? ROLES.ROLE_MANAGER.name() : ROLES.ROLE_EMPLOYE.name();
+				.getSubalternes().length > 0 ? UtilisateurRole.ROLE_MANAGER.toString()
+						: UtilisateurRole.ROLE_EMPLOYE.toString();
 		
 		if (userFound.isPresent()) {
-			Utilisateur userRoleFound = repoUtilisateurs.findOneByMatricule(userFound.get()
+			Administrateur userRoleFound = repoUtilisateurs.findOneByMatricule(userFound.get()
 					.getMatricule());
 			
-			if (userRoleFound != null) {
-				role = repoUtilisateurs.findOneByMatricule(userFound.get()
-						.getMatricule())
-						.getRole()
-						.name();
+			if (userRoleFound != null && repoUtilisateurs.findOneByMatricule(userFound.get()
+					.getMatricule()) != null) {
+				role = UtilisateurRole.ROLE_ADMINISTRATEUR.toString();
 			}
 		}
 		
