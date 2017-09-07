@@ -1,40 +1,40 @@
 package dev.entite;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class NatureFrais {
-
+public class Administrateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String libelle;
-
-	public NatureFrais() {
-		super();
+	@Column(unique = true)
+	private String matricule;
+	
+	public Administrateur() {
 	}
-
-	public NatureFrais(String libelle) {
+	
+	public Administrateur(String matricule) {
 		super();
-		this.libelle = libelle;
+		this.matricule = matricule;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
-
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public String getLibelle() {
-		return libelle;
+	
+	public String getMatricule() {
+		return matricule;
 	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
 	}
 }

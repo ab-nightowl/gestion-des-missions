@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Mission {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -37,12 +37,12 @@ public class Mission {
 	@ManyToOne
 	@JoinColumn(name="statut_id")
 	private Statut statut;
-	
+
 	public Mission() {
-		
+		super();
 	}
 
-	public Mission(LocalDate dateDebut, LocalDate dateFin, NatureMission natureMissionInit, 
+	public Mission(LocalDate dateDebut, LocalDate dateFin, NatureMission natureMissionInit,
 			Ville villeDepart, Ville villeArrivee, Transport transport, double prime,
 			Statut statut) {
 		this.dateDebut = dateDebut;
@@ -58,7 +58,7 @@ public class Mission {
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -133,5 +133,13 @@ public class Mission {
 
 	public void setStatut(Statut statut) {
 		this.statut = statut;
+	}
+
+	public Integer getNaturesMissionInitId() {
+		return naturesMissionInitId;
+	}
+
+	public void setNaturesMissionInitId(Integer naturesMissionInitId) {
+		this.naturesMissionInitId = naturesMissionInitId;
 	}
 }

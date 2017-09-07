@@ -1,0 +1,50 @@
+<section id="ajoutFrais">
+    <h1>Nouveau Frais</h1>
+    <form class="form-horizontal">
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-lg-2 col-md-2 col-sm-3 col-xs-2 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 control-label"
+                for="date">Date</label>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <!--<input ng-model="$ctrl.date" id="datepicker" name="date" placeholder="01/01/1970" class="form-control input-md" type="text">-->
+
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.date" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions"
+                        ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="$ctrl.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-lg-2 col-md-2 col-sm-3 col-xs-2 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 control-label"
+                for="nature">Nature</label>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <select ng-model="$ctrl.nature" id="nature" name="nature" class="form-control">
+                    <option value="">(Frais)</option>
+                    <option ng-repeat="item in $ctrl.natures" value="{{item.id}}">{{item.libelle}}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-lg-2 col-md-2 col-sm-3 col-xs-2 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 control-label"
+                for="montant">Montant (€)</label>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <input ng-model="$ctrl.montant" id="montant" name="montant" type="number" min="0" placeholder="" class="form-control input-md"
+                    type="text">
+            </div>
+        </div>
+
+        <div class="row">
+            <button class="btn btn-danger col-xs-2 col-xs-offset-4"><span class="glyphicon glyphicon-ban-circle"></span> Annuler</button>
+            <button class="btn btn-success col-xs-2" ng-click="$ctrl.saveFrais()" ng-disabled="$ctrl.date == null || $ctrl.date == '' || $ctrl.montant == null || $ctrl.montant == '' || $ctrl.nature == null || $ctrl.nature == '' ">Valider <span class="glyphicon glyphicon-ok"></span></button>
+        </div>
+    </form>
+
+</section>
