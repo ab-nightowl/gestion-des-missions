@@ -11,13 +11,19 @@ export function route($routeProvider, $locationProvider) {
         })
         .otherwise({
             redirectTo: '/'
-        });
+        })
 
     if (userIsConnected) {
         $routeProvider
             .when('/ajout', {
                 template: '<gdm-ajout></gdm-ajout>'
             })
-        // Ajouter les autres routes ici
+            .when('/gestion', {
+                template: '<gdm-gestion-frais></gdm-gestion-frais>'
+            })
+            .when('/missions/creer', {
+                template: '<gdm-creer-mission></gdm-creer-mission>'
+            })
+            // Ajouter les autres routes ici
     }
 }

@@ -2,35 +2,32 @@ package dev.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.entite.Mission;
-import dev.repository.MissionRepository;
-import dev.repository.StatutRepository;
+import dev.entite.Transport;
+import dev.repository.TransportRepository;
 
 @RestController
-@RequestMapping("/missions")
-public class MissionController {
+@RequestMapping("/transports")
+public class TransportController {
 	
 	@Autowired
-	private MissionRepository missionRepo;
-	@Autowired
-	private StatutRepository statutRepo;
+	private TransportRepository transportRepo;
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
-	private List<Mission> listerMissions() {
-		return missionRepo.findAll();
+	private List<Transport> listerTransports() {
+		return transportRepo.findAll();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/lister")
-	private void creerMission(@RequestBody Mission mission) {
-		mission.setStatut(statutRepo.findOne(1));
-		
-		missionRepo.save(mission);
+	private void creerTransport(HttpServletRequest req, @RequestBody Transport transport) {
+		transportRepo.save(transport);
 	}
 	
 }

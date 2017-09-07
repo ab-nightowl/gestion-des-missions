@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Mission {
@@ -15,30 +17,39 @@ public class Mission {
 	private Integer id;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
-	private Integer naturesMissionInitId;
-	private Integer natureMissionId;
-	private Integer villeDepartId;
-	private Integer villeArriveeId;
-	private Integer transportId;
+	@ManyToOne
+	@JoinColumn(name="nature_mission_init_id")
+	private NatureMission natureMissionInit;
+	@ManyToOne
+	@JoinColumn(name="nature_mission_id")
+	private NatureMission natureMission;
+	@ManyToOne
+	@JoinColumn(name="ville_depart_id")
+	private Ville villeDepart;
+	@ManyToOne
+	@JoinColumn(name="ville_arrivee_id")
+	private Ville villeArrivee;
+	@ManyToOne
+	@JoinColumn(name="transport_id")
+	private Transport transport;
 	private double prime;
-	private Integer utilisateurId;
-	private Integer statutId;
+	@ManyToOne
+	@JoinColumn(name="statut_id")
+	private Statut statut;
 
 	public Mission() {
 		super();
 	}
 
-	public Mission(LocalDate dateDebut, LocalDate dateFin, Integer naturesMissionInitId, Integer villeDepartId,
-			Integer villeArriveeId, Integer transportId, Integer utilisateurId) {
-		super();
+	public Mission(LocalDate dateDebut, LocalDate dateFin, NatureMission natureMissionInit,
+			Ville villeDepart, Ville villeArrivee, Transport transport, double prime) {
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		this.naturesMissionInitId = naturesMissionInitId;
-		this.villeDepartId = villeDepartId;
-		this.villeArriveeId = villeArriveeId;
-		this.transportId = transportId;
-		this.utilisateurId = utilisateurId;
-		this.statutId = 1;
+		this.natureMissionInit = natureMissionInit;
+		this.villeDepart = villeDepart;
+		this.villeArrivee = villeArrivee;
+		this.transport = transport;
+		this.prime = prime;
 	}
 
 	public Integer getId() {
@@ -65,36 +76,44 @@ public class Mission {
 		this.dateFin = dateFin;
 	}
 
-	public Integer getNatureMissionId() {
-		return natureMissionId;
+	public NatureMission getNatureMission() {
+		return natureMission;
 	}
 
-	public void setNatureMissionId(Integer natureMissionId) {
-		this.natureMissionId = natureMissionId;
-	}
-	
-	public Integer getVilleDepartId() {
-		return villeDepartId;
+	public void setNatureMission(NatureMission natureMission) {
+		this.natureMission = natureMission;
 	}
 
-	public void setVilleDepartId(Integer villeDepartId) {
-		this.villeDepartId = villeDepartId;
+	public NatureMission getNatureMissionInit() {
+		return natureMissionInit;
 	}
 
-	public Integer getVilleArriveeId() {
-		return villeArriveeId;
+	public void setNatureMissionInit(NatureMission natureMissionInit) {
+		this.natureMissionInit = natureMissionInit;
 	}
 
-	public void setVilleArriveeId(Integer villeArriveeId) {
-		this.villeArriveeId = villeArriveeId;
+	public Ville getVilleDepart() {
+		return villeDepart;
 	}
 
-	public Integer getTransportId() {
-		return transportId;
+	public void setVilleDepart(Ville villeDepart) {
+		this.villeDepart = villeDepart;
 	}
 
-	public void setTransportId(Integer transportId) {
-		this.transportId = transportId;
+	public Ville getVilleArrivee() {
+		return villeArrivee;
+	}
+
+	public void setVilleArrivee(Ville villeArrivee) {
+		this.villeArrivee = villeArrivee;
+	}
+
+	public Transport getTransport() {
+		return transport;
+	}
+
+	public void setTransport(Transport transport) {
+		this.transport = transport;
 	}
 
 	public double getPrime() {
@@ -105,27 +124,12 @@ public class Mission {
 		this.prime = prime;
 	}
 
-	public Integer getUtilisateurId() {
-		return utilisateurId;
+	public Statut getStatut() {
+		return statut;
 	}
 
-	public void setUtilisateurId(Integer utilisateurId) {
-		this.utilisateurId = utilisateurId;
+	public void setStatut(Statut statut) {
+		this.statut = statut;
 	}
 
-	public Integer getStatutId() {
-		return statutId;
-	}
-
-	public void setStatutId(Integer statutId) {
-		this.statutId = statutId;
-	}
-
-	public Integer getNaturesMissionInitId() {
-		return naturesMissionInitId;
-	}
-
-	public void setNaturesMissionInitId(Integer naturesMissionInitId) {
-		this.naturesMissionInitId = naturesMissionInitId;
-	}
 }

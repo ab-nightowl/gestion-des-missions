@@ -8,29 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.entite.Mission;
-import dev.repository.MissionRepository;
-import dev.repository.StatutRepository;
+import dev.entite.Ville;
+import dev.repository.VilleRepository;
 
 @RestController
-@RequestMapping("/missions")
-public class MissionController {
+@RequestMapping("/villes")
+public class VilleController {
 	
 	@Autowired
-	private MissionRepository missionRepo;
-	@Autowired
-	private StatutRepository statutRepo;
+	private VilleRepository villeRepo;
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
-	private List<Mission> listerMissions() {
-		return missionRepo.findAll();
+	private List<Ville> listerVilles() {
+		return villeRepo.findAll();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/lister")
-	private void creerMission(@RequestBody Mission mission) {
-		mission.setStatut(statutRepo.findOne(1));
-		
-		missionRepo.save(mission);
+	private void creerVille(@RequestBody Ville ville) {
+		villeRepo.save(ville);
 	}
 	
 }

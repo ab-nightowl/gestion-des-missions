@@ -8,29 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.entite.Mission;
-import dev.repository.MissionRepository;
-import dev.repository.StatutRepository;
+import dev.entite.NatureMission;
+import dev.repository.NatureMissionRepository;
 
 @RestController
-@RequestMapping("/missions")
-public class MissionController {
+@RequestMapping("/naturesMissions")
+public class NatureMissionController {
 	
 	@Autowired
-	private MissionRepository missionRepo;
-	@Autowired
-	private StatutRepository statutRepo;
+	private NatureMissionRepository natureMissionRepo;
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
-	private List<Mission> listerMissions() {
-		return missionRepo.findAll();
+	private List<NatureMission> listerNaturesMissions() {
+		return natureMissionRepo.findAll();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/lister")
-	private void creerMission(@RequestBody Mission mission) {
-		mission.setStatut(statutRepo.findOne(1));
-		
-		missionRepo.save(mission);
+	private void creerNatureMission(@RequestBody NatureMission natureMission) {
+		natureMissionRepo.save(natureMission);
 	}
 	
 }

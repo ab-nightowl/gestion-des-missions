@@ -14,9 +14,13 @@ public class Transport {
 	private String libelle;
 	
 	public Transport() {
-		
+		super();
 	}
 	
+	public Transport(String libelle) {
+		this.libelle = libelle;
+	}
+
 	public Integer getId() {
 		return id;
 	}
