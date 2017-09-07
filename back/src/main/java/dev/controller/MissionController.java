@@ -30,6 +30,11 @@ public class MissionController {
 		return missionRepo.findByUtilisateurMatricule(matricule);
 	}
 
+	@RequestMapping(method = RequestMethod.GET, path = "/lister/Detail/{id}")
+	private Mission listerMissionsById(@PathVariable("id") Integer id) {
+		return missionRepo.findById(id);
+	}
+
 	@RequestMapping(method = RequestMethod.POST, path = "/lister")
 	private void creerMission(@RequestBody Mission mission) {
 		mission.setStatut(Statut.DEMANDE_INITIALE);
