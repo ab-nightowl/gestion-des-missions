@@ -24,6 +24,19 @@ public class NatureMission {
 		super();
 	}
 
+	public NatureMission(String libelle, boolean facture, boolean versementPrime, double tauxPrime, double tjm,
+			double plafondFrais, boolean depassementFrais, boolean actif) {
+		super();
+		this.libelle = libelle;
+		this.facture = facture;
+		this.versementPrime = versementPrime;
+		this.tauxPrime = tauxPrime;
+		this.tjm = tjm;
+		this.plafondFrais = plafondFrais;
+		this.depassementFrais = depassementFrais;
+		this.actif = actif;
+	}
+
 	public Integer getId() {
 		return id;
 	}
