@@ -18,7 +18,6 @@ public class Ville {
 	}
 	
 	public Ville(String libelle) {
-		super();
 		this.libelle = libelle;
 	}
 

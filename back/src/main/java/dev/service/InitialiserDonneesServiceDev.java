@@ -3,6 +3,7 @@ package dev.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
 
@@ -13,11 +14,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import dev.entite.Frais;
 import dev.entite.Mission;
+import dev.entite.NatureMission;
+import dev.entite.Statut;
+import dev.entite.Statut.STATUTS;
+import dev.entite.Transport;
+import dev.entite.Ville;
+import dev.entite.Administrateur;
 import dev.entite.NatureFrais;
 import dev.entite.NatureMission;
 import dev.entite.Statut;
 import dev.entite.Transport;
 import dev.entite.Ville;
+
 
 @Service
 @EnableTransactionManagement
@@ -30,57 +38,95 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	@Override
 	public void initialiser() {
 
+		NatureMission natureConseil = new NatureMission("Conseil", true, true, 3.5, 654, 132, true, false);
+		NatureMission natureExpertise = new NatureMission("Expertise technique", true, true, 4.5, 750, 150, true, true);
+		NatureMission natureFormation = new NatureMission("Formation", true, true, 4, 700, 100, false, true);
+		em.persist(natureConseil);
+		em.persist(natureExpertise);
+		em.persist(natureFormation);
+
+		Ville nantes = new Ville("Nantes");
+		Ville bordeaux = new Ville("Bordeaux");
+		Ville angers = new Ville("Angers");
+		Ville marseille = new Ville("Marseille");
+		Ville paris = new Ville("Paris");
+		em.persist(nantes);
+		em.persist(bordeaux);
+		em.persist(angers);
+		em.persist(marseille);
+		em.persist(paris);
+
+		Transport avion = new Transport("Avion");
+		Transport voiture = new Transport("Voiture de service");
+		Transport train = new Transport("Train");
+		Transport covoit = new Transport("Covoiturage");
+		em.persist(avion);
+		em.persist(voiture);
+		em.persist(train);
+		em.persist(covoit);
+
+		Statut initiale = new Statut(STATUTS.DEMANDE_INITIALE);
+		Statut enAttente = new Statut(STATUTS.DEMANDE_EN_ATTENTE_VALIDATION);
+		Statut validee = new Statut(STATUTS.DEMANDE_VALIDEE);
+		Statut rejetee = new Statut(STATUTS.DEMANDE_REJETEE);
+		em.persist(initiale);
+		em.persist(enAttente);
+		em.persist(validee);
+		em.persist(rejetee);
+
+		Mission mission1 = new Mission();
+		mission1.setDateDebut(LocalDate.of(2017, 10, 1));
+		mission1.setDateFin(LocalDate.of(2017, 10, 6));
+		mission1.setNatureMissionInit(natureConseil);
+		mission1.setVilleDepart(nantes);
+		mission1.setVilleArrivee(marseille);
+		mission1.setTransport(avion);
+		mission1.setPrime(100);
+		mission1.setStatut(initiale);
+		em.persist(mission1);
+
+		Mission mission2 = new Mission();
+		mission2.setDateDebut(LocalDate.of(2017, 10, 10));
+		mission2.setDateFin(LocalDate.of(2017, 10, 22));
+		mission2.setNatureMissionInit(natureExpertise);
+		mission2.setVilleDepart(nantes);
+		mission2.setVilleArrivee(paris);
+		mission2.setTransport(voiture);
+		mission2.setPrime(300);
+		mission2.setStatut(enAttente);
+		em.persist(mission2);
+
+		Mission mission3 = new Mission();
+		mission3.setDateDebut(LocalDate.of(2017, 10, 1));
+		mission3.setDateFin(LocalDate.of(2017, 10, 31));
+		mission3.setNatureMissionInit(natureFormation);
+		mission3.setVilleDepart(bordeaux);
+		mission3.setVilleArrivee(nantes);
+		mission3.setTransport(train);
+		mission3.setPrime(200);
+		mission3.setStatut(validee);
+		em.persist(mission3);
+
+		Mission mission4 = new Mission();
+		mission4.setDateDebut(LocalDate.of(2017, 9, 15));
+		mission4.setDateFin(LocalDate.of(2017, 12, 15));
+		mission4.setNatureMissionInit(natureFormation);
+		mission4.setVilleDepart(angers);
+		mission4.setVilleArrivee(nantes);
+		mission4.setTransport(covoit);
+		mission4.setPrime(1000);
+		mission4.setStatut(rejetee);
+		em.persist(mission4);
+
+		Stream.of("bd540e65", "75e8048c")
+				.forEach(matricule -> em.persist(new Administrateur(matricule)));
+
 		List<String> natureFrais = new ArrayList<>();
 		natureFrais.add("Hôtel");
 		natureFrais.add("Taxi");
 		for (String nf : natureFrais) {
 			em.persist(new NatureFrais(nf));
 		}
-
-		Mission mission1 = new Mission(LocalDate.now(), LocalDate.now(), 1, 1, 2, 3, 2);
-		Mission mission2 = new Mission(LocalDate.now(), LocalDate.now(), 2, 3, 1, 2, 2);
-		em.persist(mission1);
-		em.persist(mission2);
-
-		NatureMission natureMission1 = new NatureMission("Conseil", true, true, 3.5, 654, 132, true, false);
-		NatureMission natureMission2 = new NatureMission("Formation", true, true, 3.5, 798, 100, false, true);
-		em.persist(natureMission1);
-		em.persist(natureMission2);
-
-		Ville ville1 = new Ville("Marseille");
-		Ville ville2 = new Ville("Nantes");
-		Ville ville3 = new Ville("Angers");
-		Ville ville4 = new Ville("Bordeaux");
-		Ville ville5 = new Ville("Bourg-en-Bresse");
-		em.persist(ville1);
-		em.persist(ville2);
-		em.persist(ville3);
-		em.persist(ville4);
-		em.persist(ville5);
-
-		Transport transport1 = new Transport("Vélo");
-		Transport transport2 = new Transport("Voiture");
-		Transport transport3 = new Transport("Train");
-		Transport transport4 = new Transport("Avion");
-		Transport transport5 = new Transport("Bâteau");
-		Transport transport6 = new Transport("Taxi");
-		em.persist(transport1);
-		em.persist(transport2);
-		em.persist(transport3);
-		em.persist(transport4);
-		em.persist(transport5);
-		em.persist(transport6);
-
-		Statut statut1 = new Statut("Initial");
-		Statut statut2 = new Statut("En attente de validation");
-		Statut statut3 = new Statut("Validé");
-		Statut statut4 = new Statut("En cours");
-		Statut statut5 = new Statut("Terminé");
-		em.persist(statut1);
-		em.persist(statut2);
-		em.persist(statut3);
-		em.persist(statut4);
-		em.persist(statut5);
 
 		Frais frais1 = new Frais(LocalDate.now(), 1, 255, mission1);
 		Frais frais2 = new Frais(LocalDate.now(), 2, 745, mission1);
@@ -90,6 +136,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		em.persist(frais2);
 		em.persist(frais3);
 		em.persist(frais4);
+
 	}
 
 }

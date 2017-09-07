@@ -1,0 +1,129 @@
+
+  <form name="form-creer-mission" class="form-horizontal" novalidate>
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>Demande de mission</legend>
+
+    <!-- Input Date de début -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="input-date-debut">Date de début</label>
+      <div class="col-md-4">
+        <p class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dateDebut" is-open="$ctrl.popup1.opened" datepicker-options="$ctrl.dateOptions"
+                ng-required="true" close-text="Close" id="input-date-debut" name="dateDebut"/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="$ctrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+      </div>
+      <div role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="form-creer-mission.dateDebut.$error.required">Date de début de mission requise</p>
+        <p ng-show="form-creer-mission.dateDebut.$error.date">Date non valide</p>
+      </div>
+    </div>
+
+    <!-- Input Date de fin -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="input-date-fin">Date de fin</label>
+      <div class="col-md-4">
+        <p class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dateFin" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions"
+                ng-required="true" close-text="Close" id="input-date-fin" name="dateFin"/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="$ctrl.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+      </div>
+      <div role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="form-creer-mission.dateFin.$error.required">Date de fin de mission requise</p>
+        <p ng-show="form-creer-mission.dateFin.$error.date">Date non valide</p>
+      </div>
+    </div>
+
+    <!-- Select Nature -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="select-nature">Nature</label>
+      <div class="col-md-4">
+        <select ng-change="$ctrl.selectNature(natureId)" ng-model="$ctrl.nature" ng-options="nature.libelle for nature in $ctrl.natures track by nature.id" name="nature" id="select-nature" class="form-control" ng-required="true">
+        </select>
+      </div>
+      <div role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="form-creer-mission.nature.$error.required">Nature de mission requise</p>
+      </div>
+    </div>
+
+    <!-- Select Ville de départ -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="select-ville-depart">Ville de départ</label>
+      <div class="col-md-4">
+        <select ng-model="$ctrl.villeDepart" ng-options="villeDepart.libelle for villeDepart in $ctrl.villes track by villeDepart.id" name="ville-depart" id="select-ville-depart" class="form-control" ng-required="true">
+        </select>
+      </div>
+    </div>
+
+    <!-- Select Ville d'arrivée -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="select-ville-arrivee">Ville d'arrivée</label>
+      <div class="col-md-4">
+        <select ng-model="$ctrl.villeArrivee" ng-options="villeArrivee.libelle for villeArrivee in $ctrl.villes track by villeArrivee.id" name="ville-arrivee" id="select-ville-arrivee" class="form-control" ng-required="true">
+        </select>
+      </div>
+    </div>
+
+    <!-- Select Transport -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="select-transport">Transport</label>
+      <div class="col-md-4">
+        <select ng-model="$ctrl.transport" ng-options="transport.libelle for transport in $ctrl.transports track by transport.id" name="transport" id="select-transport" class="form-control" ng-required="true">
+        </select>
+      </div>
+    </div>
+
+    <!-- Infos prime selon nature sélectionnée -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="text-prime">Estimation prime</label>
+      <div class="col-md-4">
+        <p name="prime" id="text-prime">
+          <span ng-show="!($ctrl.nature)">0</span>
+          <span ng-show="$ctrl.nature.id">prime {{$ctrl.nature.libelle}} = ...</span>
+          €
+        </p>
+      </div>
+
+      <br><br>
+
+      <label class="col-md-4 control-label" for="text-plafond">Plafond note de frais</label>
+      <div class="col-md-4">
+        <p name="plafondFrais" id="text-plafond">
+          <span ng-show="!($ctrl.nature)">0</span>
+          <span ng-show="$ctrl.nature.id">{{$ctrl.nature.plafondFrais}}</span>
+          €/jour
+        </p>
+      </div>
+
+      <br><br>
+
+      <label class="col-md-4 control-label" for="text-depassement">Dépassement autorisé</label>
+      <div class="col-md-4">
+        <p name="depassementFrais" id="text-depassement" >
+          <span ng-show="!($ctrl.nature)">-</span>
+          <span ng-show="$ctrl.nature.id" >
+            <span ng-show="$ctrl.nature.depassementFrais == true">oui</span>
+            <span ng-show="$ctrl.nature.depassementFrais == false">non</span>
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Buttons (Double) Annuler/Valider -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="btn-annuler"></label>
+      <div class="col-md-8">
+        <button id="btn-annuler" name="btnAnnuler" class="btn btn-danger">Annuler</button>
+        <button ng-click="$ctrl.creerMission()" id="btn-valider" name="btnValider" class="btn btn-success">Valider</button>
+      </div>
+    </div>
+
+    </fieldset>
+  </form>

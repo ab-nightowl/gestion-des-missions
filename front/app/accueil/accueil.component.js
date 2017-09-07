@@ -2,8 +2,9 @@ import './accueil.component.css';
 import template from './accueil.component.html';
 
 class controller {
-    constructor () {
-        this.titre = 'Accueil';
+    constructor (loginService) {
+        this.loginService = loginService
+        this.titre = "Bienvenue sur l'application GDM - Gestion Des Missions";
     }
 }
 
