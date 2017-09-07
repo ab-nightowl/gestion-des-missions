@@ -71,11 +71,9 @@ public class UtilisateurService {
 	public Optional<Utilisateur> getManagerByUtilisateurMatricule(String matricule) {
 		return this.getListeUtilisateurs()
 				.stream()
-				.filter(utilisateur -> {
-					return !utilisateur.getSubalternes()
-							.stream()
-							.anyMatch(subMatricule -> subMatricule == matricule);
-				})
+				.filter(utilisateur -> utilisateur.getSubalternes()
+						.stream()
+						.anyMatch(subMatricule -> subMatricule.equals(matricule)))
 				.findAny();
 	}
 }

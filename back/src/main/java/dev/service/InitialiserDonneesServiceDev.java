@@ -22,25 +22,24 @@ import dev.entite.Statut.STATUTS;
 import dev.entite.Transport;
 import dev.entite.Ville;
 
-
 @Service
 @EnableTransactionManagement
 @Transactional
 public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
-
+	
 	@Autowired
 	private EntityManager em;
-
+	
 	@Override
 	public void initialiser() {
-
+		
 		NatureMission natureConseil = new NatureMission("Conseil", true, true, 3.5, 654, 132, true, false);
 		NatureMission natureExpertise = new NatureMission("Expertise technique", true, true, 4.5, 750, 150, true, true);
 		NatureMission natureFormation = new NatureMission("Formation", true, true, 4, 700, 100, false, true);
 		em.persist(natureConseil);
 		em.persist(natureExpertise);
 		em.persist(natureFormation);
-
+		
 		Ville nantes = new Ville("Nantes");
 		Ville bordeaux = new Ville("Bordeaux");
 		Ville angers = new Ville("Angers");
@@ -51,7 +50,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		em.persist(angers);
 		em.persist(marseille);
 		em.persist(paris);
-
+		
 		Transport avion = new Transport("Avion");
 		Transport voiture = new Transport("Voiture de service");
 		Transport train = new Transport("Train");
@@ -60,16 +59,12 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		em.persist(voiture);
 		em.persist(train);
 		em.persist(covoit);
-
-		Statut initiale = new Statut(STATUTS.DEMANDE_INITIALE);
-		Statut enAttente = new Statut(STATUTS.DEMANDE_EN_ATTENTE_VALIDATION);
-		Statut validee = new Statut(STATUTS.DEMANDE_VALIDEE);
-		Statut rejetee = new Statut(STATUTS.DEMANDE_REJETEE);
-		em.persist(initiale);
-		em.persist(enAttente);
-		em.persist(validee);
-		em.persist(rejetee);
-
+		
+		Statut initiale = Statut.DEMANDE_INITIALE;
+		Statut enAttente = Statut.DEMANDE_EN_ATTENTE_VALIDATION;
+		Statut validee = Statut.DEMANDE_VALIDEE;
+		Statut rejetee = Statut.DEMANDE_REJETEE;
+		
 		Mission mission1 = new Mission();
 		mission1.setDateDebut(LocalDate.of(2017, 10, 1));
 		mission1.setDateFin(LocalDate.of(2017, 10, 6));
@@ -81,7 +76,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission1.setStatut(initiale);
 		mission1.setUtilisateurMatricule("bd540e65");
 		em.persist(mission1);
-
+		
 		Mission mission2 = new Mission();
 		mission2.setDateDebut(LocalDate.of(2017, 9, 1));
 		mission2.setDateFin(LocalDate.of(2017, 9, 5));
@@ -93,7 +88,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission2.setStatut(enAttente);
 		mission2.setUtilisateurMatricule("56eb7d01");
 		em.persist(mission2);
-
+		
 		Mission mission3 = new Mission();
 		mission3.setDateDebut(LocalDate.of(2017, 10, 1));
 		mission3.setDateFin(LocalDate.of(2017, 10, 31));
@@ -105,7 +100,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission3.setStatut(validee);
 		mission3.setUtilisateurMatricule("0d36bbdd");
 		em.persist(mission3);
-
+		
 		Mission mission4 = new Mission();
 		mission4.setDateDebut(LocalDate.of(2017, 9, 1));
 		mission4.setDateFin(LocalDate.of(2017, 9, 6));
@@ -117,17 +112,17 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission4.setStatut(rejetee);
 		mission4.setUtilisateurMatricule("8dd0b708");
 		em.persist(mission4);
-
+		
 		Stream.of("bd540e65", "75e8048c")
 				.forEach(matricule -> em.persist(new Administrateur(matricule)));
-
+		
 		List<String> natureFrais = new ArrayList<>();
 		natureFrais.add("Hôtel");
 		natureFrais.add("Taxi");
 		for (String nf : natureFrais) {
 			em.persist(new NatureFrais(nf));
 		}
-
+		
 		Frais frais1 = new Frais(LocalDate.now(), 1, 255, mission1);
 		Frais frais2 = new Frais(LocalDate.now(), 2, 745, mission1);
 		Frais frais3 = new Frais(LocalDate.now(), 2, 100, mission2);
@@ -136,7 +131,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		em.persist(frais2);
 		em.persist(frais3);
 		em.persist(frais4);
-
+		
 	}
-
+	
 }
