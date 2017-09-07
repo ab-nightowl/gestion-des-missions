@@ -29,18 +29,50 @@ export default class loginService {
 			})
 	}
 
-	connect(email, password) {
+	getConnectedUserInfo() {
+		return {
+			"nom": this.getUserNom(),
+			"prenom": this.getUserPrenom(),
+			"role": this.getUserRole()
+		}
+	}
+
+	getUserRole() {
+		return sessionStorage.getItem('userRole')
+	}
+
+	getUserNom() {
+		return sessionStorage.getItem('userNom')
+	}
+
+	getUserPrenom() {
+		return sessionStorage.getItem('userPrenom')
+	}
+
+	setUserRole(email) {
+		return this.$http({
+			url: `${this.apiUrls.utilisateurs}/role`,
+			method: "GET",
+			params: {
+				userEmail: email
+			}
+		}).then(resp => {
+			sessionStorage.setItem('userRole', resp.data.role)
+		})
+	}
+
+	connect(user) {
 		sessionStorage.setItem('session', true)
-		sessionStorage.setItem('userEmail', email)
-		sessionStorage.setItem('userPassword', password)
+		sessionStorage.setItem('userEmail', user.email)
+		sessionStorage.setItem('userPassword', user.password)
+		sessionStorage.setItem('userNom', user.nom)
+		sessionStorage.setItem('userPrenom', user.prenom)
+		this.setUserRole(user.email)
 		this.$location.path('/')
 		this.$window.location.reload();
 	}
 
 	disconnect() {
-		sessionStorage.removeItem('session')
-		sessionStorage.removeItem('userEmail')
-		sessionStorage.removeItem('userPassword')
 		sessionStorage.clear()
 		this.$location.path('/')
 		this.$window.location.reload();

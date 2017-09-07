@@ -57,6 +57,7 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.DefinePlugin({'API_URL': JSON.stringify(API_URL)})
+        new webpack.DefinePlugin({'API_URL': JSON.stringify(API_URL)}),
+        new webpack.DefinePlugin({'publicPath': JSON.stringify(publicPath)})
     ]
 };

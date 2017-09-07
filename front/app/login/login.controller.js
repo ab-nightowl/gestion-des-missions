@@ -10,7 +10,7 @@ export default class loginCtrl {
         this.loginService.checkUser(email, password)
             .then(userFound => {
                 if (userFound) {
-                    this.loginService.connect(userFound.email, userFound.password)
+                    this.loginService.connect(userFound)
                     this.$location.hash('')
                 } else {
                     this.$location.path('/')
