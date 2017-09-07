@@ -11,6 +11,7 @@ export function route($routeProvider, $locationProvider) {
         })
         .when('/missions/creer', {
             template: '<gdm-creer-mission></gdm-creer-mission>'
+        })
         .when('/ajout', {
             template: '<gdm-ajout></gdm-ajout>'
         })
@@ -19,7 +20,7 @@ export function route($routeProvider, $locationProvider) {
         })
         .otherwise({
             redirectTo: '/'
-        });
+        })
 
     if (userIsConnected) {
         $routeProvider
