@@ -15,7 +15,7 @@ export function route($routeProvider, $locationProvider) {
 
     if (userIsConnected) {
         $routeProvider
-            .when('/ajout', {
+            .when('/ajout/:msg', {
                 template: '<gdm-ajout></gdm-ajout>'
             })
             .when('/gestion', {

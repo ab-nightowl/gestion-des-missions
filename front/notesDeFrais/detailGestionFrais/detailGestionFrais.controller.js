@@ -19,7 +19,6 @@ export default class detailGestionFraisCtrl {
         this.detailGestionFraisService.findFraisMission(this.idMission)
             .then(fm => {
                 this.fraisMission = fm
-                console.log(this.fraisMission)
             })
     }
 

@@ -15,7 +15,8 @@ public class Frais {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private LocalDate dateCreation;
-	private Integer natureId;
+	@ManyToOne
+	private NatureFrais nature;
 	private Integer montant;
 	@ManyToOne
 	private Mission mission;
@@ -24,10 +25,10 @@ public class Frais {
 		super();
 	}
 
-	public Frais(LocalDate dateCreation, Integer natureId, Integer montant, Mission mission) {
+	public Frais(LocalDate dateCreation, NatureFrais nature, Integer montant, Mission mission) {
 		super();
 		this.dateCreation = dateCreation;
-		this.natureId = natureId;
+		this.nature = nature;
 		this.montant = montant;
 		this.mission = mission;
 	}
@@ -48,12 +49,12 @@ public class Frais {
 		this.dateCreation = dateCreation;
 	}
 
-	public Integer getNatureId() {
-		return natureId;
+	public NatureFrais getNature() {
+		return nature;
 	}
 
-	public void setNatureId(Integer natureId) {
-		this.natureId = natureId;
+	public void setNature(NatureFrais nature) {
+		this.nature = nature;
 	}
 
 	public Integer getMontant() {
