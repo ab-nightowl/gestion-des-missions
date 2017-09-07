@@ -135,11 +135,4 @@ public class Mission {
 		this.statut = statut;
 	}
 
-	public Integer getNaturesMissionInitId() {
-		return naturesMissionInitId;
-	}
-
-	public void setNaturesMissionInitId(Integer naturesMissionInitId) {
-		this.naturesMissionInitId = naturesMissionInitId;
-	}
 }
