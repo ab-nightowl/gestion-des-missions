@@ -21,8 +21,8 @@
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/natures')}" ng-if="$ctrl.user.role === 'ROLE_ADMINISTRATEUR'"><a href="{{ $ctrl.publicPath }}missions/natures">Natures de mission</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/validation')}" ng-if="$ctrl.user.role === 'ROLE_MANAGER'"><a href="{{ $ctrl.publicPath }}missions/validation">Validation des missions</a></li>
         </ul>
-        <div class="navbar-form navbar-right">
-            <div class="text-center" ng-cloak>
+        <div class="navbar-form navbar-right text-center">
+            <div ng-cloak>
                 {{ $ctrl.user.prenom }} {{ $ctrl.user.nom }}
             </div>
             <button class="btn btn-warning" ng-click="$ctrl.loginService.disconnect()">Se déconnecter</button>
