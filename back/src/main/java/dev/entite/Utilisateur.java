@@ -1,43 +1,17 @@
 package dev.entite;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class Utilisateur {
-	public enum ROLES {
-		ROLE_ADMINISTRATEUR, ROLE_MANAGER, ROLE_EMPLOYE
-	}
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	@Column(unique = true)
 	private String matricule;
-	@Enumerated(EnumType.STRING)
-	private ROLES role;
-	
-	public Utilisateur() {
-	}
-	
-	public Utilisateur(String matricule, ROLES role) {
-		super();
-		this.matricule = matricule;
-		this.role = role;
-	}
-	
-	public Integer getId() {
-		return id;
-	}
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	private String nom;
+	private String prenom;
+	private String email;
+	private String dateNaissance;
+	private String sexe;
+	private String adresse;
+	private String password;
+	private String photo;
+	private String[] subalternes;
+	private String departement;
 	
 	public String getMatricule() {
 		return matricule;
@@ -47,11 +21,83 @@ public class Utilisateur {
 		this.matricule = matricule;
 	}
 	
-	public ROLES getRole() {
-		return role;
+	public String getNom() {
+		return nom;
 	}
 	
-	public void setRole(ROLES role) {
-		this.role = role;
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+	public String getPrenom() {
+		return prenom;
+	}
+	
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getDateNaissance() {
+		return dateNaissance;
+	}
+	
+	public void setDateNaissance(String dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+	
+	public String getSexe() {
+		return sexe;
+	}
+	
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+	
+	public String getAdresse() {
+		return adresse;
+	}
+	
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public String getPhoto() {
+		return photo;
+	}
+	
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	
+	public String[] getSubalternes() {
+		return subalternes;
+	}
+	
+	public void setSubalternes(String[] subalternes) {
+		this.subalternes = subalternes;
+	}
+	
+	public String getDepartement() {
+		return departement;
+	}
+	
+	public void setDepartement(String departement) {
+		this.departement = departement;
 	}
 }

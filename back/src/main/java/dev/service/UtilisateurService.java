@@ -15,12 +15,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import dev.entite.UtilisateurGitHub;
+import dev.entite.Utilisateur;
 
 @Service
 public class UtilisateurService {
 	
-	private List<UtilisateurGitHub> utilisateurs;
+	private List<Utilisateur> utilisateurs;
 	private ObjectMapper objectMapper;
 	
 	public UtilisateurService() {
@@ -30,7 +30,7 @@ public class UtilisateurService {
 		this.utilisateurs = getListUtilisateursFromGithub();
 	}
 	
-	public List<UtilisateurGitHub> getListUtilisateursFromGithub() {
+	public List<Utilisateur> getListUtilisateursFromGithub() {
 		String server = "https://raw.github.com/DiginamicFormation/ressources-atelier/master/users.json";
 		RestTemplate rest = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
@@ -42,9 +42,9 @@ public class UtilisateurService {
 		
 		String utilisateursRetrieved = responseEntity.getBody();
 		
-		TypeReference<List<UtilisateurGitHub>> mapTypeUser = new TypeReference<List<UtilisateurGitHub>>() {
+		TypeReference<List<Utilisateur>> mapTypeUser = new TypeReference<List<Utilisateur>>() {
 		};
-		List<UtilisateurGitHub> utilisateurs = null;
+		List<Utilisateur> utilisateurs = null;
 		try {
 			utilisateurs = objectMapper.readValue(utilisateursRetrieved, mapTypeUser);
 		} catch (IOException e) {
@@ -54,7 +54,7 @@ public class UtilisateurService {
 		return utilisateurs;
 	}
 	
-	public List<UtilisateurGitHub> getListeUtilisateurs() {
+	public List<Utilisateur> getListeUtilisateurs() {
 		return this.utilisateurs;
 	}
 	
