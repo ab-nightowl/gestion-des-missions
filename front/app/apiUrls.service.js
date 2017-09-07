@@ -1,4 +1,5 @@
 const apiUrls = {
+    utilisateurs: `${API_URL}/utilisateurs`,
     naturesFrais : `${API_URL}/listNatures/frais`,
     frais : `${API_URL}/frais/lister`,
     missions : `${API_URL}/missions/lister`,
