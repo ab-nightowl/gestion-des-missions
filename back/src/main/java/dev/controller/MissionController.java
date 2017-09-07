@@ -3,6 +3,7 @@ package dev.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,12 @@ public class MissionController {
 		return missionRepo.findAll();
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, path = "/lister/{id}")
+	private List<Mission> listerMissionsByUtilisateurId(@PathVariable("id") String matricule) {
+		System.out.println(matricule);
+		return missionRepo.findByUtilisateurMatricule(matricule);
+	}
+
 	@RequestMapping(method = RequestMethod.POST, path = "/lister")
 	private void creerMission(@RequestBody Mission mission) {
 		mission.setStatut(Statut.DEMANDE_INITIALE);
