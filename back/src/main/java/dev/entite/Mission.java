@@ -37,20 +37,26 @@ public class Mission {
 	private double prime;
 	@Enumerated(EnumType.STRING)
 	private Statut statut;
+	private String utilisateurMatricule;
 	
 	public Mission() {
 		super();
 	}
 	
-	public Mission(LocalDate dateDebut, LocalDate dateFin, NatureMission natureMissionInit, Ville villeDepart,
-			Ville villeArrivee, Transport transport, double prime) {
+	public Mission(LocalDate dateDebut, LocalDate dateFin, NatureMission natureMissionInit, NatureMission natureMission,
+			Ville villeDepart, Ville villeArrivee, Transport transport, double prime, Statut statut,
+			String utilisateurMatricule) {
+		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.natureMissionInit = natureMissionInit;
+		this.natureMission = natureMission;
 		this.villeDepart = villeDepart;
 		this.villeArrivee = villeArrivee;
 		this.transport = transport;
 		this.prime = prime;
+		this.statut = statut;
+		this.utilisateurMatricule = utilisateurMatricule;
 	}
 	
 	public Integer getId() {
@@ -131,6 +137,17 @@ public class Mission {
 	
 	public void setStatut(Statut statut) {
 		this.statut = statut;
+	}<<<<<<<HEAD
+	
+	=======
+	
+	public String getUtilisateurMatricule() {
+		return utilisateurMatricule;
 	}
 	
+	public void setUtilisateurMatricule(String utilisateurMatricule) {
+		this.utilisateurMatricule = utilisateurMatricule;
+	}
+	
+	>>>>>>>73 a28dd843b6210d09597694bdc6f3a4014a0c64
 }
