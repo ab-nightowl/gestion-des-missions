@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.repository.FraisRepository;
 
 @RestController
+@RequestMapping("/frais")
 public class FraisController {
 
 	@Autowired
 	FraisRepository repoFrais;
 
-	@RequestMapping(method = RequestMethod.GET, path = "/listFrais")
+	@RequestMapping(method = RequestMethod.GET, path = "/lister")
 	public List<Map<String, Number>> listFrais() {
 		return repoFrais.sumFrais();
 	}

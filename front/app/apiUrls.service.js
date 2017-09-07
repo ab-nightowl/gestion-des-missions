@@ -1,10 +1,6 @@
 const apiUrls = {
-    /*********** a modifier */
-    naturesFrais : `${API_URL}/listNaturesFrais`,
-    mission : `${API_URL}/listMission`,
-    frais : `${API_URL}/listFrais`,
-    /************************/
-
+    naturesFrais : `${API_URL}/listNatures/frais`,
+    frais : `${API_URL}/frais/lister`,
     missions : `${API_URL}/missions/lister`,
     naturesMissions : `${API_URL}/naturesMissions/lister`,
     villes : `${API_URL}/villes/lister`,

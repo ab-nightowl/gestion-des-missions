@@ -17,6 +17,7 @@ import dev.repository.MissionRepository;
 import dev.repository.NaturesFraisRepository;
 
 @RestController
+@RequestMapping("/listNatures")
 public class NaturesFraisController {
 	@Autowired
 	NaturesFraisRepository repoNaturesFrais;
@@ -25,12 +26,12 @@ public class NaturesFraisController {
 	@Autowired
 	FraisRepository repoFrais;
 
-	@RequestMapping(method = RequestMethod.GET, path = "/listNaturesFrais")
+	@RequestMapping(method = RequestMethod.GET, path = "/frais")
 	public List<NatureFrais> listNaturesFrais() {
 		return repoNaturesFrais.findAll();
 	}
 
-	@RequestMapping(method = RequestMethod.POST, path = "/listNaturesFrais")
+	@RequestMapping(method = RequestMethod.POST, path = "/frais")
 	protected void doPostNatureFrais(HttpServletRequest req, @RequestBody Frais frais) {
 		// TODO a modifier
 		frais.setMission(repoMission.findById(1));

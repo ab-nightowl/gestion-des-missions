@@ -9,6 +9,12 @@ export function route($routeProvider, $locationProvider) {
         .when('/', {
             template: userIsConnected ? '<accueil></accueil>' : '<login-component></login-component>'
         })
+        .when('/ajout', {
+            template: '<gdm-ajout></gdm-ajout>'
+        })
+        .when('/gestion', {
+            template: '<gdm-gestion-frais></gdm-gestion-frais>'
+        })
         .otherwise({
             redirectTo: '/'
         });

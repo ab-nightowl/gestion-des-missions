@@ -19,11 +19,6 @@ public class Statut {
 	private Integer id;
 	@Enumerated(EnumType.STRING)
 	private STATUTS statut;
-	
-	public Statut(String libelle) {
-		super();
-		this.libelle = libelle;
-	}
 
 	public Statut() {
 		super();

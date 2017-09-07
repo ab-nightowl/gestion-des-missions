@@ -5,7 +5,7 @@ export default class gestionFraisService {
     }
 
     findMission() {
-        return this.$http.get(this.apiUrls.mission)
+        return this.$http.get(this.apiUrls.missions)
             .then(response => {
                 return response.data;
             }, response => { })

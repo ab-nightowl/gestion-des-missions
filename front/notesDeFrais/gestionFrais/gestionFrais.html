@@ -18,13 +18,13 @@
 
                 <td style="text-align: center;">{{item.dateDebut}}</td>
                 <td style="text-align: center;">{{item.dateFin}}</td>
-                <td style="text-align: center;">{{item.naturesMissionInitId}}</td>
-                <td style="text-align: center;">{{item.villeDepartId}}</td>
-                <td style="text-align: center;">{{item.villeArriveeId}}</td>
-                <td style="text-align: center;">{{item.transportId}}</td>
+                <td style="text-align: center;">{{item.natureMissionInit.libelle}}</td>
+                <td style="text-align: center;">{{item.villeDepart.libelle}}</td>
+                <td style="text-align: center;">{{item.villeArrivee.libelle}}</td>
+                <td style="text-align: center;">{{item.transport.libelle}}</td>
                 <td style="text-align: center;">{{item.frais}}€</td>
                 <td style="text-align: center;">
-                    <a href="/gestion-des-missions/ajout" class="btn btn-default">
+                    <a href="/gestion-des-missions/detail" class="btn btn-default">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     <a class="btn btn-default" disabled>

@@ -14,6 +14,7 @@ export default class gestionFraisCtrl {
                         if (sf.missionId === m.id) {
                             m.frais = sf.sumMontant
                             this.mission.push(m)
+                            console.log(this.mission)
                         }
                     }, this);
                 }, this);
