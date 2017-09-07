@@ -45,7 +45,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="select-nature">Nature</label>
       <div class="col-md-4">
-        <select ng-change="$ctrl.selectNature(natureId)" ng-model="$ctrl.nature" ng-options="nature.libelle for nature in $ctrl.natures track by nature.id" name="nature" id="select-nature" class="form-control" ng-required="true">
+        <select ng-model="$ctrl.nature" ng-options="nature.libelle for nature in $ctrl.natures track by nature.id" name="nature" id="select-nature" class="form-control" ng-required="true">
         </select>
       </div>
       <div role="alert" class="col-md-offset-4 col-md-4">
