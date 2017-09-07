@@ -10,7 +10,8 @@ export default class gestionFraisCtrl {
     }
 
     findMission() {
-        this.gestionFraisService.findMission()
+        console.log(sessionStorage.getItem("userMatricule"))
+        this.gestionFraisService.findMission(sessionStorage.getItem("userMatricule"))
             .then(mission => {
                 mission.forEach(m => {
                     this.sumfrais.forEach(sf => {
