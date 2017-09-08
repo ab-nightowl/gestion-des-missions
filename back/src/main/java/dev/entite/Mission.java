@@ -34,7 +34,7 @@ public class Mission {
 	@ManyToOne
 	@JoinColumn(name = "transport_id")
 	private Transport transport;
-	private double prime;
+	private Double prime;
 	@Enumerated(EnumType.STRING)
 	private Statut statut;
 	private String utilisateurMatricule;
@@ -123,11 +123,11 @@ public class Mission {
 		this.transport = transport;
 	}
 	
-	public double getPrime() {
+	public Double getPrime() {
 		return prime;
 	}
 	
-	public void setPrime(double prime) {
+	public void setPrime(Double prime) {
 		this.prime = prime;
 	}
 	

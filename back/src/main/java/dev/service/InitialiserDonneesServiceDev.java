@@ -71,7 +71,6 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission1.setVilleDepart(nantes);
 		mission1.setVilleArrivee(marseille);
 		mission1.setTransport(avion);
-		mission1.setPrime(100);
 		mission1.setStatut(initiale);
 		mission1.setUtilisateurMatricule("bd540e65");
 		em.persist(mission1);
@@ -83,7 +82,6 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission2.setVilleDepart(nantes);
 		mission2.setVilleArrivee(paris);
 		mission2.setTransport(voiture);
-		mission2.setPrime(300);
 		mission2.setStatut(enAttente);
 		mission2.setUtilisateurMatricule("56eb7d01");
 		em.persist(mission2);
@@ -95,7 +93,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission3.setVilleDepart(bordeaux);
 		mission3.setVilleArrivee(nantes);
 		mission3.setTransport(train);
-		mission3.setPrime(200);
+		mission3.setPrime(200.0);
 		mission3.setStatut(validee);
 		mission3.setUtilisateurMatricule("0d36bbdd");
 		em.persist(mission3);
@@ -107,7 +105,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission4.setVilleDepart(angers);
 		mission4.setVilleArrivee(nantes);
 		mission4.setTransport(covoit);
-		mission4.setPrime(1000);
+		mission4.setPrime(1000.0);
 		mission4.setStatut(rejetee);
 		mission4.setUtilisateurMatricule("8dd0b708");
 		em.persist(mission4);
