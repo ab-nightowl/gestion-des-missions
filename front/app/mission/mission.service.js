@@ -64,7 +64,7 @@ export default class MissionService {
       "villeDepart": villeDepart,
       "villeArrivee": villeArrivee,
       "transport": transport,
-      "prime": 0,
+      "prime": null,
       "statut": statut,
       "utilisateurMatricule": utilisateurMatricule
     }
