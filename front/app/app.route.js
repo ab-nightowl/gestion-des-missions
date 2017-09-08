@@ -18,7 +18,7 @@ export function route($routeProvider, $locationProvider) {
             .when('/ajout/:msg', {
                 template: '<gdm-ajout></gdm-ajout>'
             })
-            .when('/gestion', {
+            .when('/note-de-frais/gestion', {
                 template: '<gdm-gestion-frais></gdm-gestion-frais>'
             })
             .when('/detail/:msg', {
