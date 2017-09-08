@@ -17,7 +17,13 @@ import missionModule from './mission/mission.module';
 // Constant
 import apiUrls from './apiUrls.service'
 
-angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name, missionModule.name])
+import pdfmake from 'pdfmake/build/pdfmake.js'
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,
+    missionModule.name])
+    .value('pdfMake', pdfmake)
     .value('apiUrl', API_URL)
     .value('publicPath', publicPath)
     .value('sha1', sha1)
