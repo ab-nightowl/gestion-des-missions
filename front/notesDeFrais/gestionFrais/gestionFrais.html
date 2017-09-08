@@ -50,7 +50,7 @@
                     <a href="/gestion-des-missions/detail/{{item.id}}" class="btn btn-default" ng-show="item.dateFin <= ($ctrl.dateNow | date:'yyyy-MM-dd')">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
-                    <a class="btn btn-default" disabled ng-show="item.dateFin <= ($ctrl.dateNow | date:'yyyy-MM-dd')">
+                    <a class="btn btn-default" ng-click="$ctrl.pdf(item.id)" ng-show="item.dateFin <= ($ctrl.dateNow | date:'yyyy-MM-dd')">
                         <span class="glyphicon glyphicon-save-file"></span>
                     </a>
                 </td>

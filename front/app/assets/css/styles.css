@@ -24,6 +24,30 @@ input.ng-dirty.ng-valid,
     border: 1px solid green;
 }
 
+input.ng-touched.ng-invalid,
+.ng-submitted input.ng-invalid {
+    border: 1px solid red;
+}
+
+input.ng-touched.ng-valid,
+.ng-submitted input.ng-valid {
+    border: 1px solid green;
+}
+
+select.ng-touched.ng-invalid,
+.ng-submitted select.ng-invalid {
+    border: 1px solid red;
+}
+
+select.ng-touched.ng-valid,
+.ng-submitted select.ng-valid {
+    border: 1px solid green;
+}
+
+.text-alert {
+  color: red;
+}
+
 .alert.alert-danger.ng-hide:not(.ng-hide-animate) {
     display: block !important;
     visibility: hidden;

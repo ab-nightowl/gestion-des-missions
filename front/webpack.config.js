@@ -18,10 +18,11 @@ module.exports = {
         contentBase: path.join(__dirname, output),
         compress: true,
         port: 9000,
-        historyApiFallback: true
+        historyApiFallback: true,
+        publicPath: publicPath
     },
 
-	devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-eval-source-map',
 
     module: {
         loaders: [
@@ -52,12 +53,18 @@ module.exports = {
                 exclude: [/node_modules/],
                 loader: 'raw-loader',
             },
-
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                use: [
+                    'url-loader?limit=10000',
+                    'img-loader'
+                ]
+            }
         ]
     },
 
     plugins: [
-        new webpack.DefinePlugin({'API_URL': JSON.stringify(API_URL)}),
-        new webpack.DefinePlugin({'publicPath': JSON.stringify(publicPath)})
+        new webpack.DefinePlugin({ 'API_URL': JSON.stringify(API_URL) }),
+        new webpack.DefinePlugin({ 'publicPath': JSON.stringify(publicPath) })
     ]
 };
