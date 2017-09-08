@@ -44,7 +44,6 @@ public class TraitementDeNuitService {
 					repoMission.save(mission);
 				});
 		
-		log.info("Before primes computing:" + String.valueOf(missions.size()));
 		missions.stream()
 				.filter(mission -> {
 					return LocalDate.now()
