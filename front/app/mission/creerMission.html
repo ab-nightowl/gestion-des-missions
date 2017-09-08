@@ -75,7 +75,7 @@
       </div>
 
       <div ng-show="formCreerMission.villeArrivee.$touched" role="alert" class="col-md-offset-4 col-md-4">
-        <p ng-show="formCreerMission.villeArrivee.$error.required class="text-alert"">Ville d'arrivée requise</p>
+        <p ng-show="formCreerMission.villeArrivee.$error.required" class="text-alert">Ville d'arrivée requise</p>
       </div>
     </div>
 
@@ -132,7 +132,7 @@
       <label class="col-md-4 control-label" for="btn-annuler"></label>
       <div class="col-md-8">
         <a role="button" ng-href="missions/gestion" id="btn-annuler" name="btnAnnuler" class="btn btn-danger">Annuler</a>
-        <button ng-click="$ctrl.creerMission()" id="btn-valider" name="btnValider" class="btn btn-success">Valider</button>
+        <button ng-disabled="!formCreerMission.$valid" ng-click="$ctrl.creerMission()" id="btn-valider" name="btnValider" class="btn btn-success">Valider</button>
       </div>
     </div>
 

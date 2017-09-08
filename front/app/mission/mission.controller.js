@@ -7,7 +7,7 @@ export default class MissionController {
     this.today();
     this.inlineOptions = {
         customClass: getDayClass,
-        minDate: new Date(),
+        minDate: this.today(),
         showWeeks: true
     };
 
@@ -15,7 +15,7 @@ export default class MissionController {
         dateDisabled: disabled,
         formatYear: 'yy',
         maxDate: new Date(2020, 5, 22),
-        minDate: new Date(),
+
         startingDay: 1
     };
     // Disable weekend selection
