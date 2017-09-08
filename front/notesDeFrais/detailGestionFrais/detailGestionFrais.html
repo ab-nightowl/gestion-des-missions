@@ -1,0 +1,50 @@
+<section id="gestionFrais">
+    <h1 style="text-align: center">Saisies des notes de frais</h1>
+    <table class="table ">
+        <tr>
+            <td>Date de début : {{$ctrl.detailMission.dateDebut}}</td>
+            <td>Estimation prime : ??€</td>
+        </tr>
+        <tr>
+            <td>Date de fin : {{$ctrl.detailMission.dateFin}}</td>
+            <td>Plafond note de frais : {{$ctrl.detailMission.natureMissionInit.plafondFrais}}€</td>
+        </tr>
+        <tr>
+            <td>Nature : {{$ctrl.detailMission.natureMissionInit.libelle}}</td>
+            <td>Dépassement autorisé : {{$ctrl.detailMission.natureMissionInit.depassementFrais}}</td>
+        </tr>
+        <tr>
+            <td>Ville de départ : {{$ctrl.detailMission.villeDepart.libelle}}</td>
+            <td>Déduction prime : ??€</td>
+        </tr>
+        <tr>
+            <td>Ville d'arrivée : {{$ctrl.detailMission.villeArrivee.libelle}}</td>
+            <td></td>
+        </tr>
+    </table>
+
+<h3>Liste des frais</h3>
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Nature</th>
+                <th>Montant</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in $ctrl.fraisMission">
+                <td>{{item.dateCreation}}</td>
+                <td>{{item.nature.libelle}}</td>
+                <td>{{item.montant}}€</td>
+                <td>
+                    <a href="#" class="btn btn-default" disabled><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#" class="btn btn-default" disabled><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p style="text-align: right">Ajouter un frais <a href="/gestion-des-missions/ajout/{{$ctrl.detailMission.id}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a></p>
+
+</section>

@@ -69,6 +69,9 @@ export default class MissionController {
   }
 
   $onInit() {
+    this.statut = "DEMANDE_INITIALE"
+    this.utilisateurMatricule = sessionStorage.getItem('userMatricule')
+
     this.MissionService.getAllMissions()
       .then((tabMissions) => {
         this.missions = tabMissions
@@ -99,7 +102,7 @@ export default class MissionController {
   }
 
   creerMission() {
-    this.MissionService.postMission(this.dateDebut, this.dateFin, this.nature, this.villeDepart, this.villeArrivee, this.transport)
+    this.MissionService.postMission(this.dateDebut, this.dateFin, this.nature, this.villeDepart, this.villeArrivee, this.transport, this.statut, this.utilisateurMatricule)
   }
 
   today() {

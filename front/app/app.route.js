@@ -15,11 +15,14 @@ export function route($routeProvider, $locationProvider) {
 
     if (userIsConnected) {
         $routeProvider
-            .when('/ajout', {
+            .when('/ajout/:msg', {
                 template: '<gdm-ajout></gdm-ajout>'
             })
             .when('/gestion', {
                 template: '<gdm-gestion-frais></gdm-gestion-frais>'
+            })
+            .when('/detail/:msg', {
+                template: '<gdm-detail-gestion-frais></gdm-detail-gestion-frais>'
             })
             .when('/missions/creer', {
                 template: '<gdm-creer-mission></gdm-creer-mission>'

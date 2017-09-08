@@ -1,8 +1,6 @@
 package dev.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
@@ -65,8 +63,8 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		Statut rejetee = Statut.DEMANDE_REJETEE;
 		
 		Mission mission1 = new Mission();
-		mission1.setDateDebut(LocalDate.of(2017, 10, 1));
-		mission1.setDateFin(LocalDate.of(2017, 10, 6));
+		mission1.setDateDebut(LocalDate.of(2017, 9, 1));
+		mission1.setDateFin(LocalDate.of(2017, 9, 6));
 		mission1.setNatureMissionInit(natureConseil);
 		mission1.setVilleDepart(nantes);
 		mission1.setVilleArrivee(marseille);
@@ -113,17 +111,16 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		Stream.of("bd540e65", "75e8048c")
 				.forEach(matricule -> em.persist(new Administrateur(matricule)));
 		
-		List<String> natureFrais = new ArrayList<>();
-		natureFrais.add("Hôtel");
-		natureFrais.add("Taxi");
-		for (String nf : natureFrais) {
-			em.persist(new NatureFrais(nf));
-		}
 		
-		Frais frais1 = new Frais(LocalDate.now(), 1, 255, mission1);
-		Frais frais2 = new Frais(LocalDate.now(), 2, 745, mission1);
-		Frais frais3 = new Frais(LocalDate.now(), 2, 100, mission2);
-		Frais frais4 = new Frais(LocalDate.now(), 1, 900, mission2);
+		NatureFrais hotel = new NatureFrais("Hôtel");
+		NatureFrais taxi = new NatureFrais("Taxi");
+		em.persist(hotel);
+		em.persist(taxi);
+
+		Frais frais1 = new Frais(LocalDate.now(), hotel, 255, mission1);
+		Frais frais2 = new Frais(LocalDate.now(), taxi, 745, mission1);
+		Frais frais3 = new Frais(LocalDate.now(), taxi, 100, mission2);
+		Frais frais4 = new Frais(LocalDate.now(), hotel, 900, mission2);
 		em.persist(frais1);
 		em.persist(frais2);
 		em.persist(frais3);

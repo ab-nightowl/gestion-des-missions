@@ -15,4 +15,6 @@ public interface FraisRepository extends JpaRepository<Frais, Integer> {
 	
 	@Query("SELECT SUM(montant) as sumMontant FROM Frais WHERE mission.id = ?1 GROUP BY mission.id")
 	double sumFraisByMissionId(Integer id);
+	
+	List<Frais> findByMissionId(Integer idMission);
 }

@@ -1,7 +1,12 @@
 export default class ajoutFraisService {
-    constructor(apiUrls, $http) {
+    constructor(apiUrls, $http, $location) {
         this.apiUrls = apiUrls
         this.$http = $http
+        this.$location = $location
+    }
+
+    redirection(idMission) {
+        this.$location.path('/detail/' + idMission)
     }
 
     findNaturesFrais() {
@@ -11,18 +16,16 @@ export default class ajoutFraisService {
             }, response => { })
     }
 
-    saveNew(date, nature, montant) {
+    saveNew(date, nature, montant, idMission) {
         this.frais = {
             "dateCreation": date,
-            "natureId": nature,
             "montant": montant
         }
 
-
-        this.$http.post(this.apiUrls.naturesFrais, this.frais).then(function (data) {
-            alert('Cest bon !');
+        this.$http.post(this.apiUrls.naturesFrais + "/" + idMission + "/" + nature, this.frais).then(function (data) {
+            alert("Le frais à été enregistré !");
         });
-
+        this.redirection(idMission)
     }
 
 }

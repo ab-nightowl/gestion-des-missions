@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,10 +32,11 @@ public class NaturesFraisController {
 		return repoNaturesFrais.findAll();
 	}
 
-	@RequestMapping(method = RequestMethod.POST, path = "/frais")
-	protected void doPostNatureFrais(HttpServletRequest req, @RequestBody Frais frais) {
-		// TODO a modifier
-		frais.setMission(repoMission.findById(1));
+	@RequestMapping(method = RequestMethod.POST, path = "/frais/{idMission}/{idNature}")
+	protected void doPostNatureFrais(HttpServletRequest req, @RequestBody Frais frais,
+			@PathVariable("idMission") Integer idMission, @PathVariable("idNature") Integer idNature) {
+		frais.setMission(repoMission.findById(idMission));
+		frais.setNature(repoNaturesFrais.findById(idNature));
 		repoFrais.save(frais);
 
 	}
