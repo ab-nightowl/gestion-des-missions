@@ -1,5 +1,5 @@
-
-  <form name="form-creer-mission" class="form-horizontal" novalidate>
+<section id="form-creer-mission">
+  <form name="formCreerMission" class="form-horizontal" novalidate>
     <fieldset>
 
     <!-- Form Name -->
@@ -120,10 +120,11 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="btn-annuler"></label>
       <div class="col-md-8">
-        <button id="btn-annuler" name="btnAnnuler" class="btn btn-danger">Annuler</button>
+        <a role="button" ng-href="missions/gestion" id="btn-annuler" name="btnAnnuler" class="btn btn-danger">Annuler</a>
         <button ng-click="$ctrl.creerMission()" id="btn-valider" name="btnValider" class="btn btn-success">Valider</button>
       </div>
     </div>
 
     </fieldset>
   </form>
+</section>

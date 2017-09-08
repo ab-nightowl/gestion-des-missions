@@ -1,0 +1,80 @@
+<section id="liste-missions">
+  <h1 class="text-center">Gestion des Missions</h1>
+
+  <table class="table ">
+    <thead>
+      <tr>
+        <th class="text-center">
+            <a href="#" ng-click="$ctrl.updateOrderEtTri('dateDebut')">
+                Date de début
+                <span ng-if="$ctrl.order == 'dateDebut'">
+                    <span ng-show="$ctrl.triInverse">
+                        <span class="caret"></span>
+                    </span>
+                    <span ng-show="!$ctrl.triInverse">
+                        <span class="dropup"><span class="caret"></span></span>
+                    </span>
+                </span>
+            </a>
+        </th>
+        <th class="text-center">
+            <a href="#" ng-click="$ctrl.updateOrderEtTri('dateFin')">
+                Date de fin
+                <span ng-if="$ctrl.order == 'dateFin'">
+                    <span ng-show="$ctrl.triInverse">
+                        <span class="caret"></span>
+                    </span>
+                    <span ng-show="!$ctrl.triInverse">
+                        <span class="dropup"><span class="caret"></span></span>
+                    </span>
+                </span>
+            </a>
+        </th>
+        <th class="text-center">Nature</th>
+        <th class="text-center">Départ</th>
+        <th class="text-center">Arrivée</th>
+        <th class="text-center">Transport</th>
+        <th class="text-center">
+            <a href="#" ng-click="$ctrl.updateOrderEtTri('statut')">
+                Statut
+                <span ng-if="$ctrl.order == 'statut'">
+                    <span ng-show="$ctrl.triInverse">
+                        <span class="caret"></span>
+                    </span>
+                    <span ng-show="!$ctrl.triInverse">
+                        <span class="dropup"><span class="caret"></span></span>
+                    </span>
+                </span>
+            </a>
+        </th>
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="mission in $ctrl.missionsUtilisateur | orderBy:$ctrl.order:$ctrl.triInverse">
+            <td class="text-center">{{mission.dateDebut}}</td>
+            <td class="text-center">{{mission.dateFin}}</td>
+            <td class="text-center">{{mission.natureMissionInit.libelle}}</td>
+            <td class="text-center">{{mission.villeDepart.libelle}}</td>
+            <td class="text-center">{{mission.villeArrivee.libelle}}</td>
+            <td class="text-center">{{mission.transport.libelle}}</td>
+            <td class="text-center">{{mission.statut}}</td>
+            <td class="text-center">
+                <a disabled href="/gestion-des-missions/missions/modifier" class="btn btn-default" ng-show="(mission.statut == 'DEMANDE_INITIALE') || (mission.statut == 'DEMANDE_REJETEE')">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a disabled href="/gestion-des-missions/missions/supprimer" class="btn btn-default">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p style="text-align: right">Demander une mission <a href="/gestion-des-missions/missions/creer" class="btn btn-primary">
+      <span class="glyphicon glyphicon-plus"></span>
+  </a></p>
+
+
+</section>

@@ -64,7 +64,7 @@ export default class MissionService {
       "villeDepart": villeDepart,
       "villeArrivee": villeArrivee,
       "transport": transport,
-      "prime": 0,
+      "prime": null,
       "statut": statut,
       "utilisateurMatricule": utilisateurMatricule
     }
@@ -77,4 +77,11 @@ export default class MissionService {
       )
 
   }
+
+  findMissionsByUtilisateur(utilisateurMatricule) {
+    return this.$http.get(this.apiUrls.missions+'/'+utilisateurMatricule)
+      .then(resp => {return resp.data},
+            resp => {return "Erreur : la requête pour trouver les missions de l'utilisateur courant a échouée"})
+  }
+
 }
