@@ -28,3 +28,16 @@ input.ng-dirty.ng-valid,
     display: block !important;
     visibility: hidden;
 }
+
+.navbar-brand {
+    padding: 5px;
+}
+
+.navbar-brand > img {
+    max-height: 100%;
+    width: auto;
+}
+
+.img-centered {
+    margin: auto;
+}
