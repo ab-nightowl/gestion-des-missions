@@ -7,7 +7,7 @@
 
     <!-- Input Date de début -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="input-date-debut">Date de début</label>
+      <label class="col-md-4 control-label" for="input-date-debut">Date de début*</label>
       <div class="col-md-4">
         <p class="input-group">
             <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dateDebut" is-open="$ctrl.popup1.opened" datepicker-options="$ctrl.dateOptions"
@@ -17,15 +17,15 @@
             </span>
         </p>
       </div>
-      <div role="alert" class="col-md-offset-4 col-md-4">
-        <p ng-show="form-creer-mission.dateDebut.$error.required">Date de début de mission requise</p>
-        <p ng-show="form-creer-mission.dateDebut.$error.date">Date non valide</p>
+      <div ng-show="formCreerMission.dateDebut.$dirty || formCreerMission.dateDebut.$touched" role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="formCreerMission.dateDebut.$error.required" class="text-alert">Date de début de mission requise</p>
+        <p ng-show="formCreerMission.dateDebut.$error.date" class="text-alert">Date non valide</p>
       </div>
     </div>
 
     <!-- Input Date de fin -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="input-date-fin">Date de fin</label>
+      <label class="col-md-4 control-label" for="input-date-fin">Date de fin*</label>
       <div class="col-md-4">
         <p class="input-group">
             <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dateFin" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions"
@@ -35,48 +35,59 @@
             </span>
         </p>
       </div>
-      <div role="alert" class="col-md-offset-4 col-md-4">
-        <p ng-show="form-creer-mission.dateFin.$error.required">Date de fin de mission requise</p>
-        <p ng-show="form-creer-mission.dateFin.$error.date">Date non valide</p>
+      <div ng-show="formCreerMission.dateFin.$dirty || formCreerMission.dateFin.$touched" role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="formCreerMission.dateFin.$error.date" class="text-alert">Date non valide</p>
+        <p ng-show="formCreerMission.dateFin.$error.required" class="text-alert">Date de fin de mission requise</p>
       </div>
     </div>
 
     <!-- Select Nature -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="select-nature">Nature</label>
+      <label class="col-md-4 control-label" for="select-nature">Nature*</label>
       <div class="col-md-4">
         <select ng-model="$ctrl.nature" ng-options="nature.libelle for nature in $ctrl.natures track by nature.id" name="nature" id="select-nature" class="form-control" ng-required="true">
         </select>
       </div>
-      <div role="alert" class="col-md-offset-4 col-md-4">
-        <p ng-show="form-creer-mission.nature.$error.required">Nature de mission requise</p>
+      <div ng-show="formCreerMission.nature.$touched" role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="formCreerMission.nature.$error.required" class="text-alert">Nature de mission requise</p>
       </div>
     </div>
 
     <!-- Select Ville de départ -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="select-ville-depart">Ville de départ</label>
+      <label class="col-md-4 control-label" for="select-ville-depart">Ville de départ*</label>
       <div class="col-md-4">
         <select ng-model="$ctrl.villeDepart" ng-options="villeDepart.libelle for villeDepart in $ctrl.villes track by villeDepart.id" name="ville-depart" id="select-ville-depart" class="form-control" ng-required="true">
         </select>
+      </div>
+
+      <div ng-show="formCreerMission.villeDepart.$touched" role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="formCreerMission.villeDepart.$error.required" class="text-alert">Ville de départ requise</p>
       </div>
     </div>
 
     <!-- Select Ville d'arrivée -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="select-ville-arrivee">Ville d'arrivée</label>
+      <label class="col-md-4 control-label" for="select-ville-arrivee">Ville d'arrivée*</label>
       <div class="col-md-4">
         <select ng-model="$ctrl.villeArrivee" ng-options="villeArrivee.libelle for villeArrivee in $ctrl.villes track by villeArrivee.id" name="ville-arrivee" id="select-ville-arrivee" class="form-control" ng-required="true">
         </select>
+      </div>
+
+      <div ng-show="formCreerMission.villeArrivee.$touched" role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="formCreerMission.villeArrivee.$error.required class="text-alert"">Ville d'arrivée requise</p>
       </div>
     </div>
 
     <!-- Select Transport -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="select-transport">Transport</label>
+      <label class="col-md-4 control-label" for="select-transport">Transport*</label>
       <div class="col-md-4">
         <select ng-model="$ctrl.transport" ng-options="transport.libelle for transport in $ctrl.transports track by transport.id" name="transport" id="select-transport" class="form-control" ng-required="true">
         </select>
+      </div>
+      <div ng-show="formCreerMission.transport.$touched" role="alert" class="col-md-offset-4 col-md-4">
+        <p ng-show="formCreerMission.transport.$error.required" class="text-alert">Transport requis</p>
       </div>
     </div>
 

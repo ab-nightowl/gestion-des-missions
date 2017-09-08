@@ -3,7 +3,7 @@ import sha1 from 'sha1';
 import RouteModule from 'angular-route';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import '../public/assets/css/styles.css'
+import './assets/css/styles.css'
 import uibootstrap from 'angular-ui-bootstrap';
 import { route } from './app.route';
 import { AccueilComponent } from './accueil/accueil.component';
