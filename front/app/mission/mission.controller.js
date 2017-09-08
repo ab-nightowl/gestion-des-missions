@@ -1,6 +1,8 @@
 export default class MissionController {
   constructor(MissionService) {
     this.MissionService = MissionService
+    this.order = "dateDebut";
+    this.triInverse = false;
 
     this.today();
     this.inlineOptions = {
@@ -71,28 +73,47 @@ export default class MissionController {
   $onInit() {
     this.statut = "DEMANDE_INITIALE"
     this.utilisateurMatricule = sessionStorage.getItem('userMatricule')
+    this.findMissionsUtilisateur()
+    this.findAllMissions()
+    this.findAllNatures()
+    this.findAllVilles()
+    this.findAllTransports()
+  }
 
+  findMissionsUtilisateur() {
+    this.MissionService.findMissionsByUtilisateur(this.utilisateurMatricule)
+      .then(tabMissions => {return this.missionsUtilisateur = tabMissions},
+            info => alert(info))
+  }
+
+  findAllMissions() {
     this.MissionService.getAllMissions()
       .then((tabMissions) => {
         this.missions = tabMissions
       }, (errorStatus) => {
 				alert(`Status: $(errorStatus.code) - $(errorStatus.text)`)
 			})
+  }
 
+  findAllNatures() {
     this.MissionService.getAllNatures()
       .then((tabNatures) => {
         this.natures = tabNatures
       }, (errorStatus) => {
 				alert(`Status: $(errorStatus.code) - $(errorStatus.text)`)
 			})
+  }
 
+  findAllVilles() {
     this.MissionService.getAllVilles()
       .then((tabVilles) => {
         this.villes = tabVilles
       }, (errorStatus) => {
 				alert(`Status: $(errorStatus.code) - $(errorStatus.text)`)
 			})
+  }
 
+  findAllTransports() {
     this.MissionService.getAllTransports()
       .then((tabTransports) => {
         this.transports = tabTransports
@@ -105,27 +126,32 @@ export default class MissionController {
     this.MissionService.postMission(this.dateDebut, this.dateFin, this.nature, this.villeDepart, this.villeArrivee, this.transport, this.statut, this.utilisateurMatricule)
   }
 
+  updateOrderEtTri(order) {
+      this.order = order;
+      this.triInverse = !this.triInverse;
+  }
+
   today() {
         this.dt = new Date();
     };
 
-    clear() {
-        this.dt = null;
-    };
+  clear() {
+      this.dt = null;
+  };
 
-    toggleMin() {
-        this.inlineOptions.minDate = this.inlineOptions.minDate ? null : new Date();
-        this.dateOptions.minDate = this.inlineOptions.minDate;
-    };
+  toggleMin() {
+      this.inlineOptions.minDate = this.inlineOptions.minDate ? null : new Date();
+      this.dateOptions.minDate = this.inlineOptions.minDate;
+  };
 
-    open1() {
-        this.popup1.opened = true;
-    };
-    open2() {
-        this.popup2.opened = true;
-    };
+  open1() {
+      this.popup1.opened = true;
+  };
+  open2() {
+      this.popup2.opened = true;
+  };
 
-    setDate(year, month, day) {
-        this.dt = new Date(year, month, day);
-    }
+  setDate(year, month, day) {
+      this.dt = new Date(year, month, day);
+  }
 }
