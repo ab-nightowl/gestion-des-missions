@@ -16,8 +16,8 @@
                     <input type="email" name="email" id="email" ng-model="$ctrl.email" placeholder="Votre adresse mail" class="form-control input-sm"
                         required/>
                     <div ng-show="connexionForm.email.$dirty && connexionForm.email.$invalid">
-                        <span ng-show="connexionForm.email.$error.required">Required Email</span>
-                        <span ng-show="connexionForm.email.$error.email">Invalid email.</span>
+                        <span ng-show="connexionForm.email.$error.required">Email requis</span>
+                        <span ng-show="connexionForm.email.$error.email">Email invalide</span>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <input type="password" id="password" name="password" ng-model="$ctrl.password" placeholder="Votre mot de passe" class="form-control input-sm"
                         required/>
                     <div ng-show="connexionForm.password.$dirty && connexionForm.password.$invalid">
-                        <span ng-show="connexionForm.password.$error.required">Required Password</span>
+                        <span ng-show="connexionForm.password.$error.required">Mot de passe requis</span>
                     </div>
                 </div>
             </div>
