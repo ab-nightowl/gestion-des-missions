@@ -1,5 +1,6 @@
 import angular from 'angular';
 import sha1 from 'sha1';
+import chartjs from "chart.js"
 import RouteModule from 'angular-route';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -8,6 +9,7 @@ import uibootstrap from 'angular-ui-bootstrap';
 import { route } from './app.route';
 import { AccueilComponent } from './accueil/accueil.component';
 import HeaderComponent from './header/header.component';
+import PrimeComponent from './prime/prime.component';
 
 // Modules
 import notesDeFrais from '../notesDeFrais/notesDeFrais.module.js'
@@ -27,9 +29,11 @@ angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,
     .value('apiUrl', API_URL)
     .value('publicPath', publicPath)
     .value('sha1', sha1)
+    .value('chartjs', chartjs)
     .constant('apiUrls', apiUrls)
     .component('accueil', AccueilComponent)
     .component('header', HeaderComponent)
+    .component('primeComponent', PrimeComponent)
     .config(route)
     .constant('roles', {
         all: "*",
