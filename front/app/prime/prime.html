@@ -1,0 +1,65 @@
+<h1 class="text-center" style="margin-bottom: 40px">Récapitulatif des primes / mission</h1>
+
+<div class="row" style="margin-bottom: 40px">
+    <div class="form-group">
+        <label class="control-label" for="year" style="display: inline-block">Année</label>
+        <div class="" style="display: inline-block">
+            <select ng-model="$ctrl.selectedYear" id="year" name="year" class="form-control" style="width: auto" ng-change="$ctrl.createPrimesGraphForYear($ctrl.selectedYear)">
+                <option value="">(Veuillez sélectionner une année)</option>
+                <option ng-repeat="year in $ctrl.yearsAvailable" value="{{year}}">{{year}}</option>
+            </select>
+        </div>
+        <button class="btn btn-default" style="padding: 0" ng-click="$ctrl.exportDataAsExcel()">
+            <img src="/gestion-des-missions/assets/images/logo-excel.jpg" width="30px" />
+        </button>
+    </div>
+</div>
+<div class="row" ng-show="$ctrl.selectedYear">
+    <div class="col-xs-12 col-md-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        <a href="#" ng-click="$ctrl.updateOrderEtTri('dateDebut')">
+                                    Date de début
+                                    <span ng-if="$ctrl.order == 'dateDebut'">
+                                        <span ng-show="$ctrl.triInverse">
+                                            <span class="caret"></span>
+                                        </span>
+                                        <span ng-show="!$ctrl.triInverse">
+                                            <span class="dropup"><span class="caret"></span></span>
+                                        </span>
+                                    </span>
+                                </a>
+                    </th>
+                    <th class="text-center">
+                        <a href="#" ng-click="$ctrl.updateOrderEtTri('dateFin')">
+                                    Date de fin
+                                    <span ng-if="$ctrl.order == 'dateFin'">
+                                        <span ng-show="$ctrl.triInverse">
+                                            <span class="caret"></span>
+                                        </span>
+                                        <span ng-show="!$ctrl.triInverse">
+                                            <span class="dropup"><span class="caret"></span></span>
+                                        </span>
+                                    </span>
+                                </a>
+                    </th>
+                    <th class="text-center">Nature</th>
+                    <th class="text-center">Prime</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mission in $ctrl.showedMissions | orderBy:$ctrl.order:$ctrl.triInverse">
+                    <td class="text-center">{{mission.dateDebut}}</td>
+                    <td class="text-center">{{mission.dateFin}}</td>
+                    <td class="text-center">{{mission.natureMissionInit.libelle}}</td>
+                    <td class="text-right">{{mission.prime ? (mission.prime | number:2) : 0.00 }} €</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="graph col-xs-12 col-md-6">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+</div>

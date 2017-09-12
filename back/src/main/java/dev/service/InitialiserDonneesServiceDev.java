@@ -73,6 +73,22 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission1.setUtilisateurMatricule("bd540e65");
 		em.persist(mission1);
 		
+		Mission mission1_1 = new Mission();
+		mission1_1.setDateDebut(LocalDate.of(2017, 3, 1));
+		mission1_1.setDateFin(LocalDate.of(2017, 3, 6));
+		mission1_1.setNatureMissionInit(natureExpertise);
+		mission1_1.setStatut(initiale);
+		mission1_1.setUtilisateurMatricule("bd540e65");
+		em.persist(mission1_1);
+		
+		Mission mission1_2 = new Mission();
+		mission1_2.setDateDebut(LocalDate.of(2016, 10, 1));
+		mission1_2.setDateFin(LocalDate.of(2016, 11, 6));
+		mission1_2.setNatureMissionInit(natureFormation);
+		mission1_2.setStatut(initiale);
+		mission1_2.setUtilisateurMatricule("bd540e65");
+		em.persist(mission1_2);
+		
 		Mission mission2 = new Mission();
 		mission2.setDateDebut(LocalDate.of(2017, 9, 1));
 		mission2.setDateFin(LocalDate.of(2017, 9, 5));
@@ -111,17 +127,20 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		Stream.of("bd540e65", "75e8048c")
 				.forEach(matricule -> em.persist(new Administrateur(matricule)));
 		
-		
 		NatureFrais hotel = new NatureFrais("Hôtel");
 		NatureFrais taxi = new NatureFrais("Taxi");
 		em.persist(hotel);
 		em.persist(taxi);
-
+		
 		Frais frais1 = new Frais(LocalDate.now(), hotel, 255, mission1);
+		Frais frais1_1 = new Frais(LocalDate.now(), hotel, 255, mission1_1);
+		Frais frais1_2 = new Frais(LocalDate.now(), hotel, 255, mission1_2);
 		Frais frais2 = new Frais(LocalDate.now(), taxi, 745, mission1);
 		Frais frais3 = new Frais(LocalDate.now(), taxi, 100, mission2);
 		Frais frais4 = new Frais(LocalDate.now(), hotel, 900, mission2);
 		em.persist(frais1);
+		em.persist(frais1_1);
+		em.persist(frais1_2);
 		em.persist(frais2);
 		em.persist(frais3);
 		em.persist(frais4);
