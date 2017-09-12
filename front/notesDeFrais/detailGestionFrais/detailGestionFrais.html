@@ -1,10 +1,10 @@
 <section id="gestionFrais">
-        <a href="/gestion-des-missions/note-de-frais/gestion" class="btn btn-default"><span class="glyphicon glyphicon-triangle-left"></span><strong>Retour</strong></a>
+    <a href="/gestion-des-missions/note-de-frais/gestion" class="btn btn-default"><span class="glyphicon glyphicon-triangle-left"></span><strong>Retour</strong></a>
     <h1 style="text-align: center">Saisies des notes de frais</h1>
     <table class="table ">
         <tr>
             <td>Date de début : {{$ctrl.detailMission.dateDebut}}</td>
-            <td>Estimation prime : ??€</td>
+            <td>Estimation prime : {{$ctrl.detailMission.prime == null? '0' : $ctrl.detailMission.prime }}€</td>
         </tr>
         <tr>
             <td>Date de fin : {{$ctrl.detailMission.dateFin}}</td>
@@ -12,11 +12,11 @@
         </tr>
         <tr>
             <td>Nature : {{$ctrl.detailMission.natureMissionInit.libelle}}</td>
-            <td>Dépassement autorisé : {{$ctrl.detailMission.natureMissionInit.depassementFrais}}</td>
+            <td>Dépassement autorisé : {{$ctrl.detailMission.natureMissionInit.depassementFrais?'Oui':'Non'}}</td>
         </tr>
         <tr>
             <td>Ville de départ : {{$ctrl.detailMission.villeDepart.libelle}}</td>
-            <td>Déduction prime : ??€</td>
+            <td>Déduction prime : {{'??' == null ? '0' : '??' }}€</td>
         </tr>
         <tr>
             <td>Ville d'arrivée : {{$ctrl.detailMission.villeArrivee.libelle}}</td>
@@ -46,6 +46,6 @@
             </tr>
         </tbody>
     </table>
-        <p style="text-align: right">Ajouter un frais <a href="/gestion-des-missions/ajout/{{$ctrl.detailMission.id}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a></p>
+    <p style="text-align: right">Ajouter un frais <a href="/gestion-des-missions/ajout" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a></p>
 
 </section>

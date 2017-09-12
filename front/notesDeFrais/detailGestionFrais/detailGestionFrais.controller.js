@@ -1,7 +1,7 @@
 export default class detailGestionFraisCtrl {
-    constructor(detailGestionFraisService, $routeParams) {
+    constructor(detailGestionFraisService) {
         this.detailGestionFraisService = detailGestionFraisService
-        this.idMission = $routeParams.msg
+        this.idMission = sessionStorage.getItem('idMission')
         this.findDetailsMission()
         this.findFraisMission()
 

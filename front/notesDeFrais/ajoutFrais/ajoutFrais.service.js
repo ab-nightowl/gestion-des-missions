@@ -1,12 +1,17 @@
+import popupSuccess from "./modal/ajoutsuccess.html"
+import popupFailure from "./modal/ajoutfailure.html"
+import popupCtrl from "./modal/popup.controller"
+
 export default class ajoutFraisService {
-    constructor(apiUrls, $http, $location) {
+    constructor(apiUrls, $http, $location, $uibModal) {
         this.apiUrls = apiUrls
         this.$http = $http
+        this.$uibModal = $uibModal
         this.$location = $location
     }
 
-    redirection(idMission) {
-        this.$location.path('/detail/' + idMission)
+    redirection() {
+        this.$location.path('/detail')
     }
 
     findNaturesFrais() {
@@ -22,10 +27,22 @@ export default class ajoutFraisService {
             "montant": montant
         }
 
-        this.$http.post(this.apiUrls.naturesFrais + "/" + idMission + "/" + nature, this.frais).then(function (data) {
-            alert("Le frais à été enregistré !");
+        this.$http.post(this.apiUrls.naturesFrais + "/" + idMission + "/" + nature, this.frais)
+    }
+
+    popupSuccess(){
+        this.$uibModal.open({
+            template: popupSuccess,
+            controller: popupCtrl,
+            controllerAs: '$ctrl'
         });
-        this.redirection(idMission)
+    }
+    popupFailure(){
+        this.$uibModal.open({
+            template: popupFailure,
+            controller: popupCtrl,
+            controllerAs: '$ctrl'
+        });
     }
 
 }

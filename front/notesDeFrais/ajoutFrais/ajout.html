@@ -6,11 +6,9 @@
             <label class="col-lg-2 col-md-2 col-sm-3 col-xs-2 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 control-label"
                 for="date">Date</label>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <!--<input ng-model="$ctrl.date" id="datepicker" name="date" placeholder="01/01/1970" class="form-control input-md" type="text">-->
-
                 <p class="input-group">
-                    <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.date" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions"
-                        ng-required="true" close-text="Close" />
+                    <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="$ctrl.date" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions"
+                        ng-required="true" close-text="Close" required/>
                     <span class="input-group-btn">
                             <button type="button" class="btn btn-default" ng-click="$ctrl.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
                         </span>

@@ -125,5 +125,10 @@ export default class gestionFraisCtrl {
         };
         this.pdfMake.createPdf(docDefinition).open();
     }
+    saveIdMission(id, dateDebut, dateFin) {
+        sessionStorage.setItem("idMission", id)
+        sessionStorage.setItem("dateDebut", dateDebut)
+        sessionStorage.setItem("dateFin", dateFin)
+    }
 
 }
