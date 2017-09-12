@@ -18,7 +18,7 @@ import missionModule from './mission/mission.module';
 import apiUrls from './apiUrls.service'
 
 import pdfmake from 'pdfmake/build/pdfmake.js'
-import pdfFonts from "pdfmake/build/vfs_fonts";
+import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,

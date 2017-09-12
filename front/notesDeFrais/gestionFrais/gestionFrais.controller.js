@@ -123,7 +123,17 @@ export default class gestionFraisCtrl {
                 }
             }
         };
+        docDefinition.on('end', function () {
+            result = Buffer.concat(chunks);
+            callback(result);
+            // callback('data:application/pdf;base64,' + result.toString('base64'));
+        });
         this.pdfMake.createPdf(docDefinition).open();
+    }
+    saveIdMission(id, dateDebut, dateFin) {
+        sessionStorage.setItem("idMission", id)
+        sessionStorage.setItem("dateDebut", dateDebut)
+        sessionStorage.setItem("dateFin", dateFin)
     }
 
 }

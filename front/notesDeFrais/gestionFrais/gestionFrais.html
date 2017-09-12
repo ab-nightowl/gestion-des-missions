@@ -47,7 +47,7 @@
                 <td style="text-align: center;">{{item.transport.libelle}}</td>
                 <td style="text-align: center;">{{item.frais}}€</td>
                 <td style="text-align: center;">
-                    <a href="/gestion-des-missions/detail/{{item.id}}" class="btn btn-default" ng-show="item.dateFin <= ($ctrl.dateNow | date:'yyyy-MM-dd')">
+                    <a href="/gestion-des-missions/detail" ng-click="$ctrl.saveIdMission(item.id, item.dateDebut, item.dateFin)" class="btn btn-default" ng-show="item.dateFin <= ($ctrl.dateNow | date:'yyyy-MM-dd')">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     <a class="btn btn-default" ng-click="$ctrl.pdf(item.id)" ng-show="item.dateFin <= ($ctrl.dateNow | date:'yyyy-MM-dd')">
