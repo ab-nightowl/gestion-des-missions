@@ -18,7 +18,7 @@
             <li ng-class="{ active: $ctrl.isCurrentPath('/')}"><a href="{{ $ctrl.publicPath }}">Accueil</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/gestion')}"><a href="{{ $ctrl.publicPath }}missions/gestion">Gestion des missions</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/planning')}"><a href="{{ $ctrl.publicPath }}missions/planning">Planning des missions</a></li>
-            <li ng-class="{ active: $ctrl.isCurrentPath('/primes')}"><a href="{{ $ctrl.publicPath }}primes">Primes</a></li>
+            <li ng-class="{ active: $ctrl.isCurrentPath('/prime')}"><a href="{{ $ctrl.publicPath }}prime">Primes</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/note-de-frais/gestion')}"><a href="{{ $ctrl.publicPath }}note-de-frais/gestion">Gestion note des frais</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/natures')}" ng-if="$ctrl.userRole === $ctrl.roles.admin"><a href="{{ $ctrl.publicPath }}missions/natures">Natures de mission</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/validation')}" ng-if="$ctrl.userRole === $ctrl.roles.manager"><a href="{{ $ctrl.publicPath }}missions/validation">Validation des missions</a></li>

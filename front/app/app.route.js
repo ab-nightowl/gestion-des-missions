@@ -39,6 +39,12 @@ export function route($routeProvider, $locationProvider, roles) {
                 role: [roles.allAuthentificated]
             }
         })
+        .when('/prime', {
+            template: '<prime-component></prime-component>',
+            data: {
+                role: [roles.allAuthentificated]
+            }
+        })
         .when('/connexion', {
             template: '<login-component></login-component>',
             data: {
