@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation" ng-if="$ctrl.isUserConnected()">
+<nav class="navbar navbar-default" role="navigation" ng-if="$ctrl.isUserConnected()" ng-init="$ctrl.updateConnectedUserInfo()">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">
-            <img src="assets/images/logo.png" alt="GDM" class="img-responsive">
+            <img src="/gestion-des-missions/assets/images/logo.png" alt="GDM" class="img-responsive">
         </a>
     </div>
 
@@ -20,8 +20,8 @@
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/planning')}"><a href="{{ $ctrl.publicPath }}missions/planning">Planning des missions</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/primes')}"><a href="{{ $ctrl.publicPath }}primes">Primes</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/note-de-frais/gestion')}"><a href="{{ $ctrl.publicPath }}note-de-frais/gestion">Gestion note des frais</a></li>
-            <li ng-class="{ active: $ctrl.isCurrentPath('/missions/natures')}" ng-if="$ctrl.user.role === 'ROLE_ADMINISTRATEUR'"><a href="{{ $ctrl.publicPath }}missions/natures">Natures de mission</a></li>
-            <li ng-class="{ active: $ctrl.isCurrentPath('/missions/validation')}" ng-if="$ctrl.user.role === 'ROLE_MANAGER'"><a href="{{ $ctrl.publicPath }}missions/validation">Validation des missions</a></li>
+            <li ng-class="{ active: $ctrl.isCurrentPath('/missions/natures')}" ng-if="$ctrl.userRole === $ctrl.roles.admin"><a href="{{ $ctrl.publicPath }}missions/natures">Natures de mission</a></li>
+            <li ng-class="{ active: $ctrl.isCurrentPath('/missions/validation')}" ng-if="$ctrl.userRole === $ctrl.roles.manager"><a href="{{ $ctrl.publicPath }}missions/validation">Validation des missions</a></li>
         </ul>
         <div class="navbar-form navbar-right text-center">
             <div ng-cloak>

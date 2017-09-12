@@ -18,8 +18,7 @@ module.exports = {
         contentBase: path.join(__dirname, output),
         compress: true,
         port: 9000,
-        historyApiFallback: true,
-        publicPath: publicPath
+        historyApiFallback: true
     },
 
     devtool: 'cheap-module-eval-source-map',
@@ -55,10 +54,7 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                use: [
-                    'url-loader?limit=10000',
-                    'img-loader'
-                ]
+                loader: "file-loader?name=/public/icons/[name].[ext]"
             }
         ]
     },

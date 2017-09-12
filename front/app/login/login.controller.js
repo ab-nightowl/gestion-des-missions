@@ -13,7 +13,7 @@ export default class loginCtrl {
                     this.loginService.connect(userFound)
                     this.$location.hash('')
                 } else {
-                    this.$location.path('/')
+                    this.$location.path('/connexion')
                     this.$location.hash('error')
                 }
             })

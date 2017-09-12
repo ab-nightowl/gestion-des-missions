@@ -8,7 +8,7 @@
     "dev:server": "webpack-dev-server --open",
     "dev:api": "json-server db.json -w",
     "std": "standard \"app/*.js\"",
-    "build": "cross-env NODE_ENV=production webpack -p"
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "keywords": [],
   "author": "",
