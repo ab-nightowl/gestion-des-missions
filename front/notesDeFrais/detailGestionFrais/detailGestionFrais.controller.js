@@ -22,5 +22,9 @@ export default class detailGestionFraisCtrl {
             })
     }
 
+    suppr(idFrais, dateCreationFrais, natureLibelle, montantFrais){
+        this.detailGestionFraisService.popupFraisSuppr(idFrais, dateCreationFrais, natureLibelle, montantFrais)
+    }
+
 
 }

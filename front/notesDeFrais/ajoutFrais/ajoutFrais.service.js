@@ -1,6 +1,6 @@
-import popupSuccess from "./modal/ajoutsuccess.html"
-import popupFailure from "./modal/ajoutfailure.html"
-import popupCtrl from "./modal/popup.controller"
+import popupSuccess from "../modal/ajoutsuccess.html"
+import popupFailure from "../modal/ajoutfailure.html"
+import popupCtrl from "../modal/popup.controller"
 
 export default class ajoutFraisService {
     constructor(apiUrls, $http, $location, $uibModal) {

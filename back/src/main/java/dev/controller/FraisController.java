@@ -29,4 +29,10 @@ public class FraisController {
 		return repoFrais.findByMissionId(id);
 	}
 
+	@RequestMapping(method = RequestMethod.DELETE, path = "/lister/{id}")
+	public void supprFraisMission(@PathVariable("id") Integer id) {
+		System.out.println(id);
+		repoFrais.delete(id);
+	}
+
 }
