@@ -31,3 +31,34 @@ angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,
     .component('accueil', AccueilComponent)
     .component('header', HeaderComponent)
     .config(route)
+    .constant('roles', {
+        all: "*",
+        allAuthentificated: "auth",
+        admin: "ROLE_ADMINISTRATEUR",
+        manager: "ROLE_MANAGER",
+        employe: "ROLE_EMPLOYE"
+    })
+    .run(['$rootScope', '$location', 'loginService', 'roles', function ($rootScope, $location, loginService, roles) {
+        $rootScope.$on('$routeChangeStart', function (event, next, current) {
+            if (!next.data || next.data.role[0] === roles.all) {
+                // All good to go
+            } else if (loginService.isConnected()) {
+                if (next.data.role[0] !== roles.allAuthentificated) {
+                    let userRole = loginService.getUserRole()
+                    if (!userRole) {
+                        loginService.retrieveUserRole(loginService.getUserEmail()).then(role => {
+                            if (next.data.role.indexOf(role) === -1) {
+                                $location.path('/')
+                            }
+                        })
+                    } else {
+                        if (next.data.role.indexOf(userRole) === -1) {
+                            $location.path('/')
+                        }
+                    }
+                }
+            } else {
+                $location.path('/connexion')
+            }
+        });
+    }])
