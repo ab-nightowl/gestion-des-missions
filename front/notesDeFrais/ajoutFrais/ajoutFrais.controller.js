@@ -1,6 +1,7 @@
 export default class ajoutFraisCtrl {
-    constructor(ajoutFraisService) {
+    constructor(ajoutFraisService, $routeParams) {
         this.ajoutFraisService = ajoutFraisService
+        this.idMission = $routeParams.msg
         this.findNaturesFrais()
 
         this.today();
@@ -66,6 +67,10 @@ export default class ajoutFraisCtrl {
         }
     }
 
+    redirection(){
+        this.ajoutFraisService.redirection(this.idMission)
+    }
+
     findNaturesFrais() {
         this.ajoutFraisService.findNaturesFrais()
             .then(naturesFrais => {
@@ -74,7 +79,7 @@ export default class ajoutFraisCtrl {
     }
 
     saveFrais() {
-        this.ajoutFraisService.saveNew(this.date, this.nature, this.montant)
+        this.ajoutFraisService.saveNew(this.date, this.nature, this.montant, this.idMission)
     }
 
     today() {

@@ -4,8 +4,8 @@ export default class gestionFraisService {
         this.$http = $http
     }
 
-    findMission() {
-        return this.$http.get(this.apiUrls.missions)
+    findMission(userMatricule) {
+        return this.$http.get(this.apiUrls.missions+"/"+userMatricule)
             .then(response => {
                 return response.data;
             }, response => { })
@@ -17,5 +17,7 @@ export default class gestionFraisService {
                 return response.data
             }, response => { })
     }
+
+
 
 }

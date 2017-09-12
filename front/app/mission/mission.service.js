@@ -56,23 +56,37 @@ export default class MissionService {
       })
   }
 
-  postMission(dateDebut, dateFin, nature, villeDepartId, villeArriveeId, transportId) {
-    let mission = {
-      "dateDebut": dateDebut,
-      "dateFin": dateFin,
-      "natureMissionInit": nature,
-      "villeDepart": villeDepartId,
-      "villeArrivee": villeArriveeId,
-      "transport": transportId,
-      "prime": 0
+  postMission(dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut, utilisateurMatricule) {
+    if (!dateDebut || !dateFin || !nature || !villeDepart || !villeArrivee || !transport || !statut || !utilisateurMatricule) {
+      alert("Vous devez remplir tous les champs")
+    } else {
+
+      let mission = {
+        "dateDebut": dateDebut,
+        "dateFin": dateFin,
+        "natureMissionInit": nature,
+        "villeDepart": villeDepart,
+        "villeArrivee": villeArrivee,
+        "transport": transport,
+        "prime": null,
+        "statut": statut,
+        "utilisateurMatricule": utilisateurMatricule
+      }
+
+      let tabMissions = []
+
+      this.$http.post(this.apiUrls.missions, mission)
+        .then((resp) => {alert("La demande de mission a bien été envoyée")},
+              (resp) => {alert("Erreur : la demande de mission n'a pas pu être envoyée")}
+        )
     }
 
-    let tabMissions = []
-
-    this.$http.post(this.apiUrls.missions, mission)
-      .then((resp) => {alert("La demande de mission a bien été envoyée")},
-            (resp) => {alert("Erreur : la demande de mission n'a pas pu être envoyée")}
-      )
-
   }
+
+  findMissionsByUtilisateur(utilisateurMatricule) {
+    return this.$http.get(this.apiUrls.missions+'/'+utilisateurMatricule)
+      .then(resp => {return resp.data},
+            resp => {return "Erreur : la requête pour trouver les missions de l'utilisateur courant a échouée"})
+  }
+
 }

@@ -21,7 +21,7 @@ module.exports = {
         historyApiFallback: true
     },
 
-	devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-eval-source-map',
 
     module: {
         loaders: [
@@ -52,12 +52,15 @@ module.exports = {
                 exclude: [/node_modules/],
                 loader: 'raw-loader',
             },
-
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loader: "file-loader?name=/public/icons/[name].[ext]"
+            }
         ]
     },
 
     plugins: [
-        new webpack.DefinePlugin({'API_URL': JSON.stringify(API_URL)}),
-        new webpack.DefinePlugin({'publicPath': JSON.stringify(publicPath)})
+        new webpack.DefinePlugin({ 'API_URL': JSON.stringify(API_URL) }),
+        new webpack.DefinePlugin({ 'publicPath': JSON.stringify(publicPath) })
     ]
 };

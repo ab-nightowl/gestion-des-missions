@@ -42,7 +42,7 @@
         </div>
 
         <div class="row">
-            <button class="btn btn-danger col-xs-2 col-xs-offset-4"><span class="glyphicon glyphicon-ban-circle"></span> Annuler</button>
+            <button ng-click="$ctrl.redirection()" class="btn btn-danger col-xs-2 col-xs-offset-4"><span class="glyphicon glyphicon-ban-circle"></span> Annuler</button>
             <button class="btn btn-success col-xs-2" ng-click="$ctrl.saveFrais()" ng-disabled="$ctrl.date == null || $ctrl.date == '' || $ctrl.montant == null || $ctrl.montant == '' || $ctrl.nature == null || $ctrl.nature == '' ">Valider <span class="glyphicon glyphicon-ok"></span></button>
         </div>
     </form>

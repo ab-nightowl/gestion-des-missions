@@ -1,8 +1,6 @@
 package dev.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
@@ -65,25 +63,23 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		Statut rejetee = Statut.DEMANDE_REJETEE;
 		
 		Mission mission1 = new Mission();
-		mission1.setDateDebut(LocalDate.of(2017, 10, 1));
-		mission1.setDateFin(LocalDate.of(2017, 10, 6));
+		mission1.setDateDebut(LocalDate.of(2017, 9, 1));
+		mission1.setDateFin(LocalDate.of(2017, 9, 6));
 		mission1.setNatureMissionInit(natureConseil);
 		mission1.setVilleDepart(nantes);
 		mission1.setVilleArrivee(marseille);
 		mission1.setTransport(avion);
-		mission1.setPrime(100);
 		mission1.setStatut(initiale);
 		mission1.setUtilisateurMatricule("bd540e65");
 		em.persist(mission1);
 		
 		Mission mission2 = new Mission();
-		mission2.setDateDebut(LocalDate.of(2017, 10, 10));
-		mission2.setDateFin(LocalDate.of(2017, 10, 22));
+		mission2.setDateDebut(LocalDate.of(2017, 9, 1));
+		mission2.setDateFin(LocalDate.of(2017, 9, 5));
 		mission2.setNatureMissionInit(natureExpertise);
 		mission2.setVilleDepart(nantes);
 		mission2.setVilleArrivee(paris);
 		mission2.setTransport(voiture);
-		mission2.setPrime(300);
 		mission2.setStatut(enAttente);
 		mission2.setUtilisateurMatricule("56eb7d01");
 		em.persist(mission2);
@@ -95,19 +91,19 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission3.setVilleDepart(bordeaux);
 		mission3.setVilleArrivee(nantes);
 		mission3.setTransport(train);
-		mission3.setPrime(200);
+		mission3.setPrime(200.0);
 		mission3.setStatut(validee);
 		mission3.setUtilisateurMatricule("0d36bbdd");
 		em.persist(mission3);
 		
 		Mission mission4 = new Mission();
-		mission4.setDateDebut(LocalDate.of(2017, 9, 15));
-		mission4.setDateFin(LocalDate.of(2017, 12, 15));
+		mission4.setDateDebut(LocalDate.of(2017, 9, 1));
+		mission4.setDateFin(LocalDate.of(2017, 9, 6));
 		mission4.setNatureMissionInit(natureFormation);
 		mission4.setVilleDepart(angers);
 		mission4.setVilleArrivee(nantes);
 		mission4.setTransport(covoit);
-		mission4.setPrime(1000);
+		mission4.setPrime(1000.0);
 		mission4.setStatut(rejetee);
 		mission4.setUtilisateurMatricule("8dd0b708");
 		em.persist(mission4);
@@ -115,17 +111,16 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		Stream.of("bd540e65", "75e8048c")
 				.forEach(matricule -> em.persist(new Administrateur(matricule)));
 		
-		List<String> natureFrais = new ArrayList<>();
-		natureFrais.add("Hôtel");
-		natureFrais.add("Taxi");
-		for (String nf : natureFrais) {
-			em.persist(new NatureFrais(nf));
-		}
 		
-		Frais frais1 = new Frais(LocalDate.now(), 1, 255, mission1);
-		Frais frais2 = new Frais(LocalDate.now(), 2, 745, mission1);
-		Frais frais3 = new Frais(LocalDate.now(), 2, 100, mission2);
-		Frais frais4 = new Frais(LocalDate.now(), 1, 900, mission2);
+		NatureFrais hotel = new NatureFrais("Hôtel");
+		NatureFrais taxi = new NatureFrais("Taxi");
+		em.persist(hotel);
+		em.persist(taxi);
+
+		Frais frais1 = new Frais(LocalDate.now(), hotel, 255, mission1);
+		Frais frais2 = new Frais(LocalDate.now(), taxi, 745, mission1);
+		Frais frais3 = new Frais(LocalDate.now(), taxi, 100, mission2);
+		Frais frais4 = new Frais(LocalDate.now(), hotel, 900, mission2);
 		em.persist(frais1);
 		em.persist(frais2);
 		em.persist(frais3);
