@@ -36,6 +36,7 @@
     "angular-ui-bootstrap": "^2.5.0",
     "bootstrap": "^3.3.7",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "pdfmake": "^0.1.32",
     "sha1": "^1.1.1",
     "uuid": "^3.0.1"

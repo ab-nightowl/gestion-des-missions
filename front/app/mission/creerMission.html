@@ -10,7 +10,7 @@
       <label class="col-md-4 control-label" for="input-date-debut">Date de début*</label>
       <div class="col-md-4">
         <p class="input-group">
-            <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dateDebut" is-open="$ctrl.popup1.opened" datepicker-options="$ctrl.dateOptions"
+            <input type="text" class="form-control" uib-datepicker-popup="{{$ctrl.format}}" ng-model="$ctrl.dateDebut" ng-change="$ctrl.changeDateFinOptions()"  is-open="$ctrl.popup1.opened" datepicker-options="$ctrl.dateOptions"
                 ng-required="true" close-text="Close" id="input-date-debut" name="dateDebut"/>
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="$ctrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -20,6 +20,7 @@
       <div ng-show="formCreerMission.dateDebut.$dirty || formCreerMission.dateDebut.$touched" role="alert" class="col-md-offset-4 col-md-4">
         <p ng-show="formCreerMission.dateDebut.$error.required" class="text-alert">Date de début de mission requise</p>
         <p ng-show="formCreerMission.dateDebut.$error.date" class="text-alert">Date non valide</p>
+
       </div>
     </div>
 
@@ -28,7 +29,7 @@
       <label class="col-md-4 control-label" for="input-date-fin">Date de fin*</label>
       <div class="col-md-4">
         <p class="input-group">
-            <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dateFin" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions"
+            <input type="text" class="form-control" uib-datepicker-popup="{{$ctrl.format}}" ng-model="$ctrl.dateFin" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions2"
                 ng-required="true" close-text="Close" id="input-date-fin" name="dateFin"/>
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="$ctrl.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -83,11 +84,12 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="select-transport">Transport*</label>
       <div class="col-md-4">
-        <select ng-model="$ctrl.transport" ng-options="transport.libelle for transport in $ctrl.transports track by transport.id" name="transport" id="select-transport" class="form-control" ng-required="true">
+        <select ng-model="$ctrl.transport" ng-change="$ctrl.changeDateDebutOptions()" ng-options="transport.libelle for transport in $ctrl.transports track by transport.id" name="transport" id="select-transport" class="form-control" ng-required="true">
         </select>
       </div>
       <div ng-show="formCreerMission.transport.$touched" role="alert" class="col-md-offset-4 col-md-4">
         <p ng-show="formCreerMission.transport.$error.required" class="text-alert">Transport requis</p>
+        <p ng-show="$ctrl.transportIsAvionCondition && $ctrl.dateCondition" class="text-alert">Une anticipation de 7 jours est exigée pour ce type de transport (Avion) : veuillez changer la date de début de mission svp</p>
       </div>
     </div>
 
@@ -120,8 +122,8 @@
         <p name="depassementFrais" id="text-depassement" >
           <span ng-show="!($ctrl.nature)">-</span>
           <span ng-show="$ctrl.nature.id" >
-            <span ng-show="$ctrl.nature.depassementFrais == true">oui</span>
-            <span ng-show="$ctrl.nature.depassementFrais == false">non</span>
+            <span ng-show="$ctrl.nature.depassementFrais == true">Oui</span>
+            <span ng-show="$ctrl.nature.depassementFrais == false">Non</span>
           </span>
         </p>
       </div>
