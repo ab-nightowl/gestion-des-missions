@@ -129,6 +129,8 @@ export default class MissionController {
 
   creerMission() {
     this.MissionService.postMission(this.dateDebut, this.dateFin, this.nature, this.villeDepart, this.villeArrivee, this.transport, this.statut, this.utilisateurMatricule)
+      .then(success => {this.MissionService.popupSuccess()},
+            error => {this.MissionService.popupFailure()})
   }
 
   changeDateDebutOptions() {

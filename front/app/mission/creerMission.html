@@ -20,7 +20,7 @@
       <div ng-show="formCreerMission.dateDebut.$dirty || formCreerMission.dateDebut.$touched" role="alert" class="col-md-offset-4 col-md-4">
         <p ng-show="formCreerMission.dateDebut.$error.required" class="text-alert">Date de début de mission requise</p>
         <p ng-show="formCreerMission.dateDebut.$error.date" class="text-alert">Date non valide</p>
-
+        <p ng-show="$ctrl.transportIsAvionCondition && $ctrl.dateCondition" class="text-alert">Une anticipation de 7 jours est exigée pour ce type de transport (Avion) : veuillez changer la date de début de mission svp</p>
       </div>
     </div>
 
@@ -89,7 +89,6 @@
       </div>
       <div ng-show="formCreerMission.transport.$touched" role="alert" class="col-md-offset-4 col-md-4">
         <p ng-show="formCreerMission.transport.$error.required" class="text-alert">Transport requis</p>
-        <p ng-show="$ctrl.transportIsAvionCondition && $ctrl.dateCondition" class="text-alert">Une anticipation de 7 jours est exigée pour ce type de transport (Avion) : veuillez changer la date de début de mission svp</p>
       </div>
     </div>
 
