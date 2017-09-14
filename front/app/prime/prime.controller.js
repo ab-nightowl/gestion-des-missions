@@ -53,7 +53,7 @@ export default class primeCtrl {
                 return missions.data
             },
             error => {
-                console.log("loginService: checkUser(): error:", error);
+                // console.log("loginService: checkUser(): error:", error);
             })
             .then(missions => {
                 return missions.filter(

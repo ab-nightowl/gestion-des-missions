@@ -18,7 +18,7 @@ export default class MissionService {
   }
 
   getAllNatures() {
-    return this.$http.get(this.apiUrls.naturesMissions)
+    return this.$http.get(`${this.apiUrls.naturesMissions}/lister`)
       .then((resp) => {
         return resp.data
       }, (resp) => {

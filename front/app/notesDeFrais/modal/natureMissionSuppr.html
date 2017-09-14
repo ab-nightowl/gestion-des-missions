@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Confirmation</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <h4>Voulez-vous vraiment supprimer cette nature ?</h4>
+    <ul>
+        <li>Libelle : {{$ctrl.data.nature.libelle}}</li>
+        <li>Date de création : {{$ctrl.data.nature.dateDebutValidite | date:'dd/MM/yyyy'}}</li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.annuler()">Annuler</button>
+    <button class="btn btn-default" type="button" ng-click="$ctrl.suppr('nature', $ctrl.data.nature.id)">Validez</button>
+</div>

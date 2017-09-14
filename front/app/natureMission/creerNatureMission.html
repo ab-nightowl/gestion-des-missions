@@ -1,0 +1,113 @@
+<section id="form-creer-mission">
+    <a href="/gestion-des-missions/missions/natures" class="btn btn-default"><span class="glyphicon glyphicon-triangle-left"></span><strong>Retour</strong></a>
+    <br><br>
+    <form name="formCreerNatureMission" class="form-horizontal" novalidate>
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Nouvelle nature de mission</legend>
+
+            <!-- Text input - libelle -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="libelle">Nature</label>
+                <div class="col-md-4">
+                    <input ng-model="$ctrl.nature.libelle" id="libelle" name="libelle" class="form-control input-md" type="text" ng-required="true">
+                    <div ng-show="formCreerNatureMission.libelle.$touched" role="alert" class="col-md-offset-4 col-md-4">
+                        <p ng-show="formCreerNatureMission.libelle.$error.required" class="text-alert">Champ requis</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Facturee -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="select-facture">Facturée</label>
+                <div class="col-md-4">
+                    <select ng-model="$ctrl.nature.facture" name="facture" id="select-facture" class="form-control" ng-required="true">
+                        <option value="">(Oui/Non)</option>
+                        <option value="true">Oui</option>
+                        <option value="false">Non</option>
+                    </select>
+                </div>
+                <div ng-show="formCreerNatureMission.facture.$touched" role="alert" class="col-md-offset-4 col-md-4">
+                    <p ng-show="formCreerNatureMission.facture.$error.required" class="text-alert">Champ requis</p>
+                </div>
+            </div>
+
+            <!-- Select Versement prime -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="select-versementPrime">Versement prime</label>
+                <div class="col-md-4">
+                    <select ng-model="$ctrl.nature.versementPrime" name="versementPrime" id="select-versementPrime" class="form-control" ng-required="true">
+                            <option value="">(Oui/Non)</option>
+                            <option value="true">Oui</option>
+                            <option value="false">Non</option>
+                        </select>
+                </div>
+                <div ng-show="formCreerNatureMission.versementPrime.$touched" role="alert" class="col-md-offset-4 col-md-4">
+                    <p ng-show="formCreerNatureMission.versementPrime.$error.required" class="text-alert">Champ requis</p>
+                </div>
+            </div>
+
+            <!-- Text input - TJM-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="tjm">TJM (€)</label>
+                <div class="col-md-4">
+                    <input ng-model="$ctrl.nature.tjm" id="tjm" name="tjm" class="form-control input-md" type="number" min="0" ng-required="true">
+                    <div ng-show="formCreerNatureMission.tjm.$touched" role="alert" class="col-md-offset-4 col-md-4">
+                        <p ng-show="formCreerNatureMission.tjm.$error.required" class="text-alert">Champ requis</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input - Plafond frais -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="plafondFrais">Plafond frais (€/jour)</label>
+                <div class="col-md-4">
+                    <input ng-model="$ctrl.nature.plafondFrais" id="plafondFrais" name="plafondFrais" class="form-control input-md" type="number"
+                        min="0" ng-required="true">
+                    <div ng-show="formCreerNatureMission.plafondFrais.$touched" role="alert" class="col-md-offset-4 col-md-4">
+                        <p ng-show="formCreerNatureMission.plafondFrais.$error.required" class="text-alert">Champ requis</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Dépassement frais -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="select-depassementFrais">Dépassement frais</label>
+                <div class="col-md-4">
+                    <select ng-model="$ctrl.nature.depassementFrais" name="depassementFrais" id="select-depassementFrais" class="form-control"
+                        ng-required="true">
+                                <option value="">(Oui/Non)</option>
+                                <option value="true">Oui</option>
+                                <option value="false">Non</option>
+                            </select>
+                </div>
+                <div ng-show="formCreerNatureMission.depassementFrais.$touched" role="alert" class="col-md-offset-4 col-md-4">
+                    <p ng-show="formCreerNatureMission.depassementFrais.$error.required" class="text-alert">Champ requis</p>
+                </div>
+            </div>
+
+            <!-- Text input - taux prime -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="tauxPrime">Taux prime</label>
+                <div class="col-md-4">
+                    <input ng-model="$ctrl.nature.tauxPrime" id="tauxPrime" name="tauxPrime" class="form-control input-md" type="number" ng-required="true"
+                        min="0" max="9.99">
+                    <div ng-show="formCreerNatureMission.tauxPrime.$touched" role="alert" class="col-md-offset-4 col-md-4">
+                        <p ng-show="formCreerNatureMission.tauxPrime.$error.required" class="text-alert">Champ requis</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons (Double) Annuler/Valider -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="btn-annuler"></label>
+                <div class="col-md-8">
+                    <a role="button" ng-href="missions/natures" id="btn-annuler" name="btnAnnuler" class="btn btn-danger">Annuler</a>
+                    <button ng-disabled="!formCreerNatureMission.$valid" ng-click="$ctrl.creerNature($ctrl.nature)" id="btn-valider" name="btnValider"
+                        class="btn btn-success">Valider</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</section>

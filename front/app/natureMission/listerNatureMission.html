@@ -1,0 +1,43 @@
+<section id="liste-missions">
+    <h1 class="text-center">Natures de mission</h1>
+
+    <table class="table ">
+        <thead>
+            <tr>
+                <th class="text-center">Nature</th>
+                <th class="text-center">Facturée</th>
+                <th class="text-center">Prime</th>
+                <th class="text-center">TJM(€)</th>
+                <th class="text-center">%Prime</th>
+                <th class="text-center">Plafond frais</th>
+                <th class="text-center">Dépt. frais</th>
+                <th class="text-center">Date de début de validité</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="nature in $ctrl.natures | orderBy:$ctrl.order:$ctrl.triInverse">
+                <td class="text-left">{{nature.libelle}}</td>
+                <td class="text-center">{{nature.facture ? 'Oui' : 'Non' }}</td>
+                <td class="text-center">{{nature.versementPrime ? 'Oui' : 'Non' }}</td>
+                <td class="text-center">{{nature.tjm}}</td>
+                <td class="text-center">{{nature.tauxPrime}}</td>
+                <td class="text-center">{{nature.plafondFrais}}</td>
+                <td class="text-center">{{nature.depassementFrais ? 'Oui' : 'Non' }}</td>
+                <td class="text-center">{{nature.dateDebutValidite | date:'dd/MM/yyyy'}}</td>
+                <td class="text-center">
+                    <a class="btn btn-default" ng-click="$ctrl.confirmSuppressionNature(nature)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="text-align: right">Ajouter une nature mission <a href="/gestion-des-missions/missions/natures/creer" class="btn btn-primary">
+      <span class="glyphicon glyphicon-plus"></span>
+  </a></p>
+
+
+</section>

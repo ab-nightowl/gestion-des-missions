@@ -35,14 +35,20 @@ export default class ajoutFraisService {
         this.$uibModal.open({
             template: popupSuccess,
             controller: popupCtrl,
-            controllerAs: '$ctrl'
+            controllerAs: '$ctrl',
+            resolve: {
+              data: () => "-"
+            }
         });
     }
     popupFailure(){
         this.$uibModal.open({
             template: popupFailure,
             controller: popupCtrl,
-            controllerAs: '$ctrl'
+            controllerAs: '$ctrl',
+            resolve: {
+              data: () => "-"
+            }
         });
     }
 
