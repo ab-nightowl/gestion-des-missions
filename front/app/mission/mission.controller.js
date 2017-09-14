@@ -128,6 +128,10 @@ export default class MissionController {
             error => {this.MissionService.popupFailure()})
   }
 
+  supprimerMission() {
+    this.MissionService.popupSuppressionSuccess(id, dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut)
+  }
+
   changeDateDebut() {
     this.callTransportIsAvionCondition()
     if (!this.dateDebut) {
