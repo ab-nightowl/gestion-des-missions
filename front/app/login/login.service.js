@@ -37,17 +37,12 @@ export default class loginService {
 			"email": this.getUserEmail(),
 			"nom": this.getUserNom(),
 			"prenom": this.getUserPrenom(),
-			"role": this.getUserRole(),
 			"matricule": this.getUserMatricule()
 		}
 	}
 
 	getUserEmail() {
 		return sessionStorage.getItem('userEmail')
-	}
-
-	getUserRole() {
-		return sessionStorage.getItem('userRole')
 	}
 
 	getUserNom() {
@@ -62,7 +57,11 @@ export default class loginService {
 		return sessionStorage.getItem('userMatricule')
 	}
 
-	setUserRole(email) {
+	getUserRole() {
+		return sessionStorage.getItem('userRole')
+	}
+
+	retrieveUserRole(email) {
 		return this.$http({
 			url: `${this.apiUrls.utilisateurs}/role`,
 			method: "GET",
@@ -70,10 +69,10 @@ export default class loginService {
 				userEmail: email
 			}
 		}).then(resp => {
-			sessionStorage.setItem('userRole', resp.data.role)
+			return resp.data.role
 		},
 			error => {
-				console.log("loginService: setUserRole() error:", error);
+				console.log("loginService: retrieveUserRole() error:", error);
 			})
 	}
 
@@ -83,15 +82,15 @@ export default class loginService {
 		sessionStorage.setItem('userNom', user.nom)
 		sessionStorage.setItem('userPrenom', user.prenom)
 		sessionStorage.setItem('userMatricule', user.matricule)
-		this.setUserRole(user.email)
+		this.retrieveUserRole(user.email).then(role =>
+			sessionStorage.setItem('userRole', role)
+		)
 		this.$location.path('/')
-		this.$window.location.reload();
 	}
 
 	disconnect() {
 		sessionStorage.clear()
-		this.$location.path('/')
-		this.$window.location.reload();
+		this.$location.path('/connexion')
 	}
 }
 

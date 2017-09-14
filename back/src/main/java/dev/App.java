@@ -34,7 +34,7 @@ public class App {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 						.allowedOrigins("*")
-						.allowedMethods("GET", "POST")
+						.allowedMethods("GET", "POST", "DELETE", "PUT")
 						.allowedHeaders("Content-Type");
 			}
 		};

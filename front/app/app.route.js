@@ -1,35 +1,63 @@
-export function route($routeProvider, $locationProvider) {
+export function route($routeProvider, $locationProvider, roles) {
 
     $locationProvider.html5Mode(true);
 
-    let userIsConnected = !!sessionStorage.getItem('session')
-
-    // Ne pas toucher au code suivant
     $routeProvider
         .when('/', {
-            template: userIsConnected ? '<accueil></accueil>' : '<login-component></login-component>'
+            template: '<accueil></accueil>',
+            data: {
+                role: [roles.allAuthentificated]
+            }
+        })
+        .when('/ajout', {
+            template: '<h1>Nouveau Frais</h1><gdm-ajout></gdm-ajout>',
+            data: {
+                role: [roles.allAuthentificated]
+            }
+        })
+        .when('/modification/:msg', {
+            template: "<h1>Modification d'un Frais</h1><gdm-modif></gdm-modif>",
+            data: {
+                role: [roles.allAuthentificated]
+            }
+        })
+        .when('/note-de-frais/gestion', {
+            template: '<gdm-gestion-frais></gdm-gestion-frais>',
+            data: {
+                role: [roles.allAuthentificated]
+            }
+        })
+        .when('/detail', {
+            template: '<gdm-detail-gestion-frais></gdm-detail-gestion-frais>',
+            data: {
+                role: [roles.allAuthentificated]
+            }
+        })
+        .when('/missions/creer', {
+            template: '<gdm-creer-mission></gdm-creer-mission>',
+            data: {
+                role: [roles.allAuthentificated]
+            }
+        })
+        .when('/missions/gestion', {
+            template: '<gdm-lister-mission></gdm-lister-mission>',
+            data: {
+                role: [roles.allAuthentificated]
+            }
+        })
+        .when('/prime', {
+            template: '<prime-component></prime-component>',
+            data: {
+                role: [roles.allAuthentificated]
+            }
+        })
+        .when('/connexion', {
+            template: '<login-component></login-component>',
+            data: {
+                role: [roles.all]
+            }
         })
         .otherwise({
             redirectTo: '/'
         })
-
-    if (userIsConnected) {
-        $routeProvider
-            .when('/ajout/:msg', {
-                template: '<gdm-ajout></gdm-ajout>'
-            })
-            .when('/note-de-frais/gestion', {
-                template: '<gdm-gestion-frais></gdm-gestion-frais>'
-            })
-            .when('/detail/:msg', {
-                template: '<gdm-detail-gestion-frais></gdm-detail-gestion-frais>'
-            })
-            .when('/missions/creer', {
-                template: '<gdm-creer-mission></gdm-creer-mission>'
-            })
-            .when('/missions/gestion', {
-                template: '<gdm-lister-mission></gdm-lister-mission>'
-            })
-            // Ajouter les autres routes ici
-    }
 }

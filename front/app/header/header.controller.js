@@ -1,13 +1,25 @@
-export default class headerCtrl{
-    constructor(loginService, $location){
+export default class headerCtrl {
+    constructor(loginService, $location, roles) {
         this.loginService = loginService
         this.$location = $location
+        this.roles = roles
         this.publicPath = publicPath
 
-        this.user = this.loginService.getConnectedUserInfo()
+        this.user = ""
+        this.userRole = ""
+        this.updateConnectedUserInfo()
     }
-    
-    isUserConnected(){
+
+    updateConnectedUserInfo() {
+        this.user = this.loginService.getConnectedUserInfo()
+        if (this.user.email) {
+            this.loginService.retrieveUserRole(this.user.email).then(role =>
+                this.userRole = role
+            )
+        }
+    }
+
+    isUserConnected() {
         return this.loginService.isConnected()
     }
 
@@ -16,4 +28,4 @@ export default class headerCtrl{
     }
 }
 
-headerCtrl.$inject = ['loginService', '$location']
+headerCtrl.$inject = ['loginService', '$location', 'roles']

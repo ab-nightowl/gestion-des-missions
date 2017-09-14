@@ -1,5 +1,5 @@
 import ajoutFraisCtrl from './ajoutFrais.controller'
-import ajoutFraisTpl from './ajout.html'
+import ajoutFraisTpl from './frais.html'
 
 const AjoutFrais = {
     template: ajoutFraisTpl,

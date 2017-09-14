@@ -63,9 +63,11 @@ public class TraitementDeNuitService {
 					if (sommeFrais.isPresent()) {
 						// déduction=sommeDesFrais-(plafondDeFrais)*(nbJoursMission)
 						double deduction = sommeFrais.get() - natureMission.getPlafondFrais() * nbJoursMission;
+						deduction = Math.max(0, deduction);
 						// Prime = (nbJoursMission)*TJM*%Prime/100-déduction
-						double prime = nbJoursMission * natureMission.getTjm() * natureMission.getTauxPrime()
+						double prime = nbJoursMission * natureMission.getTjm() * natureMission.getTauxPrime() / 100
 								- deduction;
+						prime = Math.max(0, prime);
 						// Computing Primes - END
 						mission.setPrime(prime);
 					}

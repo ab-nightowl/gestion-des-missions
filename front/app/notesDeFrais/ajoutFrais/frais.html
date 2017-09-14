@@ -1,19 +1,16 @@
 <section id="ajoutFrais">
-    <h1>Nouveau Frais</h1>
     <form class="form-horizontal">
         <!-- Text input-->
         <div class="form-group">
             <label class="col-lg-2 col-md-2 col-sm-3 col-xs-2 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 control-label"
                 for="date">Date</label>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <!--<input ng-model="$ctrl.date" id="datepicker" name="date" placeholder="01/01/1970" class="form-control input-md" type="text">-->
-
                 <p class="input-group">
-                    <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.date" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions"
-                        ng-required="true" close-text="Close" />
+                    <input ng-model="$ctrl.frais.dateCreation" type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" is-open="$ctrl.popup2.opened"
+                        datepicker-options="$ctrl.dateOptions" ng-required="true" close-text="Close" required/>
                     <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="$ctrl.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
-                        </span>
+                        <button type="button" class="btn btn-default" ng-click="$ctrl.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
                 </p>
             </div>
 
@@ -24,9 +21,8 @@
             <label class="col-lg-2 col-md-2 col-sm-3 col-xs-2 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 control-label"
                 for="nature">Nature</label>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <select ng-model="$ctrl.nature" id="nature" name="nature" class="form-control">
+                <select ng-model="$ctrl.frais.nature" id="nature" name="nature" ng-options="item.libelle for item in $ctrl.natures track by item.id" class="form-control">
                     <option value="">(Frais)</option>
-                    <option ng-repeat="item in $ctrl.natures" value="{{item.id}}">{{item.libelle}}</option>
                 </select>
             </div>
         </div>
@@ -36,14 +32,14 @@
             <label class="col-lg-2 col-md-2 col-sm-3 col-xs-2 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 control-label"
                 for="montant">Montant (€)</label>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <input ng-model="$ctrl.montant" id="montant" name="montant" type="number" min="0" placeholder="" class="form-control input-md"
+                <input ng-model="$ctrl.frais.montant" id="montant" name="montant" type="number" min="0" placeholder="" class="form-control input-md"
                     type="text">
             </div>
         </div>
 
         <div class="row">
             <button ng-click="$ctrl.redirection()" class="btn btn-danger col-xs-2 col-xs-offset-4"><span class="glyphicon glyphicon-ban-circle"></span> Annuler</button>
-            <button class="btn btn-success col-xs-2" ng-click="$ctrl.saveFrais()" ng-disabled="$ctrl.date == null || $ctrl.date == '' || $ctrl.montant == null || $ctrl.montant == '' || $ctrl.nature == null || $ctrl.nature == '' ">Valider <span class="glyphicon glyphicon-ok"></span></button>
+            <button class="btn btn-success col-xs-2" ng-click="$ctrl.saveFrais()" ng-disabled="$ctrl.frais.dateCreation == null || $ctrl.frais.dateCreation == '' || $ctrl.frais.montant == null || $ctrl.frais.montant == '' || $ctrl.frais.nature.libelle == null || $ctrl.frais.nature.libelle == '' ">Valider <span class="glyphicon glyphicon-ok"></span></button>
         </div>
     </form>
 
