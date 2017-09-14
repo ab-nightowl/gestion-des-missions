@@ -121,24 +121,24 @@ public class NatureMission {
 		this.dateDebutValidite = dateDebutValidite;
 	}
 	
-	public boolean compareTo(NatureMission nature) {
+	public boolean hasSameAttributesValues(NatureMission nature) {
 		if (this == nature) {
 			return true;
 		}
-		if (!(nature instanceof NatureMission)) {
-			return false;
-		}
 		
-		NatureMission that = nature;
-		return (this.libelle == that.libelle) && (this.facture == that.facture)
-				&& (this.versementPrime == that.versementPrime) && (this.tauxPrime == that.tauxPrime)
-				&& (this.tjm == that.tjm) && (this.plafondFrais == that.plafondFrais)
-				&& (this.depassementFrais == that.depassementFrais) && (this.actif == that.actif)
-				&& (this.dateDebutValidite == that.dateDebutValidite);
+		return (this.facture == nature.facture) && (this.versementPrime == nature.versementPrime)
+				&& (this.areFloatsEqual(this.tauxPrime, nature.tauxPrime))
+				&& (this.areFloatsEqual(this.tjm, nature.tjm))
+				&& (this.areFloatsEqual(this.plafondFrais, nature.plafondFrais))
+				&& (this.depassementFrais == nature.depassementFrais);
 	}
 	
 	public boolean hasAllAttributes() {
 		return this.getLibelle()
 				.length() > 0 && this.getPlafondFrais() > 0 && this.getTauxPrime() > 0 && this.getTjm() > 0;
+	}
+	
+	private boolean areFloatsEqual(double fl1, double fl2) {
+		return Math.abs(fl1 - fl2) < 0.00000001;
 	}
 }

@@ -46,11 +46,12 @@ public class UtilisateursController {
 				})
 				.findAny();
 		
-		String role = userFound.get()
-				.getSubalternes()
-				.isEmpty() ? UtilisateurRole.ROLE_EMPLOYE.toString() : UtilisateurRole.ROLE_MANAGER.toString();
-		
+		String role = UtilisateurRole.ROLE_EMPLOYE.toString();
 		if (userFound.isPresent()) {
+			role = userFound.get()
+					.getSubalternes()
+					.isEmpty() ? UtilisateurRole.ROLE_EMPLOYE.toString() : UtilisateurRole.ROLE_MANAGER.toString();
+			
 			Administrateur userRoleFound = repoUtilisateurs.findOneByMatricule(userFound.get()
 					.getMatricule());
 			

@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <td>Ville de départ : {{$ctrl.detailMission.villeDepart.libelle}}</td>
-            <td>Déduction prime : {{'??' == null ? '0' : '??' }}€</td>
+            <td>Déduction prime : {{$ctrl.deductionPrime <= 0 ? '0' : $ctrl.deductionPrime == null ? '0' : $ctrl.deductionPrime}}€</td>
         </tr>
         <tr>
             <td>Ville d'arrivée : {{$ctrl.detailMission.villeArrivee.libelle}}</td>

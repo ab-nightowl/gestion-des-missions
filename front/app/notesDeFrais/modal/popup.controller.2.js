@@ -13,6 +13,13 @@ export default class PopupController {
         this.$uibModalInstance.dismiss();
     }
 
+    valider(successOrFailure) {
+        this.$uibModalInstance.close();
+        if (successOrFailure == 1) {
+            this.$location.path('/detail')
+        }
+    }
+
     suppr() {
         this.$uibModalInstance.close();
         this.detailGestionFraisService.suppr(this.idFrais)
