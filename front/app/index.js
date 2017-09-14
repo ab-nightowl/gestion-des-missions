@@ -10,6 +10,7 @@ import { route } from './app.route';
 import { AccueilComponent } from './accueil/accueil.component';
 import HeaderComponent from './header/header.component';
 import PrimeComponent from './prime/prime.component';
+import moment from 'moment'
 
 // Modules
 import notesDeFrais from './notesDeFrais/notesDeFrais.module.js'
@@ -33,6 +34,7 @@ angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,
     .value('sha1', sha1)
     .value('chartjs', chartjs)
     .constant('apiUrls', apiUrls)
+    .constant('moment', moment)
     .component('accueil', AccueilComponent)
     .component('header', HeaderComponent)
     .config(route)

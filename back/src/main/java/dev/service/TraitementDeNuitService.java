@@ -58,7 +58,7 @@ public class TraitementDeNuitService {
 					// Nb jours mission
 					long nbJoursMission = ChronoUnit.DAYS.between(mission.getDateDebut(), mission.getDateFin()) + 1;
 					// Somme frais
-					Optional<Double> sommeFrais = Optional.of(repoFrais.sumFraisByMissionId(mission.getId()));
+					Optional<Double> sommeFrais = Optional.ofNullable(repoFrais.sumFraisByMissionId(mission.getId()));
 					
 					if (sommeFrais.isPresent()) {
 						// déduction=sommeDesFrais-(plafondDeFrais)*(nbJoursMission)

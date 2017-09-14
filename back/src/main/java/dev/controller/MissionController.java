@@ -52,4 +52,10 @@ public class MissionController {
 		missionRepo.save(mission);
 	}
 	
+	@RequestMapping(method = RequestMethod.PUT, path = "/lister")
+	private void validerNoteDeFraisMission(@RequestBody Mission mission) {
+		mission.setNoteDeFraisValider(true);
+		missionRepo.save(mission);
+	}
+
 }

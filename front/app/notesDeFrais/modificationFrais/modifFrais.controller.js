@@ -1,7 +1,7 @@
-export default class ajoutFraisCtrl {
-    constructor(ajoutFraisService, detailGestionFraisService, $location, moment) {
+export default class modifFraisCtrl {
+    constructor(modifFraisService, detailGestionFraisService, $location, moment) {
         this.$location = $location
-        this.ajoutFraisService = ajoutFraisService
+        this.modifFraisService = modifFraisService
         this.detailGestionFraisService = detailGestionFraisService
         this.moment = moment
         this.idMission = sessionStorage.getItem('idMission')
@@ -12,6 +12,10 @@ export default class ajoutFraisCtrl {
             .then(fm => {
                 this.fraisMission = fm
             })
+
+        this.fraisCurrent = $location.path().split('/')
+        this.idFrais = this.fraisCurrent[2]
+        this.modif()
 
         /** date picker */
         this.dateOptions = {
@@ -33,11 +37,11 @@ export default class ajoutFraisCtrl {
     }
 
     redirection() {
-        this.ajoutFraisService.redirection()
+        this.modifFraisService.redirection()
     }
 
     findNaturesFrais() {
-        this.ajoutFraisService.findNaturesFrais()
+        this.modifFraisService.findNaturesFrais()
             .then(naturesFrais => {
                 this.natures = naturesFrais
             })
@@ -54,16 +58,12 @@ export default class ajoutFraisCtrl {
             }
         });
         if (count == 0) {
-            this.ajoutFraisService.saveNew(dateCreation, this.frais.nature, this.frais.montant, this.idMission)
-            this.ajoutFraisService.popupSuccess()
+            this.modifFraisService.saveModif(this.frais.id, dateCreation, this.frais.nature, this.frais.montant, this.idMission)
+            this.modifFraisService.popupSuccess()
         } else {
-            this.ajoutFraisService.popupFailure()
+            this.modifFraisService.popupFailure()
         }
     }
-
-    today() {
-        this.dt = new Date();
-    };
     clear() {
         this.dt = null;
     };
@@ -71,7 +71,10 @@ export default class ajoutFraisCtrl {
         this.popup2.opened = true;
     };
 
-    setDate(year, month, day) {
-        this.dt = new Date(year, month, day);
-    };
+    modif() {
+        this.modifFraisService.findFrais(this.idFrais)
+            .then(frais => {
+                this.frais = frais
+            })
+    }
 }

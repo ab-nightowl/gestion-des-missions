@@ -23,7 +23,7 @@ export default class loginService {
 				return users.data
 			},
 			error => {
-				console.log("loginService: checkUser(): error:", error);
+				// console.log("loginService: checkUser(): error:", error);
 			})
 			.then(users => {
 				return users.find(
@@ -72,7 +72,7 @@ export default class loginService {
 			return resp.data.role
 		},
 			error => {
-				console.log("loginService: retrieveUserRole() error:", error);
+				// console.log("loginService: retrieveUserRole() error:", error);
 			})
 	}
 

@@ -40,13 +40,13 @@
                 <td>{{item.nature.libelle}}</td>
                 <td>{{item.montant}}€</td>
                 <td>
-                    <a href="#" class="btn btn-default" disabled><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="/gestion-des-missions/modification/{{item.id}}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
                     <a class="btn btn-default" ng-click="$ctrl.suppr(item.id, item.dateCreation, item.nature.libelle, item.montant)"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
             </tr>
         </tbody>
     </table>
-    <div><a href="#" class="btn btn-success col-xs-4"><span class="glyphicon glyphicon-ok"></span> Validez la note de frais</a>
+    <div><a ng-click="$ctrl.valider()" class="btn btn-success col-xs-4"><span class="glyphicon glyphicon-ok"></span> Validez la note de frais</a>
     <a href="/gestion-des-missions/ajout" class="btn btn-primary col-xs-4 col-xs-offset-4">Ajouter un frais <span class="glyphicon glyphicon-plus"></span></a></div>
 
 </section>

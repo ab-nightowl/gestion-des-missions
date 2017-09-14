@@ -1,8 +1,8 @@
-import popupSuccess from "../modal/ajoutsuccess.html"
+import popupSuccess from "../modal/ajoutsuccess.1.html"
 import popupFailure from "../modal/ajoutfailure.html"
 import popupCtrl from "../modal/popup.controller"
 
-export default class ajoutFraisService {
+export default class modifFraisService {
     constructor(apiUrls, $http, $location, $uibModal) {
         this.apiUrls = apiUrls
         this.$http = $http
@@ -21,14 +21,26 @@ export default class ajoutFraisService {
             }, response => { })
     }
 
-    saveNew(date, nature, montant, idMission) {
+    findFrais(idFrais) {
+        return this.$http.get(this.apiUrls.frais+"ParI/"+idFrais)
+            .then(response => {
+                return response.data;
+            }, response => { })
+            .then(frais => {
+                frais.dateCreation = new Date(frais.dateCreation)
+                return frais;
+            })
+    }
+
+    saveModif(id, date, nature, montant, idMission) {
         this.frais = {
+            "id": id,
             "dateCreation": date,
             "nature": nature,
             "montant": montant
         }
 
-        this.$http.post(this.apiUrls.naturesFrais + "/" + idMission, this.frais)
+        this.$http.put(this.apiUrls.frais + "/" + idMission, this.frais)
     }
 
     popupSuccess(){

@@ -19,7 +19,6 @@ export default class NatureMissionController {
     }
 
     updateListNatures() {
-        console.log("Updating list natures...")
         this.NatureMissionService.getAllNatures().then(natures => this.natures = natures.filter(nature => nature.actif === true))
     }
 

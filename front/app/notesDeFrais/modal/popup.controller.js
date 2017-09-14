@@ -4,7 +4,7 @@ export default class PopupController {
         this.$location = $location
         this.data = data
         this.NatureMissionService = NatureMissionService
-        this.$rootScope =$rootScope
+        this.$rootScope = $rootScope
         this.$window = $window
     }
 
@@ -20,7 +20,7 @@ export default class PopupController {
     }
 
     suppr(entityType, entityId) {
-        if(entityType === "nature") {
+        if (entityType === "nature") {
             this.NatureMissionService.supprimerNature(entityId)
         }
         this.$uibModalInstance.close();

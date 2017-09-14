@@ -32,11 +32,10 @@ public class NaturesFraisController {
 		return repoNaturesFrais.findAll();
 	}
 
-	@RequestMapping(method = RequestMethod.POST, path = "/frais/{idMission}/{idNature}")
+	@RequestMapping(method = RequestMethod.POST, path = "/frais/{idMission}")
 	protected void doPostNatureFrais(HttpServletRequest req, @RequestBody Frais frais,
-			@PathVariable("idMission") Integer idMission, @PathVariable("idNature") Integer idNature) {
+			@PathVariable("idMission") Integer idMission) {
 		frais.setMission(repoMission.findById(idMission));
-		frais.setNature(repoNaturesFrais.findById(idNature));
 		repoFrais.save(frais);
 
 	}
