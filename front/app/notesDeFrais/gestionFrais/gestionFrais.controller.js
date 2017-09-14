@@ -1,5 +1,5 @@
 export default class gestionFraisCtrl {
-    constructor(gestionFraisService, pdfMake, detailGestionFraisService) {
+    constructor(gestionFraisService, pdfMake, detailGestionFraisService, moment) {
         this.gestionFraisService = gestionFraisService
         this.sumFraisMission()
         this.findMission()
@@ -9,6 +9,7 @@ export default class gestionFraisCtrl {
         this.triInverse = false;
         this.pdfMake = pdfMake
         this.detailGestionFraisService = detailGestionFraisService
+        this.moment = moment
     }
 
     findMission() {
@@ -75,6 +76,8 @@ export default class gestionFraisCtrl {
         this.detailGestionFraisService.findMission(idMission)
             .then(dm => {
                 this.detailMission = dm
+            })
+            .then(() => {
                 this.findFraisMission(idMission)
             })
     }
@@ -83,6 +86,8 @@ export default class gestionFraisCtrl {
         this.detailGestionFraisService.findFraisMission(idMission)
             .then(fm => {
                 this.fraisMission = fm
+            })
+            .then(() => {
                 this.creerPdf()
             })
 
@@ -93,26 +98,58 @@ export default class gestionFraisCtrl {
     }
 
     creerPdf() {
+        this.frais = []
+        this.fraisMission.forEach(element => {
+            this.frais.push({
+                "dateCreation": this.moment(element.dateCreation).format('DD/MM/YYYY'),
+                "nature": element.nature.libelle,
+                "montant": element.montant+"€"
+            })
+        });
+
+
         let docDefinition = {
             content: [
+                { text: 'Note de frais', style: 'title' },
+                " ",
                 { text: 'Détail de la mission', style: 'header' },
                 {
                     table: {
                         widths: ['*', '*'],
                         body: [
-                            ["Date de début : " + this.detailMission.dateDebut, "Estimation prime : ??€"],
-                            ["Date de fin : " + this.detailMission.dateFin, "Plafond note de frais : " + this.detailMission.natureMissionInit.plafondFrais + "€"],
-                            ["Nature : " + this.detailMission.natureMissionInit.libelle, "Dépassement autorisé : " + this.detailMission.natureMissionInit.depassementFrais],
-                            ["Ville de départ : " + this.detailMission.villeDepart.libelle, "Déduction prime : ??€"],
-                            ["Ville d'arrivée : " + this.detailMission.villeArrivee.libelle, ""]
+                            [
+                                { border: [false, false, false, false], text: "Date de début : " + this.moment(this.detailMission.dateDebut).format('DD/MM/YYYY') },
+                                { border: [false, false, false, false], text: this.detailMission.prime == null ? 'Estimation prime : 0€' : this.detailMission.prime + "€" }
+                            ],
+                            [
+                                { border: [false, false, false, false], text: "Date de fin : " + this.moment(this.detailMission.dateFin).format('DD/MM/YYYY') },
+                                { border: [false, false, false, false], text: "Plafond note de frais : " + this.detailMission.natureMissionInit.plafondFrais + "€" }
+                            ],
+                            [
+                                { border: [false, false, false, false], text: "Nature : " + this.detailMission.natureMissionInit.libelle },
+                                { border: [false, false, false, false], text: "Dépassement autorisé : " + this.detailMission.natureMissionInit.depassementFrais }
+                            ],
+                            [
+                                { border: [false, false, false, false], text: "Ville de départ : " + this.detailMission.villeDepart.libelle },
+                                { border: [false, false, false, false], text: this.detailMission.deductionPrime <= 0 ? 'Déduction prime : 0€' : this.detailMission.deductionPrime == null ? 'Déduction prime : 0€' : "Déduction prime : " + this.detailMission.deductionPrime + "€" }
+                            ],
+                            [
+                                { border: [false, false, false, false], text: "Ville d'arrivée : " + this.detailMission.villeArrivee.libelle },
+                                { border: [false, false, false, false], text: "" }
+                            ]
                         ]
                     }
                 },
                 " ",
                 { text: 'Les notes de frais', style: 'header' },
-                this.table(this.fraisMission, ['dateCreation', 'nature', 'montant'])
+                this.table(this.frais, ['dateCreation', 'nature', 'montant'])
             ],
             styles: {
+                title: {
+                    fontSize: 24,
+                    bold: true,
+                    alignment: 'center'
+                },
                 header: {
                     fontSize: 18,
                     bold: true
@@ -121,10 +158,12 @@ export default class gestionFraisCtrl {
                     fontSize: 15,
                     bold: true
                 }
+
             }
         };
         this.pdfMake.createPdf(docDefinition).open();
     }
+
     saveIdMission(id, dateDebut, dateFin) {
         sessionStorage.setItem("idMission", id)
         sessionStorage.setItem("dateDebut", dateDebut)
