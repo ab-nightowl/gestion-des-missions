@@ -87,8 +87,7 @@ export default class MissionController {
 
   findMissionsUtilisateur() {
     this.MissionService.findMissionsByUtilisateur(this.utilisateurMatricule)
-      .then(tabMissions => {return this.missionsUtilisateur = tabMissions},
-            info => alert(info))
+      .then(tabMissions => {return this.missionsUtilisateur = tabMissions})
   }
 
   findAllMissions() {

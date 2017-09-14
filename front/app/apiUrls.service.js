@@ -7,7 +7,9 @@ const apiUrls = {
     naturesMissions : `${API_URL}/naturesMissions`,
     villes : `${API_URL}/villes/lister`,
     transports : `${API_URL}/transports/lister`,
-    statuts : `${API_URL}/statuts/lister`
+    statuts : `${API_URL}/statuts/lister`,
+
+    absences : 'https://api-absences.cleverapps.io/absence'
 }
 
 export default apiUrls
