@@ -7,8 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './assets/css/styles.css'
 import uibootstrap from 'angular-ui-bootstrap';
 
-import moment from 'moment'
-
 import { route } from './app.route';
 import { AccueilComponent } from './accueil/accueil.component';
 import HeaderComponent from './header/header.component';
