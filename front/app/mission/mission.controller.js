@@ -18,7 +18,7 @@ export default class MissionController {
         dateDisabled: disabled,
         formatYear: 'yy',
         maxDate: new Date(2020, 5, 22),
-        minDate: this.dateDebut,
+        minDate: this.dateDebut? this.dateDebut : new Date(),
         startingDay: 1
     };
 
@@ -127,14 +127,34 @@ export default class MissionController {
 			})
   }
 
+  findNature(id) {
+    return this.natures.find(nature => nature.id == id)
+  }
+
   creerMission() {
     this.MissionService.postMission(this.dateDebut, this.dateFin, this.nature, this.villeDepart, this.villeArrivee, this.transport, this.statut, this.utilisateurMatricule)
       .then(success => {this.MissionService.popupSuccess()},
             error => {this.MissionService.popupFailure()})
   }
 
-  changeDateDebutOptions() {
+  changeDateDebut() {
     this.callTransportIsAvionCondition()
+    if (!this.dateDebut) {
+      this.dateOptions2.minDate = new Date()
+    } else {
+      this.dateOptions2.minDate = this.dateDebut
+    }
+
+    this.estimerPrime()
+  }
+
+  changeDateFin() {
+    this.estimerPrime()
+  }
+
+  changeTransport() {
+    this.callTransportIsAvionCondition()
+    this.estimerPrime()
   }
 
   callTransportIsAvionCondition() {
@@ -151,8 +171,10 @@ export default class MissionController {
           this.dateOptions.minDate = todayPlus7Days.toDate()
           this.dateOptions2.minDate = this.dateOptions.minDate
 
-          this.dateDebut = this.moment(this.dateDebut).add(7, 'days').toDate()
+          this.dateDebut = null
           this.dateFin = null
+
+          this.todayPlus7Days = todayPlus7Days.format('D/MM/YYYY')
         } else if (this.transportIsAvionCondition) {
           this.dateOptions.minDate = todayPlus7Days.toDate()
           this.dateOptions2.minDate = this.dateOptions.minDate
@@ -163,11 +185,6 @@ export default class MissionController {
       }
 
     }
-  }
-
-  changeDateFinOptions() {
-    this.callTransportIsAvionCondition()
-    this.dateOptions2.minDate = this.dateDebut
   }
 
   updateOrderEtTri(order) {
@@ -181,5 +198,24 @@ export default class MissionController {
   open2() {
       this.popup2.opened = true;
   };
+
+  estimerPrime() {
+    if (this.nature && this.dateDebut && this.dateFin) {
+      // Récupération de l'objet nature correspondant au libellé choisi par l'utilisateur
+      let nature = this.findNature(this.nature.id)
+      console.log('nature :', nature);
+      // Calcul du nb jours mission
+      let dateFin = this.moment(this.dateFin)
+      let dateDebut = this.moment(this.dateDebut)
+      let nbJoursMissions = dateFin.diff(dateDebut, 'days')+1
+      console.log('nbJoursMissions :', nbJoursMissions);
+      // Calcul déduction des frais (estimation) = plafond note de frais * nb jours missions
+      let deduction = nature.plafondFrais * nbJoursMissions
+      console.log('deduction :', deduction);
+      // Calcul estimation prime = nbJoursMission * tjm * tauxPrime(%) - deduction
+      this.estimationPrime = nbJoursMissions * nature.tjm * nature.tauxPrime - deduction
+      console.log('estimationPrime :', this.estimationPrime);
+    }
+  }
 
 }
