@@ -105,6 +105,9 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert2.setDateDebut(LocalDate.of(2017, 3, 1));
 		missionRobert2.setDateFin(LocalDate.of(2017, 3, 6));
 		missionRobert2.setNatureMissionInit(natureExpertise);
+		missionRobert2.setVilleDepart(villeAngers);
+		missionRobert2.setVilleArrivee(villeParis);
+		missionRobert2.setTransport(transportTrain);
 		missionRobert2.setStatut(statutInitiale);
 		missionRobert2.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert2);
@@ -122,6 +125,9 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert3.setDateDebut(LocalDate.of(2016, 10, 1));
 		missionRobert3.setDateFin(LocalDate.of(2016, 11, 6));
 		missionRobert3.setNatureMissionInit(natureFormation);
+		missionRobert3.setVilleDepart(villeBordeaux);
+		missionRobert3.setVilleArrivee(villeNantes);
+		missionRobert3.setTransport(transportCovoit);
 		missionRobert3.setStatut(statutInitiale);
 		missionRobert3.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert3);
