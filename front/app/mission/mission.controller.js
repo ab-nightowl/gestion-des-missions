@@ -20,7 +20,7 @@ export default class MissionController {
     };
     // Disable weekend selection
     function disabled(data) {
-        var date = data.date,
+        let date = data.date,
             mode = data.mode;
         return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
     }
@@ -36,9 +36,9 @@ export default class MissionController {
         opened: false
     };
 
-    var tomorrow = new Date();
+    let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    var afterTomorrow = new Date();
+    let afterTomorrow = new Date();
     afterTomorrow.setDate(tomorrow.getDate() + 1);
     this.events = [
         {
@@ -52,13 +52,13 @@ export default class MissionController {
     ];
 
     function getDayClass(data) {
-        var date = data.date,
+        let date = data.date,
             mode = data.mode;
         if (mode === 'day') {
-            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+            let dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-            for (var i = 0; i < this.events.length; i++) {
-                var currentDay = new Date(this.events[i].date).setHours(0, 0, 0, 0);
+            for (let i = 0; i < this.events.length; i++) {
+                let currentDay = new Date(this.events[i].date).setHours(0, 0, 0, 0);
 
                 if (dayToCheck === currentDay) {
                     return this.events[i].status;

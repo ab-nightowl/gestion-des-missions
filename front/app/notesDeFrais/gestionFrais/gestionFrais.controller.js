@@ -44,12 +44,12 @@ export default class gestionFraisCtrl {
     }
 
     buildTableBody(data, columns) {
-        var body = [];
+        let body = [];
 
         body.push(columns);
 
         data.forEach(function (row) {
-            var dataRow = [];
+            let dataRow = [];
 
             columns.forEach(function (column) {
                 dataRow.push(row[column].toString());
