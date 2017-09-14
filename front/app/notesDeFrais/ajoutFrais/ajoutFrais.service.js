@@ -1,4 +1,4 @@
-import popupSuccess from "../modal/ajoutsuccess.html"
+import popupSuccess from "../modal/ajoutsuccess.1.html"
 import popupFailure from "../modal/ajoutfailure.html"
 import popupCtrl from "../modal/popup.controller"
 

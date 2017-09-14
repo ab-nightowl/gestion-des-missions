@@ -50,14 +50,28 @@ export default class detailGestionFraisCtrl {
         this.fraisMission.forEach(element => {
             this.sommeFrais += element.montant
         });
-
         this.plafond = this.detailMission.natureMissionInit.plafondFrais
+        let debutMission = new Date(this.detailMission.dateDebut)
+        let finMission = new Date(this.detailMission.dateFin)
+        this.nbJourMission = this.dateDiff(debutMission, finMission)
+        this.deductionPrime = this.sommeFrais - (this.plafond * this.nbJourMission.day)
+    }
+    dateDiff(date1, date2) {
+        var diff = {}                           // Initialisation du retour
+        var tmp = date2 - date1;
 
-        let debutMission = this.moment(this.detailMission.dateDebut)
-        let finMission = this.moment(this.detailMission.dateFin)
-        let nbJourMission = debutMission.to(finMission, true)
-        this.nbJour = nbJourMission.split(' ')
+        tmp = Math.floor(tmp / 1000);             // Nombre de secondes entre les 2 dates
+        diff.sec = tmp % 60;                    // Extraction du nombre de secondes
 
-        this.deductionPrime = this.sommeFrais - (this.plafond * this.nbJour[0])
+        tmp = Math.floor((tmp - diff.sec) / 60);    // Nombre de minutes (partie entière)
+        diff.min = tmp % 60;                    // Extraction du nombre de minutes
+
+        tmp = Math.floor((tmp - diff.min) / 60);    // Nombre d'heures (entières)
+        diff.hour = tmp % 24;                   // Extraction du nombre d'heures
+
+        tmp = Math.floor((tmp - diff.hour) / 24);   // Nombre de jours restants
+        diff.day = tmp;
+
+        return diff;
     }
 }
