@@ -22,12 +22,13 @@
             <li ng-class="{ active: $ctrl.isCurrentPath('/note-de-frais/gestion')}"><a href="{{ $ctrl.publicPath }}note-de-frais/gestion">Gestion note des frais</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/natures')}" ng-if="$ctrl.userRole === $ctrl.roles.admin"><a href="{{ $ctrl.publicPath }}missions/natures">Natures de mission</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/validation')}" ng-if="$ctrl.userRole === $ctrl.roles.manager"><a href="{{ $ctrl.publicPath }}missions/validation">Validation des missions</a></li>
+            <li ng-if="$ctrl.userRole === $ctrl.roles.admin"><btn class="btn btn-default" ng-click="$ctrl.runTdn()" style="margin-top: 10px; margin-left: 15px">Lancer TDN</btn></li>
         </ul>
         <div class="navbar-form navbar-right text-center">
             <div ng-cloak>
                 {{ $ctrl.user.prenom }} {{ $ctrl.user.nom }}
             </div>
-            <button class="btn btn-warning" ng-click="$ctrl.loginService.disconnect()">Se déconnecter</button>
+            <button class="btn btn-danger" ng-click="$ctrl.loginService.disconnect()">Se déconnecter</button>
         </div>
     </div>
     <!-- /.navbar-collapse -->
