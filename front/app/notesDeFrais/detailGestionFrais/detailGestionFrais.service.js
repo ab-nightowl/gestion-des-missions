@@ -1,5 +1,9 @@
 import popupFraisSuppr from "../modal/fraisSuppr.html"
 import popupCtrl2 from "../modal/popup.controller.2"
+
+import popupSuccess from "../modal/validationSuccess.html"
+import popupFailure from "../modal/validationFailure.html"
+import popupCtrl3 from "../modal/popup.controller.3"
 export default class detailGestionFraisService {
     constructor(apiUrls, $http, $uibModal, $window, $location) {
         this.apiUrls = apiUrls
@@ -23,6 +27,30 @@ export default class detailGestionFraisService {
             }, response => { })
     }
 
+    suppr(idFrais) {
+        this.$http.delete(this.apiUrls.frais + "/" + idFrais)
+        this.$window.location.reload();
+    }
+
+    validerNoteDeFrais(mission){
+        this.$http.put(this.apiUrls.missions, mission)
+    }
+
+    popupSuccess(){
+        this.$uibModal.open({
+            template: popupSuccess,
+            controller: popupCtrl3,
+            controllerAs: '$ctrl'
+        });
+    }
+
+    popupFailure(){
+        this.$uibModal.open({
+            template: popupFailure,
+            controller: popupCtrl3,
+            controllerAs: '$ctrl'
+        });
+    }
 
     popupFraisSuppr(idFrais, dateCreationFrais, natureLibelle, montantFrais) {
         this.$uibModal.open({
@@ -36,16 +64,5 @@ export default class detailGestionFraisService {
                 montantFrais: () => montantFrais
             }
         });
-    }
-
-    suppr(idFrais) {
-        this.$http.delete(this.apiUrls.frais + "/" + idFrais)
-        this.$window.location.reload();
-    }
-
-    validerNoteDeFrais(mission){
-        this.$http.put(this.apiUrls.missions, mission)
-        this.$location.path('/note-de-frais/gestion')
-        this.$window.location.reload();
     }
 }
