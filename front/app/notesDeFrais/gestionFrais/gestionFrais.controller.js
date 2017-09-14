@@ -98,6 +98,7 @@ export default class gestionFraisCtrl {
     }
 
     creerPdf() {
+        this.calculDeductionPrime()
         this.frais = []
         this.fraisMission.forEach(element => {
             this.frais.push({
@@ -131,7 +132,7 @@ export default class gestionFraisCtrl {
                             ],
                             [
                                 { border: [false, false, false, false], text: "Ville de départ : " + this.detailMission.villeDepart.libelle },
-                                { border: [false, false, false, false], text: this.detailMission.deductionPrime <= 0 ? 'Déduction prime : 0€' : this.detailMission.deductionPrime == null ? 'Déduction prime : 0€' : "Déduction prime : " + this.detailMission.deductionPrime + "€" }
+                                { border: [false, false, false, false], text: this.deductionPrime <= 0 ? 'Déduction prime : 0€' : this.deductionPrime == null ? 'Déduction prime : 0€' : "Déduction prime : " + this.deductionPrime + "€" }
                             ],
                             [
                                 { border: [false, false, false, false], text: "Ville d'arrivée : " + this.detailMission.villeArrivee.libelle },
@@ -169,5 +170,37 @@ export default class gestionFraisCtrl {
         sessionStorage.setItem("dateDebut", dateDebut)
         sessionStorage.setItem("dateFin", dateFin)
     }
+
+    calculDeductionPrime() {
+        this.sommeFrais = 0
+        this.fraisMission.forEach(element => {
+            this.sommeFrais += element.montant
+        });
+        this.plafond = this.detailMission.natureMissionInit.plafondFrais
+        let debutMission = new Date(this.detailMission.dateDebut)
+        let finMission = new Date(this.detailMission.dateFin)
+        this.nbJourMission = this.dateDiff(debutMission, finMission)
+        this.deductionPrime = this.sommeFrais - (this.plafond * this.nbJourMission.day)
+    }
+
+    dateDiff(date1, date2) {
+        var diff = {}                           // Initialisation du retour
+        var tmp = date2 - date1;
+
+        tmp = Math.floor(tmp / 1000);             // Nombre de secondes entre les 2 dates
+        diff.sec = tmp % 60;                    // Extraction du nombre de secondes
+
+        tmp = Math.floor((tmp - diff.sec) / 60);    // Nombre de minutes (partie entière)
+        diff.min = tmp % 60;                    // Extraction du nombre de minutes
+
+        tmp = Math.floor((tmp - diff.min) / 60);    // Nombre d'heures (entières)
+        diff.hour = tmp % 24;                   // Extraction du nombre d'heures
+
+        tmp = Math.floor((tmp - diff.hour) / 24);   // Nombre de jours restants
+        diff.day = tmp;
+
+        return diff;
+    }
+
 
 }
