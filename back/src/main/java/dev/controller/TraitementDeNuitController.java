@@ -17,7 +17,7 @@ public class TraitementDeNuitController {
 	@RequestMapping(method = RequestMethod.GET, path = "/execute")
 	public String executeTraitementDeNuit() {
 		serviceTdn.traitement();
-		return "Traitement was executed!";
+		return "{ \"msg\": \"Traitement de nuit exécuté avec succès.\" }";
 	}
 	
 }
