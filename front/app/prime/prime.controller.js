@@ -53,7 +53,7 @@ export default class primeCtrl {
                 return missions.data
             },
             error => {
-                console.log("loginService: checkUser(): error:", error);
+                // console.log("loginService: checkUser(): error:", error);
             })
             .then(missions => {
                 return missions.filter(
@@ -71,7 +71,7 @@ export default class primeCtrl {
         this.showedMissions = this.missions.filter(mission => this.getYearOfDate(mission.dateFin) === year)
         
         let valuesY = new Array(12).fill(0)        
-        let selectedPrimes = this.showedMissions.forEach(mission => {
+        this.showedMissions.forEach(mission => {
             valuesY[this.getMonthOfDate(mission.dateFin) - 1] += mission.prime
         })
 
@@ -81,8 +81,8 @@ export default class primeCtrl {
     }
 
     createGraph(year, values, labelsX) {
-        var ctx = "myChart"
-        var myChart = new this.chartjs(ctx, {
+        let ctx = "myChart"
+        new this.chartjs(ctx, {
             type: 'line',
             data: {
                 labels: labelsX,

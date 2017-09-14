@@ -10,7 +10,7 @@
       <label class="col-md-4 control-label" for="input-date-debut">Date de début*</label>
       <div class="col-md-4">
         <p class="input-group">
-            <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dateDebut" is-open="$ctrl.popup1.opened" datepicker-options="$ctrl.dateOptions"
+            <input type="text" class="form-control" uib-datepicker-popup="{{$ctrl.format}}" ng-model="$ctrl.dateDebut" ng-change="$ctrl.changeDateDebut()"  is-open="$ctrl.popup1.opened" datepicker-options="$ctrl.dateOptions"
                 ng-required="true" close-text="Close" id="input-date-debut" name="dateDebut"/>
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="$ctrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -20,6 +20,7 @@
       <div ng-show="formCreerMission.dateDebut.$dirty || formCreerMission.dateDebut.$touched" role="alert" class="col-md-offset-4 col-md-4">
         <p ng-show="formCreerMission.dateDebut.$error.required" class="text-alert">Date de début de mission requise</p>
         <p ng-show="formCreerMission.dateDebut.$error.date" class="text-alert">Date non valide</p>
+        <p ng-show="$ctrl.transportIsAvionCondition && $ctrl.dateCondition" class="text-alert">Une anticipation de 7 jours est exigée pour ce type de transport (Avion) : veuillez choisir une date de début de mission à partir du {{$ctrl.todayPlus7Days}} svp</p>
       </div>
     </div>
 
@@ -28,7 +29,7 @@
       <label class="col-md-4 control-label" for="input-date-fin">Date de fin*</label>
       <div class="col-md-4">
         <p class="input-group">
-            <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dateFin" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions"
+            <input type="text" class="form-control" uib-datepicker-popup="{{$ctrl.format}}" ng-model="$ctrl.dateFin" ng-change="$ctrl.changeDateFin()" is-open="$ctrl.popup2.opened" datepicker-options="$ctrl.dateOptions2"
                 ng-required="true" close-text="Close" id="input-date-fin" name="dateFin"/>
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="$ctrl.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -45,7 +46,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="select-nature">Nature*</label>
       <div class="col-md-4">
-        <select ng-model="$ctrl.nature" ng-options="nature.libelle for nature in $ctrl.natures track by nature.id" name="nature" id="select-nature" class="form-control" ng-required="true">
+        <select ng-model="$ctrl.nature" ng-options="nature.libelle for nature in $ctrl.natures track by nature.id" ng-change="$ctrl.estimerPrime()" name="nature" id="select-nature" class="form-control" ng-required="true">
         </select>
       </div>
       <div ng-show="formCreerMission.nature.$touched" role="alert" class="col-md-offset-4 col-md-4">
@@ -83,7 +84,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="select-transport">Transport*</label>
       <div class="col-md-4">
-        <select ng-model="$ctrl.transport" ng-options="transport.libelle for transport in $ctrl.transports track by transport.id" name="transport" id="select-transport" class="form-control" ng-required="true">
+        <select ng-model="$ctrl.transport" ng-change="$ctrl.changeTransport()" ng-options="transport.libelle for transport in $ctrl.transports track by transport.id" name="transport" id="select-transport" class="form-control" ng-required="true">
         </select>
       </div>
       <div ng-show="formCreerMission.transport.$touched" role="alert" class="col-md-offset-4 col-md-4">
@@ -96,8 +97,8 @@
       <label class="col-md-4 control-label" for="text-prime">Estimation prime</label>
       <div class="col-md-4">
         <p name="prime" id="text-prime">
-          <span ng-show="!($ctrl.nature)">0</span>
-          <span ng-show="$ctrl.nature.id">prime {{$ctrl.nature.libelle}} = ...</span>
+          <span ng-show="!($ctrl.nature) && !($ctrl.dateDebut) && !($ctrl.dateFin)">0</span>
+          <span ng-show="$ctrl.nature.id && $ctrl.dateDebut && $ctrl.dateFin">{{$ctrl.estimationPrime}}</span>
           €
         </p>
       </div>
@@ -120,8 +121,8 @@
         <p name="depassementFrais" id="text-depassement" >
           <span ng-show="!($ctrl.nature)">-</span>
           <span ng-show="$ctrl.nature.id" >
-            <span ng-show="$ctrl.nature.depassementFrais == true">oui</span>
-            <span ng-show="$ctrl.nature.depassementFrais == false">non</span>
+            <span ng-show="$ctrl.nature.depassementFrais == true">Oui</span>
+            <span ng-show="$ctrl.nature.depassementFrais == false">Non</span>
           </span>
         </p>
       </div>

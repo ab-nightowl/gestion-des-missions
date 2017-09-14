@@ -1,7 +1,12 @@
+import popupSuccess from "./modal/creerMissionSuccess.html"
+import popupFailure from "./modal/creerMissionFailure.html"
+import popupCtrl from "./modal/popup.controller"
+
 export default class MissionService {
-  constructor($http, apiUrls) {
+  constructor($http, apiUrls, $uibModal) {
     this.$http = $http
     this.apiUrls = apiUrls
+    this.$uibModal = $uibModal
   }
 
   getAllMissions() {
@@ -18,7 +23,7 @@ export default class MissionService {
   }
 
   getAllNatures() {
-    return this.$http.get(this.apiUrls.naturesMissions)
+    return this.$http.get(`${this.apiUrls.naturesMissions}/lister`)
       .then((resp) => {
         return resp.data
       }, (resp) => {
@@ -58,7 +63,7 @@ export default class MissionService {
 
   postMission(dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut, utilisateurMatricule) {
     if (!dateDebut || !dateFin || !nature || !villeDepart || !villeArrivee || !transport || !statut || !utilisateurMatricule) {
-      alert("Vous devez remplir tous les champs")
+      // Display error somehow
     } else {
 
       let mission = {
@@ -75,12 +80,24 @@ export default class MissionService {
 
       let tabMissions = []
 
-      this.$http.post(this.apiUrls.missions, mission)
-        .then((resp) => {alert("La demande de mission a bien été envoyée")},
-              (resp) => {alert("Erreur : la demande de mission n'a pas pu être envoyée")}
-        )
+      return this.$http.post(this.apiUrls.missions, mission)
     }
 
+  }
+
+  popupSuccess(){
+    this.$uibModal.open({
+      template: popupSuccess,
+      controller: popupCtrl,
+      controllerAs: '$ctrl'
+    });
+  }
+  popupFailure(){
+    this.$uibModal.open({
+      template: popupFailure,
+      controller: popupCtrl,
+      controllerAs: '$ctrl'
+    });
   }
 
   findMissionsByUtilisateur(utilisateurMatricule) {

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,6 +22,7 @@ import dev.entite.Utilisateur;
 
 @Service
 public class UtilisateurService {
+	private static final Logger log = LoggerFactory.getLogger(UtilisateurService.class);
 	
 	private List<Utilisateur> utilisateurs;
 	private ObjectMapper objectMapper;
@@ -49,7 +52,8 @@ public class UtilisateurService {
 		try {
 			utilisateurs = objectMapper.readValue(utilisateursRetrieved, mapTypeUser);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.debug("Exception in UtilisateurService while mapping retrieved list to uilisateur object. Message is: "
+					+ e.getMessage());
 		}
 		
 		return utilisateurs;

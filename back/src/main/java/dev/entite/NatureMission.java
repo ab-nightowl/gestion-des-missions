@@ -1,5 +1,7 @@
 package dev.entite;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,13 +21,14 @@ public class NatureMission {
 	private double plafondFrais;
 	private boolean depassementFrais;
 	private boolean actif;
+	private LocalDate dateDebutValidite;
 	
 	public NatureMission() {
 		super();
 	}
-
+	
 	public NatureMission(String libelle, boolean facture, boolean versementPrime, double tauxPrime, double tjm,
-			double plafondFrais, boolean depassementFrais, boolean actif) {
+			double plafondFrais, boolean depassementFrais, boolean actif, LocalDate dateDebutValidite) {
 		super();
 		this.libelle = libelle;
 		this.facture = facture;
@@ -35,8 +38,9 @@ public class NatureMission {
 		this.plafondFrais = plafondFrais;
 		this.depassementFrais = depassementFrais;
 		this.actif = actif;
+		this.dateDebutValidite = dateDebutValidite;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -107,5 +111,34 @@ public class NatureMission {
 	
 	public void setActif(boolean actif) {
 		this.actif = actif;
+	}
+	
+	public LocalDate getDateDebutValidite() {
+		return dateDebutValidite;
+	}
+	
+	public void setDateDebutValidite(LocalDate dateDebutValidite) {
+		this.dateDebutValidite = dateDebutValidite;
+	}
+	
+	public boolean hasSameAttributesValues(NatureMission nature) {
+		if (this == nature) {
+			return true;
+		}
+		
+		return (this.facture == nature.facture) && (this.versementPrime == nature.versementPrime)
+				&& (this.areFloatsEqual(this.tauxPrime, nature.tauxPrime))
+				&& (this.areFloatsEqual(this.tjm, nature.tjm))
+				&& (this.areFloatsEqual(this.plafondFrais, nature.plafondFrais))
+				&& (this.depassementFrais == nature.depassementFrais);
+	}
+	
+	public boolean hasAllAttributes() {
+		return this.getLibelle()
+				.length() > 0 && this.getPlafondFrais() > 0 && this.getTauxPrime() > 0 && this.getTjm() > 0;
+	}
+	
+	private boolean areFloatsEqual(double fl1, double fl2) {
+		return Math.abs(fl1 - fl2) < 0.00000001;
 	}
 }
