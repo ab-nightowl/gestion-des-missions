@@ -7,7 +7,7 @@ export default class PopupController {
     valider(successOrFailure) {
         this.$uibModalInstance.close();
         if (successOrFailure == 1) {
-            this.$location.path('/missions/lister')
+            this.$location.path('/missions/gestion')
         }
     }
 

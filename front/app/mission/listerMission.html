@@ -1,6 +1,6 @@
 <section id="liste-missions">
   <h1 class="text-center">Gestion des Missions</h1>
-
+  <br>
   <table class="table ">
     <thead>
       <tr>
@@ -53,20 +53,43 @@
 
     <tbody>
         <tr ng-repeat="mission in $ctrl.missionsUtilisateur | orderBy:$ctrl.order:$ctrl.triInverse">
-            <td class="text-center">{{mission.dateDebut}}</td>
-            <td class="text-center">{{mission.dateFin}}</td>
+            <td class="text-center">{{mission.dateDebut | date:'dd/MM/yyyy'}}</td>
+            <td class="text-center">{{mission.dateFin | date:'dd/MM/yyyy'}}</td>
             <td class="text-center">{{mission.natureMissionInit.libelle}}</td>
-            <td class="text-center">{{mission.villeDepart.libelle}}</td>
-            <td class="text-center">{{mission.villeArrivee.libelle}}</td>
-            <td class="text-center">{{mission.transport.libelle}}</td>
-            <td class="text-center">{{mission.statut}}</td>
+
             <td class="text-center">
-                <a disabled href="/gestion-des-missions/missions/modifier" class="btn btn-default" ng-show="(mission.statut == 'DEMANDE_INITIALE') || (mission.statut == 'DEMANDE_REJETEE')">
+              <span ng-show="mission.natureMissionInit.libelle != 'MISSION'">{{mission.villeDepart.libelle}}</span>
+              <span ng-show="mission.natureMissionInit.libelle == 'MISSION'">-</span>
+            </td>
+
+            <td class="text-center">
+              <span ng-show="mission.natureMissionInit.libelle != 'MISSION'">{{mission.villeArrivee.libelle}}</span>
+              <span ng-show="mission.natureMissionInit.libelle == 'MISSION'">-</span>
+            </td>
+
+            <td class="text-center">
+              <span ng-show="mission.natureMissionInit.libelle != 'MISSION'">{{mission.transport.libelle}}</span>
+              <span ng-show="mission.natureMissionInit.libelle == 'MISSION'">-</span>
+            </td>
+
+            <td class="text-center">{{mission.statut}}</td>
+
+            <td class="text-center">
+              <span ng-repeat="action in mission.actions">
+
+                <a disabled href="/gestion-des-missions/missions/modifier" ng-show="action == 'modification'" class="btn btn-default">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </a>
-                <a disabled href="/gestion-des-missions/missions/supprimer" class="btn btn-default">
+
+                <a disabled href="/gestion-des-missions/missions/supprimer" ng-show="action == 'suppression'" class="btn btn-default">
                     <span class="glyphicon glyphicon-trash"></span>
                 </a>
+
+                <a href="https://diginamicformation.github.io/gestion-des-absences/absence" ng-show="action == 'visualisation'" class="btn btn-default">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+
+              </span>
             </td>
         </tr>
     </tbody>
