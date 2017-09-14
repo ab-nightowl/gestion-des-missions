@@ -42,6 +42,7 @@ angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,
     .constant('roles', {
         all: "*",
         allAuthentificated: "auth",
+        allNotAuthentificated: "notAuth",
         admin: "ROLE_ADMINISTRATEUR",
         manager: "ROLE_MANAGER",
         employe: "ROLE_EMPLOYE"
@@ -51,6 +52,9 @@ angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,
             if (!next.data || next.data.role[0] === roles.all) {
                 // All good to go
             } else if (loginService.isConnected()) {
+                if(next.data.role[0] === roles.allNotAuthentificated) {
+                    $location.path('/')
+                }
                 if (next.data.role[0] !== roles.allAuthentificated) {
                     let userRole = loginService.getUserRole()
                     if (!userRole) {

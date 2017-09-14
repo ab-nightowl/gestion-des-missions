@@ -24,7 +24,7 @@ export default class MissionController {
 
     // Disable weekend selection
     function disabled(data) {
-        var date = data.date,
+        let date = data.date,
             mode = data.mode;
         return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
     }
@@ -40,9 +40,9 @@ export default class MissionController {
         opened: false
     };
 
-    var tomorrow = new Date();
+    let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    var afterTomorrow = new Date();
+    let afterTomorrow = new Date();
     afterTomorrow.setDate(tomorrow.getDate() + 1);
     this.events = [
         {
@@ -56,13 +56,13 @@ export default class MissionController {
     ];
 
     function getDayClass(data) {
-        var date = data.date,
+        let date = data.date,
             mode = data.mode;
         if (mode === 'day') {
-            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+            let dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-            for (var i = 0; i < this.events.length; i++) {
-                var currentDay = new Date(this.events[i].date).setHours(0, 0, 0, 0);
+            for (let i = 0; i < this.events.length; i++) {
+                let currentDay = new Date(this.events[i].date).setHours(0, 0, 0, 0);
 
                 if (dayToCheck === currentDay) {
                     return this.events[i].status;
@@ -87,44 +87,35 @@ export default class MissionController {
 
   findMissionsUtilisateur() {
     this.MissionService.findMissionsByUtilisateur(this.utilisateurMatricule)
-      .then(tabMissions => {return this.missionsUtilisateur = tabMissions},
-            info => alert(info))
+      .then(tabMissions => {return this.missionsUtilisateur = tabMissions})
   }
 
   findAllMissions() {
     this.MissionService.getAllMissions()
       .then((tabMissions) => {
         this.missions = tabMissions
-      }, (errorStatus) => {
-				alert(`Status: $(errorStatus.code) - $(errorStatus.text)`)
-			})
+      })
   }
 
   findAllNatures() {
     this.MissionService.getAllNatures()
       .then((tabNatures) => {
         this.natures = tabNatures
-      }, (errorStatus) => {
-				alert(`Status: $(errorStatus.code) - $(errorStatus.text)`)
-			})
+      })
   }
 
   findAllVilles() {
     this.MissionService.getAllVilles()
       .then((tabVilles) => {
         this.villes = tabVilles
-      }, (errorStatus) => {
-				alert(`Status: $(errorStatus.code) - $(errorStatus.text)`)
-			})
+      })
   }
 
   findAllTransports() {
     this.MissionService.getAllTransports()
       .then((tabTransports) => {
         this.transports = tabTransports
-      }, (errorStatus) => {
-				alert(`Status: $(errorStatus.code) - $(errorStatus.text)`)
-			})
+      })
   }
 
   findNature(id) {
@@ -203,18 +194,14 @@ export default class MissionController {
     if (this.nature && this.dateDebut && this.dateFin) {
       // Récupération de l'objet nature correspondant au libellé choisi par l'utilisateur
       let nature = this.findNature(this.nature.id)
-      console.log('nature :', nature);
       // Calcul du nb jours mission
       let dateFin = this.moment(this.dateFin)
       let dateDebut = this.moment(this.dateDebut)
       let nbJoursMissions = dateFin.diff(dateDebut, 'days')+1
-      console.log('nbJoursMissions :', nbJoursMissions);
       // Calcul déduction des frais (estimation) = plafond note de frais * nb jours missions
       let deduction = nature.plafondFrais * nbJoursMissions
-      console.log('deduction :', deduction);
       // Calcul estimation prime = nbJoursMission * tjm * tauxPrime(%) - deduction
       this.estimationPrime = nbJoursMissions * nature.tjm * nature.tauxPrime - deduction
-      console.log('estimationPrime :', this.estimationPrime);
     }
   }
 

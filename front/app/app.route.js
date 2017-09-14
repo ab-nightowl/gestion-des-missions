@@ -66,7 +66,7 @@ export function route($routeProvider, $locationProvider, roles) {
         .when('/connexion', {
             template: '<login-component></login-component>',
             data: {
-                role: [roles.all]
+                role: [roles.allNotAuthentificated]
             }
         })
         .otherwise({

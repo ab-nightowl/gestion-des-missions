@@ -63,7 +63,7 @@ export default class MissionService {
 
   postMission(dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut, utilisateurMatricule) {
     if (!dateDebut || !dateFin || !nature || !villeDepart || !villeArrivee || !transport || !statut || !utilisateurMatricule) {
-      alert("Vous devez remplir tous les champs")
+      // Display error somehow
     } else {
 
       let mission = {

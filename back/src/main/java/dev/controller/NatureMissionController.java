@@ -40,7 +40,10 @@ public class NatureMissionController {
 		
 		// Jamais deux natures avec tous les memes attributs
 		if (natures.stream()
-				.anyMatch(nature -> nature.compareTo(natureMission))) {
+				.anyMatch(nature -> {
+					System.out.println(nature.hasSameAttributesValues(natureMission));
+					return nature.hasSameAttributesValues(natureMission);
+				})) {
 			return "{ \"msg\": \"Une nature avec les mêmes attributs existe déjà\" }";
 		}
 		
