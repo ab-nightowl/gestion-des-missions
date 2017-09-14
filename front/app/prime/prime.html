@@ -9,7 +9,7 @@
                 <option ng-repeat="year in $ctrl.yearsAvailable" value="{{year}}">{{year}}</option>
             </select>
         </div>
-        <button class="btn btn-default" style="padding: 0" ng-click="$ctrl.exportDataAsExcel()">
+        <button disabled class="btn btn-default" style="padding: 0" ng-click="$ctrl.exportDataAsExcel()">
             <img src="/gestion-des-missions/assets/images/logo-excel.jpg" width="30px" />
         </button>
     </div>

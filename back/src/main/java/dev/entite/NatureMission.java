@@ -1,5 +1,7 @@
 package dev.entite;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,13 +21,14 @@ public class NatureMission {
 	private double plafondFrais;
 	private boolean depassementFrais;
 	private boolean actif;
+	private LocalDate dateDebutValidite;
 	
 	public NatureMission() {
 		super();
 	}
-
+	
 	public NatureMission(String libelle, boolean facture, boolean versementPrime, double tauxPrime, double tjm,
-			double plafondFrais, boolean depassementFrais, boolean actif) {
+			double plafondFrais, boolean depassementFrais, boolean actif, LocalDate dateDebutValidite) {
 		super();
 		this.libelle = libelle;
 		this.facture = facture;
@@ -35,8 +38,9 @@ public class NatureMission {
 		this.plafondFrais = plafondFrais;
 		this.depassementFrais = depassementFrais;
 		this.actif = actif;
+		this.dateDebutValidite = dateDebutValidite;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -107,5 +111,34 @@ public class NatureMission {
 	
 	public void setActif(boolean actif) {
 		this.actif = actif;
+	}
+	
+	public LocalDate getDateDebutValidite() {
+		return dateDebutValidite;
+	}
+	
+	public void setDateDebutValidite(LocalDate dateDebutValidite) {
+		this.dateDebutValidite = dateDebutValidite;
+	}
+	
+	public boolean compareTo(NatureMission nature) {
+		if (this == nature) {
+			return true;
+		}
+		if (!(nature instanceof NatureMission)) {
+			return false;
+		}
+		
+		NatureMission that = nature;
+		return (this.libelle == that.libelle) && (this.facture == that.facture)
+				&& (this.versementPrime == that.versementPrime) && (this.tauxPrime == that.tauxPrime)
+				&& (this.tjm == that.tjm) && (this.plafondFrais == that.plafondFrais)
+				&& (this.depassementFrais == that.depassementFrais) && (this.actif == that.actif)
+				&& (this.dateDebutValidite == that.dateDebutValidite);
+	}
+	
+	public boolean hasAllAttributes() {
+		return this.getLibelle()
+				.length() > 0 && this.getPlafondFrais() > 0 && this.getTauxPrime() > 0 && this.getTjm() > 0;
 	}
 }

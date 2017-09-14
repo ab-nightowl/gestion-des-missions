@@ -7,8 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './assets/css/styles.css'
 import uibootstrap from 'angular-ui-bootstrap';
 
-import moment from 'moment'
-
 import { route } from './app.route';
 import { AccueilComponent } from './accueil/accueil.component';
 import HeaderComponent from './header/header.component';
@@ -19,6 +17,8 @@ import moment from 'moment'
 import notesDeFrais from './notesDeFrais/notesDeFrais.module.js'
 import login from './login/login.module'
 import missionModule from './mission/mission.module';
+import natureMissionModule from './natureMission/natureMission.module';
+import primeModule from './prime/prime.module';
 
 // Constant
 import apiUrls from './apiUrls.service'
@@ -28,7 +28,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,
-    missionModule.name])
+    missionModule.name, natureMissionModule.name, primeModule.name])
     .value('pdfMake', pdfmake)
     .value('apiUrl', API_URL)
     .value('publicPath', publicPath)
@@ -38,7 +38,6 @@ angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,
     .constant('moment', moment)
     .component('accueil', AccueilComponent)
     .component('header', HeaderComponent)
-    .component('primeComponent', PrimeComponent)
     .config(route)
     .constant('roles', {
         all: "*",

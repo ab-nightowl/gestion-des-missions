@@ -4,7 +4,7 @@ const apiUrls = {
     frais : `${API_URL}/frais/lister`,
     missions : `${API_URL}/missions/lister`,
     missionsEchues : `${API_URL}/missions/echues/lister`,
-    naturesMissions : `${API_URL}/naturesMissions/lister`,
+    naturesMissions : `${API_URL}/naturesMissions`,
     villes : `${API_URL}/villes/lister`,
     transports : `${API_URL}/transports/lister`,
     statuts : `${API_URL}/statuts/lister`

@@ -75,7 +75,6 @@ export default class modifFraisCtrl {
         this.modifFraisService.findFrais(this.idFrais)
             .then(frais => {
                 this.frais = frais
-                console.log(this.frais.dateCreation)
             })
     }
 }
