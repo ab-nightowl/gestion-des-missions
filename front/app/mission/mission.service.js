@@ -104,6 +104,51 @@ export default class MissionService {
     return this.$http.get(this.apiUrls.missions+'/'+utilisateurMatricule)
       .then(resp => {return resp.data},
             resp => {return "Erreur : la requête pour trouver les missions de l'utilisateur courant a échouée"})
+      .then(missions => {
+        return this.$http.get(this.apiUrls.absences+'/'+utilisateurMatricule)
+        .then(resp => {
+          this.addAbsencesToMissions(resp.data, missions)
+          this.addActions(missions)
+          return missions
+          }, resp => {return "Erreur : la requête pour trouver les absences de l'utilisateur courant a échouée"}
+        )
+      })
   }
 
+  addAbsencesToMissions(absences, missions) {
+    absences.forEach(abs => {
+      missions.push({
+        "dateDebut": abs.dateDebut,
+        "dateFin": abs.dateFin,
+        "natureMissionInit": {
+          "libelle": abs.type
+        },
+        "statut": abs.statut
+      })
+    })
+  }
+
+  // Permet de définir quelles actions sont possibles lors de la visualisation des missions
+  // Rajoute un tableau d'actions à la mission
+  addActions(missions) {
+      missions.forEach(m => {
+          m.actions = []
+
+          if(m.natureMissionInit.libelle != "MISSION" && (m.statut == "DEMANDE_INITIALE" || m.statut == "DEMANDE_REJETEE")) {
+              m.actions.push("modification")
+          }
+
+          if(m.natureMissionInit.libelle != "MISSION") {
+              let now = Date.now()
+              let dateDebut = new Date(m.dateDebut);
+              if(dateDebut >= now) {
+                  m.actions.push("suppression")
+              }
+          }
+
+          if(m.natureMissionInit.libelle == "MISSION") {
+              m.actions.push("visualisation")
+          }
+      })
+  }
 }
