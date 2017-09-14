@@ -12,9 +12,11 @@ import HeaderComponent from './header/header.component';
 import PrimeComponent from './prime/prime.component';
 
 // Modules
-import notesDeFrais from '../notesDeFrais/notesDeFrais.module.js'
+import notesDeFrais from './notesDeFrais/notesDeFrais.module.js'
 import login from './login/login.module'
 import missionModule from './mission/mission.module';
+import natureMissionModule from './natureMission/natureMission.module';
+import primeModule from './prime/prime.module';
 
 // Constant
 import apiUrls from './apiUrls.service'
@@ -24,7 +26,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,
-    missionModule.name])
+    missionModule.name, natureMissionModule.name, primeModule.name])
     .value('pdfMake', pdfmake)
     .value('apiUrl', API_URL)
     .value('publicPath', publicPath)
@@ -33,7 +35,6 @@ angular.module('app', [RouteModule, uibootstrap, notesDeFrais.name, login.name,
     .constant('apiUrls', apiUrls)
     .component('accueil', AccueilComponent)
     .component('header', HeaderComponent)
-    .component('primeComponent', PrimeComponent)
     .config(route)
     .constant('roles', {
         all: "*",

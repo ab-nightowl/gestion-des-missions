@@ -45,6 +45,18 @@ export function route($routeProvider, $locationProvider, roles) {
                 role: [roles.allAuthentificated]
             }
         })
+        .when('/missions/natures', {
+            template: '<gdm-lister-nature-mission></gdm-lister-nature-mission>',
+            data: {
+                role: [roles.admin]
+            }
+        })
+        .when('/missions/natures/creer', {
+            template: '<gdm-creer-nature-mission></gdm-creer-nature-mission>',
+            data: {
+                role: [roles.admin]
+            }
+        })
         .when('/connexion', {
             template: '<login-component></login-component>',
             data: {
