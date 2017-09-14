@@ -124,6 +124,17 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission4.setUtilisateurMatricule("8dd0b708");
 		em.persist(mission4);
 		
+		Mission mission5 = new Mission();
+		mission5.setDateDebut(LocalDate.of(2017, 9, 1));
+		mission5.setDateFin(LocalDate.of(2017, 9, 8));
+		mission5.setNatureMissionInit(natureExpertise);
+		mission5.setVilleDepart(nantes);
+		mission5.setVilleArrivee(angers);
+		mission5.setTransport(voiture);
+		mission5.setStatut(enAttente);
+		mission5.setUtilisateurMatricule("56eb7d01");
+		em.persist(mission5);
+
 		Stream.of("bd540e65", "75e8048c")
 				.forEach(matricule -> em.persist(new Administrateur(matricule)));
 		

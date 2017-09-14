@@ -38,6 +38,7 @@ public class Mission {
 	@Enumerated(EnumType.STRING)
 	private Statut statut;
 	private String utilisateurMatricule;
+	private boolean noteDeFraisValider;
 	
 	public Mission() {
 		super();
@@ -145,5 +146,13 @@ public class Mission {
 	
 	public void setUtilisateurMatricule(String utilisateurMatricule) {
 		this.utilisateurMatricule = utilisateurMatricule;
+	}
+
+	public boolean getNoteDeFraisValider() {
+		return noteDeFraisValider;
+	}
+
+	public void setNoteDeFraisValider(boolean noteDeFraisValider) {
+		this.noteDeFraisValider = noteDeFraisValider;
 	}
 }

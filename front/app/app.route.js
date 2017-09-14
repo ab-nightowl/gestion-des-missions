@@ -10,7 +10,13 @@ export function route($routeProvider, $locationProvider, roles) {
             }
         })
         .when('/ajout', {
-            template: '<gdm-ajout></gdm-ajout>',
+            template: '<h1>Nouveau Frais</h1><gdm-ajout></gdm-ajout>',
+            data: {
+                role: [roles.allAuthentificated]
+            }
+        })
+        .when('/modification/:msg', {
+            template: "<h1>Modification d'un Frais</h1><gdm-modif></gdm-modif>",
             data: {
                 role: [roles.allAuthentificated]
             }

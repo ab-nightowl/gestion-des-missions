@@ -1,11 +1,12 @@
 import popupFraisSuppr from "../modal/fraisSuppr.html"
 import popupCtrl2 from "../modal/popup.controller.2"
 export default class detailGestionFraisService {
-    constructor(apiUrls, $http, $uibModal, $window) {
+    constructor(apiUrls, $http, $uibModal, $window, $location) {
         this.apiUrls = apiUrls
         this.$http = $http
         this.$uibModal = $uibModal
         this.$window = $window
+        this.$location = $location
     }
 
     findMission(idMission) {
@@ -16,7 +17,7 @@ export default class detailGestionFraisService {
     }
 
     findFraisMission(idMission) {
-        return this.$http.get(this.apiUrls.frais + "/" + idMission)
+        return this.$http.get(this.apiUrls.frais + "ParM/" + idMission)
             .then(response => {
                 return response.data;
             }, response => { })
@@ -37,9 +38,14 @@ export default class detailGestionFraisService {
         });
     }
 
-    suppr(idFrais){
-        console.log(idFrais)
-        this.$http.delete(this.apiUrls.frais+"/"+idFrais)
+    suppr(idFrais) {
+        this.$http.delete(this.apiUrls.frais + "/" + idFrais)
+        this.$window.location.reload();
+    }
+
+    validerNoteDeFrais(mission){
+        this.$http.put(this.apiUrls.missions, mission)
+        this.$location.path('/note-de-frais/gestion')
         this.$window.location.reload();
     }
 }
