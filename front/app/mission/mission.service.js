@@ -132,12 +132,12 @@ export default class MissionService {
             resp => {return "Erreur : la requête pour trouver les missions de l'utilisateur courant a échouée"})
       .then(missions => {
         return this.$http.get(this.apiUrls.absences+'/'+utilisateurMatricule)
-        .then(resp => {
-          this.addAbsencesToMissions(resp.data, missions)
-          this.addActions(missions)
-          return missions
-          }, resp => {return "Erreur : la requête pour trouver les absences de l'utilisateur courant a échouée"}
-        )
+          .then(resp => {
+            this.addAbsencesToMissions(resp.data, missions)
+            this.addActions(missions)
+            return missions
+            }, resp => {return "Erreur : la requête pour trouver les absences de l'utilisateur courant a échouée"}
+          )
       })
   }
 
@@ -160,11 +160,14 @@ export default class MissionService {
       missions.forEach(m => {
           m.actions = []
 
-          if(m.natureMissionInit.libelle != "MISSION" && (m.statut == "DEMANDE_INITIALE" || m.statut == "DEMANDE_REJETEE")) {
+          let libelle = m.natureMissionInit.libelle
+          let natureAbsenceCondition = ((libelle == "MISSION") || (libelle == "CONGES_PAYES") || (libelle == "RTT") || (libelle == "CONGES_SANS_SOLDES"))
+
+          if(!natureAbsenceCondition && (m.statut == "DEMANDE_INITIALE" || m.statut == "DEMANDE_REJETEE")) {
               m.actions.push("modification")
           }
 
-          if(m.natureMissionInit.libelle != "MISSION") {
+          if(!natureAbsenceCondition) {
               let now = Date.now()
               let dateDebut = new Date(m.dateDebut);
               if(dateDebut >= now) {
@@ -172,7 +175,7 @@ export default class MissionService {
               }
           }
 
-          if(m.natureMissionInit.libelle == "MISSION") {
+          if(natureAbsenceCondition) {
               m.actions.push("visualisation")
           }
       })

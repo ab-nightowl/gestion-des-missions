@@ -58,8 +58,8 @@
             <td class="text-center">{{mission.natureMissionInit.libelle}}</td>
 
             <td class="text-center">
-              <span ng-show="mission.natureMissionInit.libelle != 'MISSION'">{{mission.villeDepart.libelle}}</span>
-              <span ng-show="mission.natureMissionInit.libelle == 'MISSION'">-</span>
+              <span ng-show="!($ctrl.natureAbsenceCondition)">{{mission.villeDepart.libelle}}</span>
+              <span ng-show="$ctrl.natureAbsenceCondition">-</span>
             </td>
 
             <td class="text-center">
