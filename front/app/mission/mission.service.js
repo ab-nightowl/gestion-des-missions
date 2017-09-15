@@ -3,6 +3,7 @@ import popupFailure from "./modal/creerMissionFailure.html"
 import popupSuppressionSuccess from "./modal/supprimerMissionSuccess.html"
 
 import popupCtrl from "./modal/popup.controller"
+import popupCtrl2 from "./modal/popup.controller2"
 
 export default class MissionService {
   constructor($http, apiUrls, $uibModal, $window) {
@@ -111,17 +112,17 @@ export default class MissionService {
   popupSuppressionSuccess(id, dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut) {
     this.$uibModal.open({
         template: popupSuppressionSuccess,
-        controller: popupCtrl,
+        controller: popupCtrl2,
         controllerAs: '$ctrl',
         resolve: {
-            "id": () => id,
-            "dateDebut": () => dateDebut,
-            "dateFin": () => dateFin,
-            "nature": () => nature,
-            "villeDepart": () => villeDepart,
-            "villeArrivee": () => villeArrivee,
-            "transport": () => transport,
-            "statut": () => statut
+            id: () => id,
+            dateDebut: () => dateDebut,
+            dateFin: () => dateFin,
+            nature: () => nature,
+            villeDepart: () => villeDepart,
+            villeArrivee: () => villeArrivee,
+            transport: () => transport,
+            statut: () => statut
         }
     })
   }

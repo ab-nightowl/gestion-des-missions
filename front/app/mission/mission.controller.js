@@ -128,7 +128,7 @@ export default class MissionController {
             error => {this.MissionService.popupFailure()})
   }
 
-  supprimerMission() {
+  supprimerMission(id, dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut) {
     this.MissionService.popupSuppressionSuccess(id, dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut)
   }
 
@@ -178,7 +178,6 @@ export default class MissionController {
           this.dateOptions2.minDate = this.dateOptions.minDate
         }
       }
-
     }
   }
 

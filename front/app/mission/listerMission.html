@@ -78,9 +78,7 @@
                     <span class="glyphicon glyphicon-pencil"></span>
                 </a>
 
-                <a href="/gestion-des-missions/missions/supprimer" ng-show="action == 'suppression'" class="btn btn-default">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </a>
+                <a role="button" ng-show="action == 'suppression'" ng-click="$ctrl.supprimerMission(mission.id, mission.dateDebut, mission.dateFin, mission.nature, mission.villeDepart, mission.villeArrivee, mission.transport, mission.statut)" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
 
                 <a href="https://diginamicformation.github.io/gestion-des-absences/absence" ng-show="action == 'visualisation'" class="btn btn-default">
                     <span class="glyphicon glyphicon-eye-open"></span>
