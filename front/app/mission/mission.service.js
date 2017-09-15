@@ -144,14 +144,17 @@ export default class MissionService {
 
   addAbsencesToMissions(absences, missions) {
     absences.forEach(abs => {
-      missions.push({
-        "dateDebut": abs.dateDebut,
-        "dateFin": abs.dateFin,
-        "natureMissionInit": {
-          "libelle": abs.type
-        },
-        "statut": abs.statut
-      })
+      if (abs.type != "MISSION") {
+        missions.push({
+          "dateDebut": abs.dateDebut,
+          "dateFin": abs.dateFin,
+          "natureMissionInit": {
+            "libelle": abs.type
+          },
+          "statut": abs.statut
+        })
+      }
+
     })
   }
 
@@ -162,7 +165,7 @@ export default class MissionService {
           m.actions = []
 
           let libelle = m.natureMissionInit.libelle
-          let natureAbsenceCondition = ((libelle == "MISSION") || (libelle == "CONGES_PAYES") || (libelle == "RTT") || (libelle == "CONGES_SANS_SOLDES"))
+          let natureAbsenceCondition = ((libelle != "MISSION") || (libelle == "CONGES_PAYES") || (libelle == "RTT") || (libelle == "CONGES_SANS_SOLDES"))
 
           if(!natureAbsenceCondition && (m.statut == "INITIALE" || m.statut == "REJETEE")) {
               m.actions.push("modification")
