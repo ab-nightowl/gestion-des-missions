@@ -52,6 +52,11 @@ public class MissionController {
 		missionRepo.save(mission);
 	}
 	
+	@RequestMapping(method = RequestMethod.DELETE, path = "/lister/{id}")
+	private void supprimerMission(@PathVariable("id") Integer id) {
+		missionRepo.delete(id);
+	}
+	
 	@RequestMapping(method = RequestMethod.PUT, path = "/lister")
 	private void validerNoteDeFraisMission(@RequestBody Mission mission) {
 		mission.setNoteDeFraisValider(true);

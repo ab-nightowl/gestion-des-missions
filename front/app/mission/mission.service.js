@@ -3,6 +3,7 @@ import popupFailure from "./modal/creerMissionFailure.html"
 import popupSuppressionSuccess from "./modal/supprimerMissionSuccess.html"
 
 import popupCtrl from "./modal/popup.controller"
+import popupCtrl2 from "./modal/popup.controller2"
 
 export default class MissionService {
   constructor($http, apiUrls, $uibModal, $window) {
@@ -111,17 +112,17 @@ export default class MissionService {
   popupSuppressionSuccess(id, dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut) {
     this.$uibModal.open({
         template: popupSuppressionSuccess,
-        controller: popupCtrl,
+        controller: popupCtrl2,
         controllerAs: '$ctrl',
         resolve: {
-            "id": () => id,
-            "dateDebut": () => dateDebut,
-            "dateFin": () => dateFin,
-            "nature": () => nature,
-            "villeDepart": () => villeDepart,
-            "villeArrivee": () => villeArrivee,
-            "transport": () => transport,
-            "statut": () => statut
+            id: () => id,
+            dateDebut: () => dateDebut,
+            dateFin: () => dateFin,
+            nature: () => nature,
+            villeDepart: () => villeDepart,
+            villeArrivee: () => villeArrivee,
+            transport: () => transport,
+            statut: () => statut
         }
     })
   }
@@ -132,12 +133,12 @@ export default class MissionService {
             resp => {return "Erreur : la requête pour trouver les missions de l'utilisateur courant a échouée"})
       .then(missions => {
         return this.$http.get(this.apiUrls.absences+'/'+utilisateurMatricule)
-        .then(resp => {
-          this.addAbsencesToMissions(resp.data, missions)
-          this.addActions(missions)
-          return missions
-          }, resp => {return "Erreur : la requête pour trouver les absences de l'utilisateur courant a échouée"}
-        )
+          .then(resp => {
+            this.addAbsencesToMissions(resp.data, missions)
+            this.addActions(missions)
+            return missions
+            }, resp => {return "Erreur : la requête pour trouver les absences de l'utilisateur courant a échouée"}
+          )
       })
   }
 
@@ -160,11 +161,14 @@ export default class MissionService {
       missions.forEach(m => {
           m.actions = []
 
-          if(m.natureMissionInit.libelle != "MISSION" && (m.statut == "INITIALE" || m.statut == "REJETEE")) {
+          let libelle = m.natureMissionInit.libelle
+          let natureAbsenceCondition = ((libelle == "MISSION") || (libelle == "CONGES_PAYES") || (libelle == "RTT") || (libelle == "CONGES_SANS_SOLDES"))
+
+          if(!natureAbsenceCondition && (m.statut == "INITIALE" || m.statut == "REJETEE")) {
               m.actions.push("modification")
           }
 
-          if(m.natureMissionInit.libelle != "MISSION") {
+          if(!natureAbsenceCondition) {
               let now = Date.now()
               let dateDebut = new Date(m.dateDebut);
               if(dateDebut >= now) {
@@ -172,7 +176,7 @@ export default class MissionService {
               }
           }
 
-          if(m.natureMissionInit.libelle == "MISSION") {
+          if(natureAbsenceCondition) {
               m.actions.push("visualisation")
           }
       })
