@@ -38,9 +38,9 @@ public class TraitementDeNuitService {
 		missions.stream()
 				.filter(mission -> mission.getStatut()
 						.name()
-						.equals(Statut.DEMANDE_INITIALE.name()))
+						.equals(Statut.INITIALE.name()))
 				.forEach(mission -> {
-					mission.setStatut(Statut.DEMANDE_EN_ATTENTE_VALIDATION);
+					mission.setStatut(Statut.EN_ATTENTE_VALIDATION);
 					repoMission.save(mission);
 				});
 		

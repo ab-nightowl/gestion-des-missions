@@ -128,7 +128,7 @@ export default class gestionFraisCtrl {
                             ],
                             [
                                 { border: [false, false, false, false], text: "Nature : " + this.detailMission.natureMissionInit.libelle },
-                                { border: [false, false, false, false], text: "Dépassement autorisé : " + this.detailMission.natureMissionInit.depassementFrais }
+                                { border: [false, false, false, false], text: this.detailMission.natureMissionInit.depassementFrais ? 'Dépassement autorisé : Oui' : 'Dépassement autorisé : Non' }
                             ],
                             [
                                 { border: [false, false, false, false], text: "Ville de départ : " + this.detailMission.villeDepart.libelle },

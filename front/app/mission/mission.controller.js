@@ -75,7 +75,7 @@ export default class MissionController {
   }
 
   $onInit() {
-    this.statut = "DEMANDE_INITIALE"
+    this.statut = "INITIALE"
     this.utilisateurMatricule = sessionStorage.getItem('userMatricule')
     this.findMissionsUtilisateur()
     this.findAllMissions()

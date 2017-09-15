@@ -47,7 +47,7 @@ public class MissionController {
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/lister")
 	private void creerMission(@RequestBody Mission mission) {
-		mission.setStatut(Statut.DEMANDE_INITIALE);
+		mission.setStatut(Statut.INITIALE);
 		
 		missionRepo.save(mission);
 	}

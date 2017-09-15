@@ -163,7 +163,7 @@ export default class MissionService {
           let libelle = m.natureMissionInit.libelle
           let natureAbsenceCondition = ((libelle == "MISSION") || (libelle == "CONGES_PAYES") || (libelle == "RTT") || (libelle == "CONGES_SANS_SOLDES"))
 
-          if(!natureAbsenceCondition && (m.statut == "DEMANDE_INITIALE" || m.statut == "DEMANDE_REJETEE")) {
+          if(!natureAbsenceCondition && (m.statut == "INITIALE" || m.statut == "REJETEE")) {
               m.actions.push("modification")
           }
 
