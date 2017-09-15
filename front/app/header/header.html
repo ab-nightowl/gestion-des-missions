@@ -19,7 +19,7 @@
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/gestion')}"><a href="{{ $ctrl.publicPath }}missions/gestion">Gestion des missions</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/planning')}"><a href="{{ $ctrl.publicPath }}missions/planning">Planning des missions</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/prime')}"><a href="{{ $ctrl.publicPath }}prime">Primes</a></li>
-            <li ng-class="{ active: $ctrl.isCurrentPath('/note-de-frais/gestion')}"><a href="{{ $ctrl.publicPath }}note-de-frais/gestion">Gestion note des frais</a></li>
+            <li ng-class="{ active: $ctrl.isCurrentPath('/note-de-frais/gestion')}"><a href="{{ $ctrl.publicPath }}note-de-frais/gestion">Gestion notes des frais</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/natures')}" ng-if="$ctrl.userRole === $ctrl.roles.admin"><a href="{{ $ctrl.publicPath }}missions/natures">Natures de mission</a></li>
             <li ng-class="{ active: $ctrl.isCurrentPath('/missions/validation')}" ng-if="$ctrl.userRole === $ctrl.roles.manager"><a href="{{ $ctrl.publicPath }}missions/validation">Validation des missions</a></li>
             <li ng-if="$ctrl.userRole === $ctrl.roles.admin"><btn class="btn btn-default" ng-click="$ctrl.runTdn()" style="margin-top: 10px; margin-left: 15px">Lancer TDN</btn></li>
