@@ -58,18 +58,15 @@
             <td class="text-center">{{mission.natureMissionInit.libelle}}</td>
 
             <td class="text-center">
-              <span ng-show="!($ctrl.natureAbsenceCondition)">{{mission.villeDepart.libelle}}</span>
-              <span ng-show="$ctrl.natureAbsenceCondition">-</span>
+              <span ng-cloak>{{mission.villeDepart ? mission.villeDepart.libelle : "-"}}</span>
             </td>
 
             <td class="text-center">
-              <span ng-show="mission.natureMissionInit.libelle != 'MISSION'">{{mission.villeArrivee.libelle}}</span>
-              <span ng-show="mission.natureMissionInit.libelle == 'MISSION'">-</span>
+              <span ng-cloak>{{mission.villeArrivee ? mission.villeArrivee.libelle : "-"}}</span>
             </td>
 
             <td class="text-center">
-              <span ng-show="mission.natureMissionInit.libelle != 'MISSION'">{{mission.transport.libelle}}</span>
-              <span ng-show="mission.natureMissionInit.libelle == 'MISSION'">-</span>
+              <span ng-cloak>{{mission.transport ? mission.transport.libelle : "-"}}</span>
             </td>
 
             <td class="text-center">{{mission.statut}}</td>
@@ -81,7 +78,7 @@
                     <span class="glyphicon glyphicon-pencil"></span>
                 </a>
 
-                <a disabled href="/gestion-des-missions/missions/supprimer" ng-show="action == 'suppression'" class="btn btn-default">
+                <a href="/gestion-des-missions/missions/supprimer" ng-show="action == 'suppression'" class="btn btn-default">
                     <span class="glyphicon glyphicon-trash"></span>
                 </a>
 

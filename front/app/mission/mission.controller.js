@@ -82,7 +82,6 @@ export default class MissionController {
     this.findAllNatures()
     this.findAllVilles()
     this.findAllTransports()
-    this.natureAbsenceCondition = ((mission.natureMissionInit.libelle == 'MISSION') || (mission.natureMissionInit.libelle == 'CONGES_PAYES') || (mission.natureMissionInit.libelle == 'RTT') || (mission.natureMissionInit.libelle == "CONGES_SANS_SOLDES"))
   }
 
 
