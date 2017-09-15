@@ -56,6 +56,7 @@ export default class detailGestionFraisCtrl {
         this.nbJourMission = this.dateDiff(debutMission, finMission)
         this.deductionPrime = this.sommeFrais - (this.plafond * this.nbJourMission.day)
     }
+
     dateDiff(date1, date2) {
         var diff = {}                           // Initialisation du retour
         var tmp = date2 - date1;

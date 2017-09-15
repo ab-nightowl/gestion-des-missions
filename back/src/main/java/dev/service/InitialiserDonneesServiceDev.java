@@ -140,6 +140,161 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		em.persist(fraisRobertM3F3);
 		Frais fraisRobertM3F4 = new Frais(LocalDate.of(2016, 11, 2), natureFraisHotel, 74, missionRobert3);
 		em.persist(fraisRobertM3F4);
+		
+		Mission missionRobert4 = new Mission();
+		missionRobert4.setDateDebut(LocalDate.of(2015, 6, 1));
+		missionRobert4.setDateFin(LocalDate.of(2015, 6, 7));
+		missionRobert4.setNatureMissionInit(natureExpertise);
+		missionRobert4.setVilleDepart(villeParis);
+		missionRobert4.setVilleArrivee(villeNantes);
+		missionRobert4.setTransport(transportTrain);
+		missionRobert4.setStatut(statutInitiale);
+		missionRobert4.setUtilisateurMatricule(robertMatricule);
+		em.persist(missionRobert4);
+		
+		Frais fraisRobertM4F1 = new Frais(LocalDate.of(2015, 6, 4), natureFraisHotel, 20, missionRobert4);
+		em.persist(fraisRobertM4F1);
+		Frais fraisRobertM4F2 = new Frais(LocalDate.of(2015, 6, 5), natureFraisTaxi, 12, missionRobert4);
+		em.persist(fraisRobertM4F2);
+		Frais fraisRobertM4F3 = new Frais(LocalDate.of(2015, 6, 1), natureFraisRestaurant, 60, missionRobert4);
+		em.persist(fraisRobertM4F3);
+		Frais fraisRobertM4F4 = new Frais(LocalDate.of(2015, 6, 2), natureFraisHotel, 74, missionRobert4);
+		em.persist(fraisRobertM4F4);
+		Frais fraisRobertM4F5 = new Frais(LocalDate.of(2015, 6, 3), natureFraisRestaurant, 50, missionRobert4);
+		em.persist(fraisRobertM4F5);
+		Frais fraisRobertM4F6 = new Frais(LocalDate.of(2015, 6, 6), natureFraisRestaurant, 40, missionRobert4);
+		em.persist(fraisRobertM4F6);
+		
+		Mission missionRobert5 = new Mission();
+		missionRobert5.setDateDebut(LocalDate.of(2015, 8, 18));
+		missionRobert5.setDateFin(LocalDate.of(2015, 8, 22));
+		missionRobert5.setNatureMissionInit(natureExpertise);
+		missionRobert5.setVilleDepart(villeParis);
+		missionRobert5.setVilleArrivee(villeNantes);
+		missionRobert5.setTransport(transportTrain);
+		missionRobert5.setStatut(statutInitiale);
+		missionRobert5.setUtilisateurMatricule(robertMatricule);
+		em.persist(missionRobert5);
+		
+		Frais fraisRobertM5F1 = new Frais(LocalDate.of(2015, 8, 18), natureFraisHotel, 20, missionRobert5);
+		em.persist(fraisRobertM5F1);
+		Frais fraisRobertM5F2 = new Frais(LocalDate.of(2015, 8, 20), natureFraisTaxi, 8, missionRobert5);
+		em.persist(fraisRobertM5F2);
+		Frais fraisRobertM5F3 = new Frais(LocalDate.of(2015, 8, 20), natureFraisRestaurant, 10, missionRobert5);
+		em.persist(fraisRobertM5F3);
+		
+		Mission missionRobert6 = new Mission();
+		missionRobert6.setDateDebut(LocalDate.of(2015, 7, 18));
+		missionRobert6.setDateFin(LocalDate.of(2015, 7, 22));
+		missionRobert6.setNatureMissionInit(natureExpertise);
+		missionRobert6.setVilleDepart(villeParis);
+		missionRobert6.setVilleArrivee(villeNantes);
+		missionRobert6.setTransport(transportTrain);
+		missionRobert6.setStatut(statutInitiale);
+		missionRobert6.setUtilisateurMatricule(robertMatricule);
+		em.persist(missionRobert6);
+		
+		Frais fraisRobertM6F1 = new Frais(LocalDate.of(2015, 7, 18), natureFraisHotel, 200, missionRobert6);
+		em.persist(fraisRobertM6F1);
+		Frais fraisRobertM6F2 = new Frais(LocalDate.of(2015, 7, 20), natureFraisTaxi, 70, missionRobert6);
+		em.persist(fraisRobertM6F2);
+		Frais fraisRobertM6F3 = new Frais(LocalDate.of(2015, 7, 20), natureFraisRestaurant, 60, missionRobert6);
+		em.persist(fraisRobertM6F3);
+		
+		Mission missionRobert7 = new Mission();
+		missionRobert7.setDateDebut(LocalDate.of(2015, 2, 18));
+		missionRobert7.setDateFin(LocalDate.of(2015, 2, 28));
+		missionRobert7.setNatureMissionInit(natureExpertise);
+		missionRobert7.setVilleDepart(villeParis);
+		missionRobert7.setVilleArrivee(villeNantes);
+		missionRobert7.setTransport(transportTrain);
+		missionRobert7.setStatut(statutInitiale);
+		missionRobert7.setUtilisateurMatricule(robertMatricule);
+		em.persist(missionRobert7);
+		
+		Frais fraisRobertM7F1 = new Frais(LocalDate.of(2015, 2, 28), natureFraisHotel, 200, missionRobert7);
+		em.persist(fraisRobertM7F1);
+		Frais fraisRobertM7F2 = new Frais(LocalDate.of(2015, 2, 20), natureFraisTaxi, 70, missionRobert7);
+		em.persist(fraisRobertM7F2);
+		Frais fraisRobertM7F3 = new Frais(LocalDate.of(2015, 2, 21), natureFraisRestaurant, 120, missionRobert7);
+		em.persist(fraisRobertM7F3);
+		Frais fraisRobertM7F4 = new Frais(LocalDate.of(2015, 2, 18), natureFraisHotel, 225, missionRobert7);
+		em.persist(fraisRobertM7F4);
+		Frais fraisRobertM7F5 = new Frais(LocalDate.of(2015, 2, 22), natureFraisTaxi, 70, missionRobert7);
+		em.persist(fraisRobertM7F5);
+		Frais fraisRobertM7F6 = new Frais(LocalDate.of(2015, 2, 25), natureFraisRestaurant, 250, missionRobert7);
+		em.persist(fraisRobertM7F6);
+		
+		Mission missionRobert8 = new Mission();
+		missionRobert8.setDateDebut(LocalDate.of(2015, 10, 18));
+		missionRobert8.setDateFin(LocalDate.of(2015, 10, 28));
+		missionRobert8.setNatureMissionInit(natureExpertise);
+		missionRobert8.setVilleDepart(villeParis);
+		missionRobert8.setVilleArrivee(villeNantes);
+		missionRobert8.setTransport(transportTrain);
+		missionRobert8.setStatut(statutInitiale);
+		missionRobert8.setUtilisateurMatricule(robertMatricule);
+		em.persist(missionRobert8);
+		
+		Frais fraisRobertM8F1 = new Frais(LocalDate.of(2015, 10, 28), natureFraisHotel, 200, missionRobert8);
+		em.persist(fraisRobertM8F1);
+		Frais fraisRobertM8F2 = new Frais(LocalDate.of(2015, 10, 20), natureFraisTaxi, 70, missionRobert8);
+		em.persist(fraisRobertM8F2);
+		Frais fraisRobertM8F3 = new Frais(LocalDate.of(2015, 10, 21), natureFraisRestaurant, 120, missionRobert8);
+		em.persist(fraisRobertM8F3);
+		Frais fraisRobertM8F4 = new Frais(LocalDate.of(2015, 10, 18), natureFraisHotel, 225, missionRobert8);
+		em.persist(fraisRobertM8F4);
+		Frais fraisRobertM8F5 = new Frais(LocalDate.of(2015, 10, 22), natureFraisTaxi, 70, missionRobert8);
+		em.persist(fraisRobertM8F5);
+		Frais fraisRobertM8F6 = new Frais(LocalDate.of(2015, 10, 25), natureFraisRestaurant, 20, missionRobert8);
+		em.persist(fraisRobertM8F6);
+		
+		Mission missionRobert9 = new Mission();
+		missionRobert9.setDateDebut(LocalDate.of(2015, 8, 19));
+		missionRobert9.setDateFin(LocalDate.of(2015, 8, 29));
+		missionRobert9.setNatureMissionInit(natureExpertise);
+		missionRobert9.setVilleDepart(villeParis);
+		missionRobert9.setVilleArrivee(villeNantes);
+		missionRobert9.setTransport(transportTrain);
+		missionRobert9.setStatut(statutInitiale);
+		missionRobert9.setUtilisateurMatricule(robertMatricule);
+		em.persist(missionRobert9);
+		
+		Frais fraisRobertM9F1 = new Frais(LocalDate.of(2015, 8, 29), natureFraisHotel, 100, missionRobert9);
+		em.persist(fraisRobertM9F1);
+		Frais fraisRobertM9F2 = new Frais(LocalDate.of(2015, 8, 20), natureFraisTaxi, 16, missionRobert9);
+		em.persist(fraisRobertM9F2);
+		Frais fraisRobertM9F3 = new Frais(LocalDate.of(2015, 8, 21), natureFraisRestaurant, 28, missionRobert9);
+		em.persist(fraisRobertM9F3);
+		
+		Mission missionRobert10 = new Mission();
+		missionRobert10.setDateDebut(LocalDate.of(2017, 9, 12));
+		missionRobert10.setDateFin(LocalDate.of(2017, 10, 10));
+		missionRobert10.setNatureMissionInit(natureExpertise);
+		missionRobert10.setVilleDepart(villeParis);
+		missionRobert10.setVilleArrivee(villeNantes);
+		missionRobert10.setTransport(transportTrain);
+		missionRobert10.setStatut(statutInitiale);
+		missionRobert10.setUtilisateurMatricule(robertMatricule);
+		em.persist(missionRobert10);
+		
+		Mission missionRobert11 = new Mission();
+		missionRobert11.setDateDebut(LocalDate.of(2017, 6, 5));
+		missionRobert11.setDateFin(LocalDate.of(2017, 6, 10));
+		missionRobert11.setNatureMissionInit(natureFormation);
+		missionRobert11.setVilleDepart(villeParis);
+		missionRobert11.setVilleArrivee(villeNantes);
+		missionRobert11.setTransport(transportTrain);
+		missionRobert11.setStatut(statutInitiale);
+		missionRobert11.setUtilisateurMatricule(robertMatricule);
+		em.persist(missionRobert11);
+		
+		Frais fraisRobertM11F1 = new Frais(LocalDate.of(2017, 6, 6), natureFraisHotel, 100, missionRobert11);
+		em.persist(fraisRobertM11F1);
+		Frais fraisRobertM11F2 = new Frais(LocalDate.of(2017, 6, 7), natureFraisTaxi, 16, missionRobert11);
+		em.persist(fraisRobertM11F2);
+		Frais fraisRobertM11F3 = new Frais(LocalDate.of(2017, 6, 6), natureFraisRestaurant, 28, missionRobert11);
+		em.persist(fraisRobertM11F3);
 		// Robert - END
 		// ***********************************************************************************
 		
