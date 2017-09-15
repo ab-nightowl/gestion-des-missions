@@ -178,6 +178,19 @@ export default class MissionController {
           this.dateOptions2.minDate = this.dateOptions.minDate
         }
       }
+    } else {
+      if (this.transport) {
+
+        this.transportIsAvionCondition = (this.transport.libelle == "Avion")
+
+        if (this.transportIsAvionCondition) {
+          this.dateOptions.minDate = todayPlus7Days.toDate()
+          this.dateOptions2.minDate = this.dateOptions.minDate
+        } else {
+          this.dateOptions.minDate = this.moment().toDate()
+          this.dateOptions2.minDate = this.dateOptions.minDate
+        }
+      }
     }
   }
 
