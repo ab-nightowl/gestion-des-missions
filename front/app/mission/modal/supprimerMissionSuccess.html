@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Confirmation</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <h4>Voulez-vous vraiment supprimer cette demande de mission ?</h4>
+    <ul>
+        <li>Date de début : {{$ctrl.dateDebut | date:'dd/MM/yyyy'}}</li>
+        <li>Date de fin : {{$ctrl.dateFin | date:'dd/MM/yyyy'}}</li>
+        <li>Nature : {{$ctrl.nature.libelle}}</li>
+        <li>Ville de départ : {{$ctrl.villeDepart.libelle}}</li>
+        <li>Ville d'arrivée : {{$ctrl.villeArrivee.libelle}}</li>
+        <li>Transport : {{$ctrl.transport.libelle}}</li>
+        <li>Statut : {{$ctrl.statut}}</li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="$ctrl.rester()">Annuler</button>
+    <button class="btn btn-default" type="button" ng-click="$ctrl.supprimer()">Valider</button>
+</div>

@@ -75,7 +75,7 @@ export default class MissionController {
   }
 
   $onInit() {
-    this.statut = "DEMANDE_INITIALE"
+    this.statut = "INITIALE"
     this.utilisateurMatricule = sessionStorage.getItem('userMatricule')
     this.findMissionsUtilisateur()
     this.findAllMissions()
@@ -126,6 +126,10 @@ export default class MissionController {
     this.MissionService.postMission(this.dateDebut, this.dateFin, this.nature, this.villeDepart, this.villeArrivee, this.transport, this.statut, this.utilisateurMatricule)
       .then(success => {this.MissionService.popupSuccess()},
             error => {this.MissionService.popupFailure()})
+  }
+
+  supprimerMission() {
+    this.MissionService.popupSuppressionSuccess(id, dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut)
   }
 
   changeDateDebut() {

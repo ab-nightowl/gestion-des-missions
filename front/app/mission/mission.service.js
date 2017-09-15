@@ -1,12 +1,15 @@
 import popupSuccess from "./modal/creerMissionSuccess.html"
 import popupFailure from "./modal/creerMissionFailure.html"
+import popupSuppressionSuccess from "./modal/supprimerMissionSuccess.html"
+
 import popupCtrl from "./modal/popup.controller"
 
 export default class MissionService {
-  constructor($http, apiUrls, $uibModal) {
+  constructor($http, apiUrls, $uibModal, $window) {
     this.$http = $http
     this.apiUrls = apiUrls
     this.$uibModal = $uibModal
+    this.$window = $window
   }
 
   getAllMissions() {
@@ -85,19 +88,42 @@ export default class MissionService {
 
   }
 
-  popupSuccess(){
+  deleteMission(id) {
+    this.$http.delete(this.apiUrls.missions+'/'+id)
+    this.$window.location.reload()
+  }
+
+  popupSuccess() {
     this.$uibModal.open({
       template: popupSuccess,
       controller: popupCtrl,
       controllerAs: '$ctrl'
     });
   }
-  popupFailure(){
+  popupFailure() {
     this.$uibModal.open({
       template: popupFailure,
       controller: popupCtrl,
       controllerAs: '$ctrl'
     });
+  }
+
+  popupSuppressionSuccess(id, dateDebut, dateFin, nature, villeDepart, villeArrivee, transport, statut) {
+    this.$uibModal.open({
+        template: popupSuppressionSuccess,
+        controller: popupCtrl,
+        controllerAs: '$ctrl',
+        resolve: {
+            "id": () => id,
+            "dateDebut": () => dateDebut,
+            "dateFin": () => dateFin,
+            "nature": () => nature,
+            "villeDepart": () => villeDepart,
+            "villeArrivee": () => villeArrivee,
+            "transport": () => transport,
+            "statut": () => statut
+        }
+    })
   }
 
   findMissionsByUtilisateur(utilisateurMatricule) {
@@ -134,7 +160,7 @@ export default class MissionService {
       missions.forEach(m => {
           m.actions = []
 
-          if(m.natureMissionInit.libelle != "MISSION" && (m.statut == "DEMANDE_INITIALE" || m.statut == "DEMANDE_REJETEE")) {
+          if(m.natureMissionInit.libelle != "MISSION" && (m.statut == "INITIALE" || m.statut == "REJETEE")) {
               m.actions.push("modification")
           }
 
