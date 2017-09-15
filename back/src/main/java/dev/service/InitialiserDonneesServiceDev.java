@@ -90,7 +90,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert1.setVilleDepart(villeNantes);
 		missionRobert1.setVilleArrivee(villeMarseille);
 		missionRobert1.setTransport(transportAvion);
-		missionRobert1.setStatut(statutInitiale);
+		missionRobert1.setStatut(statutValidee);
 		missionRobert1.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert1);
 		
@@ -108,7 +108,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert2.setVilleDepart(villeAngers);
 		missionRobert2.setVilleArrivee(villeParis);
 		missionRobert2.setTransport(transportTrain);
-		missionRobert2.setStatut(statutInitiale);
+		missionRobert2.setStatut(statutValidee);
 		missionRobert2.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert2);
 		
@@ -128,7 +128,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert3.setVilleDepart(villeBordeaux);
 		missionRobert3.setVilleArrivee(villeNantes);
 		missionRobert3.setTransport(transportCovoit);
-		missionRobert3.setStatut(statutInitiale);
+		missionRobert3.setStatut(statutValidee);
 		missionRobert3.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert3);
 		
@@ -148,7 +148,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert4.setVilleDepart(villeParis);
 		missionRobert4.setVilleArrivee(villeNantes);
 		missionRobert4.setTransport(transportTrain);
-		missionRobert4.setStatut(statutInitiale);
+		missionRobert4.setStatut(statutValidee);
 		missionRobert4.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert4);
 		
@@ -172,7 +172,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert5.setVilleDepart(villeParis);
 		missionRobert5.setVilleArrivee(villeNantes);
 		missionRobert5.setTransport(transportTrain);
-		missionRobert5.setStatut(statutInitiale);
+		missionRobert5.setStatut(statutValidee);
 		missionRobert5.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert5);
 		
@@ -190,7 +190,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert6.setVilleDepart(villeParis);
 		missionRobert6.setVilleArrivee(villeNantes);
 		missionRobert6.setTransport(transportTrain);
-		missionRobert6.setStatut(statutInitiale);
+		missionRobert6.setStatut(statutValidee);
 		missionRobert6.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert6);
 		
@@ -208,7 +208,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert7.setVilleDepart(villeParis);
 		missionRobert7.setVilleArrivee(villeNantes);
 		missionRobert7.setTransport(transportTrain);
-		missionRobert7.setStatut(statutInitiale);
+		missionRobert7.setStatut(statutValidee);
 		missionRobert7.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert7);
 		
@@ -232,7 +232,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert8.setVilleDepart(villeParis);
 		missionRobert8.setVilleArrivee(villeNantes);
 		missionRobert8.setTransport(transportTrain);
-		missionRobert8.setStatut(statutInitiale);
+		missionRobert8.setStatut(statutValidee);
 		missionRobert8.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert8);
 		
@@ -256,7 +256,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert9.setVilleDepart(villeParis);
 		missionRobert9.setVilleArrivee(villeNantes);
 		missionRobert9.setTransport(transportTrain);
-		missionRobert9.setStatut(statutInitiale);
+		missionRobert9.setStatut(statutValidee);
 		missionRobert9.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert9);
 		
@@ -274,7 +274,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert10.setVilleDepart(villeParis);
 		missionRobert10.setVilleArrivee(villeNantes);
 		missionRobert10.setTransport(transportTrain);
-		missionRobert10.setStatut(statutInitiale);
+		missionRobert10.setStatut(statutRejetee);
 		missionRobert10.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert10);
 		
@@ -285,7 +285,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		missionRobert11.setVilleDepart(villeParis);
 		missionRobert11.setVilleArrivee(villeNantes);
 		missionRobert11.setTransport(transportTrain);
-		missionRobert11.setStatut(statutInitiale);
+		missionRobert11.setStatut(statutValidee);
 		missionRobert11.setUtilisateurMatricule(robertMatricule);
 		em.persist(missionRobert11);
 		
