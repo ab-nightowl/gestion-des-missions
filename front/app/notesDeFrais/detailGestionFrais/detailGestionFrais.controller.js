@@ -32,7 +32,7 @@ export default class detailGestionFraisCtrl {
     }
 
     valider() {
-        if (this.sommeFrais >= (this.plafond * this.nbJour[0])) {
+        if (this.sommeFrais >= (this.plafond * this.nbJourMission.day)) {
             if (this.detailMission.natureMissionInit.depassementFrais) {
                 this.detailGestionFraisService.validerNoteDeFrais(this.detailMission)
                 this.detailGestionFraisService.popupSuccess()
