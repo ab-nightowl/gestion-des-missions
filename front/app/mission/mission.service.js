@@ -160,7 +160,7 @@ export default class MissionService {
       missions.forEach(m => {
           m.actions = []
 
-          if(m.natureMissionInit.libelle != "MISSION" && (m.statut == "DEMANDE_INITIALE" || m.statut == "DEMANDE_REJETEE")) {
+          if(m.natureMissionInit.libelle != "MISSION" && (m.statut == "INITIALE" || m.statut == "REJETEE")) {
               m.actions.push("modification")
           }
 

@@ -76,10 +76,10 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		em.persist(natureFraisRestaurant);
 		em.persist(natureFraisTrain);
 		
-		Statut statutInitiale = Statut.DEMANDE_INITIALE;
-		Statut statutEnAttente = Statut.DEMANDE_EN_ATTENTE_VALIDATION;
-		Statut statutValidee = Statut.DEMANDE_VALIDEE;
-		Statut statutRejetee = Statut.DEMANDE_REJETEE;
+		Statut statutInitiale = Statut.INITIALE;
+		Statut statutEnAttente = Statut.EN_ATTENTE_VALIDATION;
+		Statut statutValidee = Statut.VALIDEE;
+		Statut statutRejetee = Statut.REJETEE;
 		
 		// Robert - START
 		// ***********************************************************************************
@@ -189,7 +189,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		mission5.setUtilisateurMatricule("56eb7d01");
 		em.persist(mission5);
 		
-		// Robert - START
+		// Jennifer - START
 		// ***********************************************************************************
 		Mission missionJennifer1 = new Mission();
 		missionJennifer1.setDateDebut(LocalDate.of(2017, 9, 1));
@@ -210,7 +210,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 		em.persist(fraisJenniferM1F3);
 		Frais fraisJenniferM1F4 = new Frais(LocalDate.of(2016, 9, 2), natureFraisHotel, 120, missionJennifer1);
 		em.persist(fraisJenniferM1F4);
-		// Robert - END
+		// Jennifer - END
 		// ***********************************************************************************
 		
 		Frais frais2 = new Frais(LocalDate.now(), natureFraisTaxi, 745, missionRobert1);
